@@ -1,0 +1,40 @@
+.mynavbar {
+  position: fixed;
+  top: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 2vh;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: 1.3rem;
+      font-weight: bold;
+      transition: color 0.3s, text-shadow 0.3s;
+      text-transform: uppercase;
+
+      a {
+        color: white;
+        text-decoration: none;
+        text-shadow: 0 0 5px white;
+        padding: 0 1rem;
+
+        &:hover {
+          color: #3293e0;
+          text-shadow: 0 0 10px #3293e0, 0 0 15px #3293e0;
+        }
+      }
+    }
+  }
+}
