@@ -1,0 +1,38 @@
+@use "sass:math";
+
+.mynavbar {
+  position: math.abs(0);
+  top: 5vh;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 2vh;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: 2rem;
+      font-weight: bold;
+      transition: color 0.3s, text-shadow 0.3s;
+      transition: letter-spacing 0.3s;
+      text-transform: uppercase;
+
+      a {
+        color: white;
+        text-decoration: none;
+        text-shadow: 0 0 5px white;
+        padding: 0 1rem;
+
+        &:hover {
+          color: #fff;
+          text-shadow: 0 0 10px #3293e0, 0 0 10px #3293e0, 0 0 10px #3293e0, 0 0 10px #3293e0;
+          letter-spacing: 0.2em;
+        }
+      }
+    }
+  }
+}
