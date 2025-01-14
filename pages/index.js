@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import Mysection from "@/components/Mysection";
+import Mysection from "@/components/MySection";
 import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
 import MyNavbar from "@/components/MyNavbar";
@@ -25,7 +24,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MyNavbar />      
       <div ref={section1}>
         <Mysection 
           video={`/videos/intro_video_background.mp4`}
