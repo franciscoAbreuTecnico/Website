@@ -1,26 +1,19 @@
 @use "./reset";
 
 @font-face {
-  font-family: 'MyCustomFont';
-  src: url('/font/eurostile.woff2') format('woff2'),
-       url('/font/eurostile.woff') format('woff'),
-       url('/font/eurostile.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'EuroStyle';
+  src: url('/local-fonts/eurostyle.ttf') format('truetype');
+  src: url('/local-fonts/EuroStyleNormal.woff2') format('woff2');
+  font-display: swap;
 }
 
-html, body {
-  font-family: 'MyCustomFont', Arial, sans-serif;
+body {
+  font-family: 'EuroStyle', sans-serif;
 }
 
 html {
   width: 100%;
   overflow-x: hidden;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: -0.1em;
 }
 
 a {

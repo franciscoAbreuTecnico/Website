@@ -49,8 +49,9 @@ export default function Mysection({
           src={video}
           autoPlay
           muted
-          loop
+          loop={false}
           playsInline
+          onEnded={(e) => e.target.pause()}
         />
       ) : (
         <Image src={image} alt="Section Image" fill />
