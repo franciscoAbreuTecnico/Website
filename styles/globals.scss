@@ -9,6 +9,9 @@
 
 body {
   font-family: 'EuroStyle', sans-serif;
+  transition-property: opacity, background, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
 }
 
 html {
@@ -27,6 +30,12 @@ a {
   }
   body {
     color: white;
-    background: black;
   }
+}
+
+.page-transition {
+  opacity: 0;
+  background: black;
+  transform: translateY(40px);
+  filter: blur(12px);
 }

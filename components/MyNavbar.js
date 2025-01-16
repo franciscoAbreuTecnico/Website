@@ -1,18 +1,19 @@
 import Link from 'next/link';
 import styles from './MyNavbar.module.scss';
 import { useRouter } from 'next/router'
+import { TransitionLink } from './utils/TransitionsLink';
 
 export default function MysNavbar() {
   return (
     <nav className={styles.mynavbar}>
       <ul>
-        <li><Link href="/garage">GARAGE</Link></li>
-        <li><Link href="/team">TEAM</Link></li>
-        <li><Link href="/history">HISTORY</Link></li>
-        <li><Link href="/news">NEWS</Link></li>
-        <li><Link href="/shop">SHOP</Link></li>
-        <li><Link href="/sponsors">SPONSORS</Link></li>
-        <li><Link href="/contacts">CONTACTS</Link></li>
+        <li><TransitionLink href="/garage">GARAGE</TransitionLink></li>
+        <li><TransitionLink href="/team">TEAM</TransitionLink></li>
+        <li><TransitionLink href="/history">HISTORY</TransitionLink></li>
+        <li><TransitionLink href="/news">NEWS</TransitionLink></li>
+        <li><TransitionLink href="/shop">SHOP</TransitionLink></li>
+        <li><TransitionLink href="/sponsors">SPONSORS</TransitionLink></li>
+        <li><TransitionLink href="/contacts">CONTACTS</TransitionLink></li>
       </ul>
     </nav>
   );
