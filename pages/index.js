@@ -4,7 +4,7 @@ import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
 import MyNavbar from "@/components/MyNavbar";
 import Footer from "@/components/Footer";
-import { aboutUsText, competitionText } from "@/components/textContent/SectionTexts";
+import { aboutUsText, competitionText, prototypeText } from "@/components/textContent/SectionTexts";
 
 export default function Home() {
   const section1 = useRef();
@@ -49,7 +49,7 @@ export default function Home() {
       <div ref={section3}>
         <MySection
           image={`/images/index_resources/aragon_background.jpg`}
-          headline={`Competitions`}
+          headline={`COMPETITIONS`}
           text={competitionText}
           scrollTo={scrollTo}
           goToSectionRef={section4}
@@ -59,8 +59,8 @@ export default function Home() {
       <div ref={section4}>
         <MySection
           image={`/images/index_resources/prototype_background.jpg`}
-          headline={`Prototypes`}
-          text={`The team has three prototypes built. The first, a combustion one (TLM01i), was completed in 2014, and has been continuously developed and improved up to the present, and the second, already electric (TLM02e), completed in 2018. In 2021, the construction of the third prototype, the second electric one (TLM03e), was completed`}
+          headline={`PROTOTYPES`}
+          text={prototypeText}
           scrollTo={scrollTo}
           goToSectionRef={section5}
           showArrow={true}
@@ -69,7 +69,6 @@ export default function Home() {
       <div ref={section5}>
         <MySection
           image={`/images/index_resources/sponsors_background.png`}
-          headline={`Sponsors`}
           showArrow={false}
         />
       </div>

@@ -32,8 +32,8 @@
       text-align: center;
   
       .headline {
+        text-align: left;
         font-size: 2.7em;
-        font-weight: bold;
         color: #3293e0;
         text-shadow: 0 0 10px #3292e0b9;
   
@@ -48,6 +48,7 @@
         text-shadow: 0 0 15px #ffffffa3;
         letter-spacing: 0.1em;
         margin-top: 10px;
+        text-align: left;
       }
     }
   
@@ -65,4 +66,3 @@
       z-index: 2;
     }
   }
-  
