@@ -1,36 +1,74 @@
 @use "sass:math";
 
 .mynavbar {
-  position: math.abs(0);
-  top: 5vh;
-  z-index: 1;
+  top: 4rem;
+  z-index: 1000;
   display: flex;
-  justify-content: center;
+  justify-content: center; // Keeps <ul> centered
+  width: 100%;
   background-color: transparent;
+  position: absolute;
+  text-align: center;
+  box-sizing: border-box;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    top: 50px;
+    width: 80%;
+    height: 6px;
+    background: linear-gradient(to right, transparent, #97bddc, #3293e0, #97bddc, transparent);
+  }
+
+  .logo {
+    position: absolute; // Take it out of the flow
+    top: -1.5rem; // Adjust to position it at the top
+    left: 3rem; // Align to the left edge of the navbar
+
+    img {
+      max-width: 100px; // Adjust size as needed
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.2); // Slight zoom on hover
+      }
+    }
+  }
+
   ul {
-    list-style: none;
-    display: flex;
-    gap: 2vh;
-    margin: 0;
-    padding: 0;
+    display: inline-flex;
+    gap: 3vh;
+    margin: 0; // Ensure there's no default margin pushing the list
+    padding: 0; // Reset any padding
+    list-style: none; // Remove default list styling
 
     li {
       font-size: 2rem;
-      transition: color 0.3s, text-shadow 0.3s;
-      transition: letter-spacing 0.3s;
-      text-transform: uppercase;
+      letter-spacing: 0.10em;
 
       a {
         color: white;
         text-decoration: none;
         text-shadow: 0 0 5px white;
         padding: 0 1rem;
+        transition: color 0.3s ease, text-shadow 0.3s ease, letter-spacing 0.3s ease;
 
         &:hover {
           color: #fff;
           text-shadow: 0 0 10px #3293e0, 0 0 10px #3293e0, 0 0 10px #3293e0, 0 0 10px #3293e0;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.15em;
         }
+      }
+    }
+
+    .active {
+      a {
+        font-size: 2.5rem; // Slightly larger size for active link
+        text-shadow: 0 0 10px #97bddc, 0 0 10px #3293e0;
+        color: #3293e0; // Highlight color
       }
     }
   }

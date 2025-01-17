@@ -2,10 +2,8 @@ import Image from 'next/image';
 import styles from '@/components/MyTeam.module.scss';
 
 export default function Team() {
-return (
-    <div className={`container ${styles.container}`}>
-        <h>Meet the Team</h>
-    </div>
+    return (
+        <></>
     );
 }
 

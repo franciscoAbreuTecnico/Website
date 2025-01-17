@@ -2,9 +2,7 @@ import Head from "next/head";
 import MySection from "@/components/MySection";
 import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
-import MyNavbar from "@/components/MyNavbar";
-import Footer from "@/components/Footer";
-import { aboutUsText, competitionText, prototypeText } from "@/components/textContent/SectionTexts";
+import { aboutUsText, animatedNumbers, competitionText, prototypeText } from "@/components/textContent/SectionTexts";
 
 export default function Home() {
   const section1 = useRef();
@@ -44,6 +42,7 @@ export default function Home() {
           scrollTo={scrollTo}
           goToSectionRef={section3}
           showArrow={true}
+          animatedNumbers={animatedNumbers}
         />
       </div>
       <div ref={section3}>
@@ -54,6 +53,7 @@ export default function Home() {
           scrollTo={scrollTo}
           goToSectionRef={section4}
           showArrow={true}
+          buttons={[{ label: "MS"}, { label: "CNV"}, { label: "MEI"}]}
         />
       </div>
       <div ref={section4}>
@@ -64,11 +64,13 @@ export default function Home() {
           scrollTo={scrollTo}
           goToSectionRef={section5}
           showArrow={true}
-        />
+          buttons={[{ label: "LEARN MORE", href: "/garage" }]}
+          />
       </div>
       <div ref={section5}>
         <MySection
-          image={`/images/index_resources/sponsors_background.png`}
+          image={`/images/index_resources/blue_black_background.png`}
+          secondaryImage={`/images/index_resources/sponsors_background.png`}
           showArrow={false}
         />
       </div>
