@@ -1,8 +1,8 @@
 import Head from "next/head";
-import MySection from "@/components/MySection";
+import MySection from "@/components/MySection.js";
 import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
-import { aboutUsText, animatedNumbers, competitionText, prototypeText } from "@/components/textContent/SectionTexts";
+import { aboutUsText, animatedNumbers, competitionText, prototypeText } from "@/components/textContent/HomeSectionTexts";
 
 export default function Home() {
   const section1 = useRef();
@@ -36,7 +36,7 @@ export default function Home() {
       </div>
       <div ref={section2}>
         <MySection
-          image={`/images/index_resources/team_background.png`}
+          image={`/images/home/team_background.png`}
           headline={`ABOUT US`}
           text={aboutUsText}
           scrollTo={scrollTo}
@@ -47,7 +47,7 @@ export default function Home() {
       </div>
       <div ref={section3}>
         <MySection
-          image={`/images/index_resources/aragon_background.jpg`}
+          image={`/images/home/aragon_background.jpg`}
           headline={`COMPETITIONS`}
           text={competitionText}
           scrollTo={scrollTo}
@@ -58,7 +58,7 @@ export default function Home() {
       </div>
       <div ref={section4}>
         <MySection
-          image={`/images/index_resources/prototype_background.jpg`}
+          image={`/images/home/prototype_background.jpg`}
           headline={`PROTOTYPES`}
           text={prototypeText}
           scrollTo={scrollTo}
@@ -69,8 +69,8 @@ export default function Home() {
       </div>
       <div ref={section5}>
         <MySection
-          image={`/images/index_resources/blue_black_background.png`}
-          secondaryImage={`/images/index_resources/sponsors_background.png`}
+          image={`/images/home/blue_black_background.png`}
+          secondaryImage={`/images/home/sponsors_background.png`}
           showArrow={false}
         />
       </div>

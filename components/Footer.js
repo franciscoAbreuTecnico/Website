@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import styles from '@/styles/MyFooter.module.scss';
 import {
   IoLogoFacebook,
   IoLogoInstagram,
@@ -7,7 +8,6 @@ import {
   IoLogoTiktok,
   IoLogoYoutube,
 } from "react-icons/io5";
-import styles from './Footer.module.scss';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

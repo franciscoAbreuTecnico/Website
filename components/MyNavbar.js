@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import styles from './MyNavbar.module.scss';
+import styles from '@/styles/MyNavbar.module.scss';
 import { TransitionLink } from './utils/TransitionLink';
 import { useRouter } from 'next/router';
 
@@ -10,29 +9,29 @@ export default function MyNavbar() {
     <nav className={styles.mynavbar}>
       <TransitionLink href="/" passHref>
         <div className={styles.logo}>
-          <img src="/images/index_resources/home.png" alt="Home Logo" />
+          <img src="/images/home/home.png" alt="Home Logo" />
         </div>
       </TransitionLink>
       <ul>
-        <li className={router.pathname === '/garage' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/garage') ? styles.active : ''}>
           <TransitionLink href="/garage">GARAGE</TransitionLink>
         </li>
-        <li className={router.pathname === '/team' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/team') ? styles.active : ''}>
           <TransitionLink href="/team">TEAM</TransitionLink>
         </li>
-        <li className={router.pathname === '/history' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/history') ? styles.active : ''}>
           <TransitionLink href="/history">HISTORY</TransitionLink>
         </li>
-        <li className={router.pathname === '/news' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/news') ? styles.active : ''}>
           <TransitionLink href="/news">NEWS</TransitionLink>
         </li>
-        <li className={router.pathname === '/shop' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/shop') ? styles.active : ''}>
           <TransitionLink href="/shop">SHOP</TransitionLink>
         </li>
-        <li className={router.pathname === '/sponsors' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/sponsors') ? styles.active : ''}>
           <TransitionLink href="/sponsors">SPONSORS</TransitionLink>
         </li>
-        <li className={router.pathname === '/contacts' ? styles.active : ''}>
+        <li className={router.pathname.startsWith('/contacts') ? styles.active : ''}>
           <TransitionLink href="/contacts">CONTACTS</TransitionLink>
         </li>
       </ul>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import styles from "./MySection.module.scss";
+import styles from "@/styles/MySection.module.scss";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import CountUp from "react-countup";

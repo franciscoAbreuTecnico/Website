@@ -1,8 +1,5 @@
-import Image from 'next/image';
-import styles from '@/components/MyGarage.module.scss';
+import MyGarageCards from '@/components/MyGarageCards';
 
 export default function Garage() {
-    return (
-        <></>
-    );
+    return <MyGarageCards />;
 }
