@@ -74,7 +74,7 @@ export default function MySection({
         <div className={styles.imageContainer}>
           {image && (
             <Image
-              src={image}
+              src={`${process.env.NODE_ENV === 'production' ? '' : ''}${image}`}
               alt="Primary Section Image"
               className={styles.image}
               fill
