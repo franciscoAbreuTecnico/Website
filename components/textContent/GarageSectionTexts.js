@@ -13,7 +13,11 @@ export const cards = [
             { name: 'Weight', value: 150, max: 250, unit: "kg" },
             { name: 'Acceleration', value: 4, max: 4, unit: "s" },
             { name: 'Torque', value: 24, max: 40, unit: "Nm" }
-        ]
+        ],
+        historyText: `The TLM01i is a combustion motorcycle equipped with a 250cc, 4-stroke engine from Sherco. 
+        Structurally, the bike features a twin spar frame made of trellised aluminum. In 2014, the motorcycle weighed
+        approximately 105kg and boasted a top speed of around 170km/h. Since its debut in
+        the Motostudent 2014 competition, the TLM01i has undergone several modifications to enhance its performance.`
     },
     {
         id: 'm02',
@@ -28,7 +32,12 @@ export const cards = [
             { name: 'Weight', value: 150, max: 250, unit: "kg" },
             { name: 'Acceleration', value: 5, max: 5, unit: "s" },
             { name: 'Torque', value: 60, max: 80, unit: "Nm" }
-        ]
+        ],
+        historyText: `The TLM02e, crafted between 2017-2018, marked a pioneering venture for the team. Born amidst the rise 
+        of electric mobility in MotoStudent, this prototype showcased Portugal's entry into the electrifying arena. 
+        With sleek design and groundbreaking technology, it proudly competed in the 2018 edition, capturing hearts and minds. 
+        Today, it stands as a testament to the ingenuity and ambition of its creators, heralding a new era of innovation in 
+        Portuguese engineering.`
     },
     {
         id: 'm03',
@@ -43,7 +52,11 @@ export const cards = [
             { name: 'Weight', value: 150, max: 250, unit: "kg" },
             { name: 'Acceleration', value: 4.2, max: 4.2, unit: "s" },
             { name: 'Torque', value: 90, max: 110, unit: "Nm" }
-        ]
+        ],
+        historyText: `The TLM03e, conceived between 2019 and 2021, represents the team's evolution in electric motorcycle 
+        engineering. Competing in the 2021 MotoStudent edition, it showcased advancements in design and performance. 
+        Notably, it marked the team's debut at Imola, Italy, in 2022, hosted by Moto Engineering Italy. 
+        This milestone underscores the global recognition of their innovation.`
     }
 ];
 
@@ -52,4 +65,3 @@ export const backgrounds = {
     m02: "linear-gradient(180deg, rgba(255, 204, 0, 0.5), rgba(0, 0, 0, 0.7))",
     m03: "linear-gradient(180deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 0, 0.7))"
 };
-

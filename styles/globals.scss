@@ -7,18 +7,12 @@
   font-display: swap;
 }
 
-body {
+body, html {
+  width: 100%;
   font-family: 'EuroStyle', sans-serif;
   transition-property: opacity, background, transform, filter;
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
-}
-
-html {
-  width: 100%;
-  overflow-x: hidden;
-  margin: 0; /* delete if necessary*/
-  padding: 0; /* delete if necessary*/
 }
 
 a {

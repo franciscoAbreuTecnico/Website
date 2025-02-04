@@ -5,13 +5,13 @@ import { cards } from '@/components/textContent/GarageSectionTexts';
 import MyStatsChart from '@/components/MyStatsChart';
 import MyChartToggleButtons from '@/components/MyChartToggleButtons';
 
-export default function GarageDetailPage() {
+export default function MyGarageDetailPage() {
     const router = useRouter();
     const { id } = router.query;
     const card = cards.find((card) => card.id === id);
     const videoRef = useRef(null);
 
-    const [showHistory, setShowHistory] = useState(false); // State for toggling
+    const [showHistory, setShowHistory] = useState(false);
 
     if (!card) return <p>Card not found</p>;
 
@@ -21,22 +21,13 @@ export default function GarageDetailPage() {
                 <source src={card.video} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <MyChartToggleButtons showHistory={showHistory} setShowHistory={setShowHistory} /> 
-
-            <div className={styles.statsContainer}>
-                
-                {!showHistory ? (
-                    <MyStatsChart stats={card.stats} motoId={card.id} />
-                ) : (
-                    <div className={styles.historyContainer}>
-                        <h3>History of {card.title}</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Vestibulum vel libero sapien. 
-                            Donec aliquam neque vel ligula malesuada, sit amet interdum velit tincidunt.
-                        </p>
-                    </div>
-                )}
+            <div className={styles.statsWrapper}>
+                <MyChartToggleButtons 
+                    showHistory={showHistory} 
+                    setShowHistory={setShowHistory} 
+                    motoId={card.id} 
+                />
+            <MyStatsChart stats={card.stats} motoId={card.id} showHistory={showHistory} historyText={card.historyText} />
             </div>
         </div>
     );

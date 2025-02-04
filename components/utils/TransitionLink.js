@@ -11,7 +11,7 @@ function sleep(ms) {
 export const TransitionLink = ({ children, href, ...props }) => {
     const router = useRouter();
 
-    const handleTrasnition = async (
+    const handleTransition = async (
         e
     ) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ export const TransitionLink = ({ children, href, ...props }) => {
     };
 
     return (
-        <Link onClick={handleTrasnition} href={href} {...props}>
+        <Link onClick={handleTransition} href={href} {...props}>
             {children}
         </Link>
     );
