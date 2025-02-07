@@ -8,7 +8,6 @@ export default function MyLayout({
     <div className="layout">
         <MyNavbar />
         { children }
-        <Footer />
     </div>
   );
 }

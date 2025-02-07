@@ -1,5 +1,6 @@
 import Head from "next/head";
 import MySection from "@/components/MySection.js";
+import Footer from "@/components/MyFooter.js";
 import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
 import { aboutUsText, animatedNumbers, competitionText, prototypeText } from "@/components/textContent/HomeSectionTexts";
@@ -18,6 +19,7 @@ export default function Home() {
   }
 
   return (
+    <>
     <div className={`container ${styles.container}`}>
       <Head>
         <title>TLMOTO</title>
@@ -74,6 +76,9 @@ export default function Home() {
           showArrow={false}
         />
       </div>
+      
     </div>
+    <Footer />
+    </>
   );
 }
