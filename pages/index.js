@@ -69,7 +69,7 @@ export default function Home() {
       </div>
       <div ref={section5}>
         <MySection
-          image={`/images/home/blue_black_background.png`}
+          image={`/images/blue_black_background.png`}
           secondaryImage={`/images/home/sponsors_background.png`}
           showArrow={false}
         />

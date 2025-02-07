@@ -5,7 +5,7 @@ import { cards } from '@/components/textContent/GarageSectionTexts';
 import MyStatsChart from '@/components/MyStatsChart';
 import MyChartToggleButtons from '@/components/MyChartToggleButtons';
 
-export default function MyGarageDetailPage() {
+export default function GarageDetailPage() {
     const router = useRouter();
     const { id } = router.query;
     const card = cards.find((card) => card.id === id);
