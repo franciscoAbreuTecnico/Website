@@ -43,3 +43,21 @@
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   }
 }
+
+.hiddenButton {
+  visibility: hidden;
+}
+
+.yearButton {
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
