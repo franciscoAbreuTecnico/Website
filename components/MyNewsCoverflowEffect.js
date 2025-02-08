@@ -55,7 +55,7 @@ export default function MyNewsCoverflowEffect() {
   }, []);  
 
   return (
-    <div className={styles.container}>
+    <>
       <div className={`swiper ${styles.swiper}`}>
         <div className={`swiper-wrapper ${styles.swiperWrapper}`}>
           <div className={`swiper-slide ${styles.swiperSlide}`}>
@@ -87,6 +87,6 @@ export default function MyNewsCoverflowEffect() {
         <div className={`swiper-button-prev ${styles.swiperButtonPrev}`}></div>
         <div className={`swiper-button-next ${styles.swiperButtonNext}`}></div>
       </div>
-    </div>
+    </>
   );
 }
