@@ -38,7 +38,7 @@ export function getTeamImages(year) {
             );
 
         return {
-            name: category.normalize('NFC'), 
+            name: category.normalize('NFC').replace(/^\d+ -\s*/, ''),
             images: images.map(img =>
                 `/images/team/${year}/${encodeURIComponent(category.normalize('NFC'))}/${encodeURIComponent(img.normalize('NFC'))}`
             )
