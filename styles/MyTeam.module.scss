@@ -4,7 +4,7 @@
 
 .teamSection {
   max-width: 50%;
-  margin-bottom: 2.5%;
+  margin-bottom: 7.5%;
 }
 
 .area {
@@ -13,6 +13,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   align-items: center;
+  margin-top: -7.5%;
 
   .teamIcon {
     width: 40px;
@@ -61,3 +62,21 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
+
+.sidetoside {
+  position: relative;
+  display: flex;
+}
+
+.mainImage {
+  position: fixed;
+  left: 65%;                 
+  bottom: 15%;
+  border-style: solid;
+  border-width: 0.25rem;
+  border-color: black;
+  height: 60%;
+
+  box-shadow: 0 0 30px 10px rgba(6,90,123,255); 
+}
+

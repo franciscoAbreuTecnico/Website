@@ -18,12 +18,19 @@ export function getTeamImages(year) {
 
     if (!fs.existsSync(yearPath)) return [];
 
+    const pathpics = fs.readdirSync(yearPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding
+    .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file)); 
+
+    var teampic = '';
+    if (pathpics.length > 0) 
+        teampic = `/images/team/${year}/${encodeURIComponent(pathpics[0].normalize('NFC'))}`;
+
     const categories = fs.readdirSync(yearPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding
         .filter(category =>
             fs.statSync(path.join(yearPath, category)).isDirectory()
         );
 
-    return categories.map(category => {
+    return {data: categories.map(category => {
         const categoryPath = path.join(yearPath, category);
         const images = fs.readdirSync(categoryPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding
             .filter(file =>
@@ -37,5 +44,5 @@ export function getTeamImages(year) {
             )
         };
             
-    });
+    }), team: teampic};
 }
