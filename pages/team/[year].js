@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { use, useState, useEffect } from 'react';
 import { getTeamImages, getAvailableYears } from '@/components/utils/FetchFolderImages';
 import styles from '@/styles/MyTeam.module.scss';
 import defaultPage from '@/components/MyDefaultPage.module.scss';
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 export default function Team({ teamData, year }) {
     const router = useRouter();
-    const [focusedImage, setFocusedImage] = useState(teamData.team);
+    const [focusedImage, setFocusedImage] = useState(null);
 
     const MIN_TEAM_YEAR = 2022;
     const MAX_TEAM_YEAR = 2024;
@@ -35,6 +35,11 @@ export default function Team({ teamData, year }) {
         const newYear = direction === 'next' ? currentYear + 1 : currentYear - 1;
         return router.push(`/team/${newYear}`);
     };
+
+    useEffect(() => {
+        setFocusedImage(teamData.team);
+    }
+    , [teamData]);
 
     return (
         <div className={defaultPage.container}>

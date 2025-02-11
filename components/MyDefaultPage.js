@@ -1,6 +1,6 @@
 import styles from '@/components/MyDefaultPage.module.scss';
 
-export default function MyDefaultPage({ children, blueTitle, whiteTitle,  }) {
+export default function MyDefaultPage({ children, blueTitle, whiteTitle}) {
     return (
         <div className={styles.container}>
             <div className={styles.background}>
