@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { use, useState, useEffect } from 'react';
 import { getTeamImages, getAvailableYears } from '@/components/utils/FetchFolderImages';
 import styles from '@/styles/MyTeam.module.scss';
-import defaultPage from '@/components/MyDefaultPage.module.scss';
+import defaultPage from '@/styles/MyDefaultPage.module.scss';
 
 export async function getStaticProps({ params }) {
     const { year } = params;

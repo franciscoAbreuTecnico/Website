@@ -1,4 +1,3 @@
-import Footer from "./MyFooter";
 import MyNavbar from "./MyNavbar";
 
 export default function MyLayout({
