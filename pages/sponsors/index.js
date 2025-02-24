@@ -1,5 +1,5 @@
 import DefaultPage from '@/components/MyDefaultPage';
-import { initial_text } from '@/components/textContent/SponsorSectionText';
+import { initial_text } from '@/components/textContent/SponsorSectionTexts';
 import styles from '@/styles/MySponsors.module.scss';
 
 export default function Sponsors() {

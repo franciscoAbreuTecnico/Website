@@ -18,7 +18,7 @@ $image-gap: 1rem;     // Remove if unused
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;                   // Keep background behind content
+    z-index: -1000;                // Keep background behind content
     position: fixed;               // Fix the background in place
     top: 0;
     left: 0;
@@ -34,7 +34,7 @@ $image-gap: 1rem;     // Remove if unused
 }
 
 .title {
-    font-size: 4.5rem;
+    font-size: 4rem;
     margin: 0;
     text-align: center;
 }
