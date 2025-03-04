@@ -1,0 +1,105 @@
+.row {
+    position: relative;
+    display: flex;
+    align-items: center;     // Center title vertically
+    height: 40%;            // Use viewport height for responsive scaling
+    margin-top: 1%;           // Optional padding for layout adjustments
+}
+  
+  .formContainer {
+    margin: 5%;
+    margin-left: 10%;
+    width: 60%;
+    padding: 2.5%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+    h2 {
+      color: #007bff;
+      font-size: 25px;
+      margin-top: -2.5%;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        margin-top: 2.5%;
+        font-weight: bold;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .flexRow {
+        display: flex;
+        gap: 10px;
+        margin-top: 2.5%;
+  
+        div {
+          flex: 1;
+        }
+      }
+  
+      button {
+        margin-top: 15px;
+        background: #39a6ff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+  
+        &:hover {
+          background: #39a6ff;
+        }
+      }
+    }
+  }
+  
+  .infoContainer {
+    background: #39a6ff;
+    color: white;
+    padding: 5%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 75%;
+    height: 100%;
+    
+    h3 {
+      margin-bottom: 10px;
+      font-size: 25px;
+    }
+  
+    
+  }
+
+.column {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    margin-right: 10%;
+    
+    .mapFrame {
+        margin-top: 10%;
+        width: 75%;
+        height: 200px;  // Ensure a fixed height
+        border: none;
+        border-radius: 5px;
+      }
+      
+  }
