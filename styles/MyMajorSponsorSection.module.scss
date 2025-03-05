@@ -1,0 +1,70 @@
+.container {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.headline {
+    font-size: 1.2rem;
+    max-width: 110vh;
+    margin: 0 auto 30px;
+    color: white;
+    line-height: 1.6;
+}
+
+.majorSponsor {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: visible;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    padding: 30px;
+}
+
+.logoContainer {
+    flex-shrink: 0;
+    width: 300px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease-in-out;
+    margin-right: 30px;
+    padding: 10px;
+}
+
+.logoContainer img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: transform 0.4s ease-in-out;
+}
+
+.logoText {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(25%);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    font-size: 1.1rem;
+    color: white;
+    text-align: left;
+    max-width: 550px;
+}
+
+.majorSponsor:hover .logoContainer {
+    transform: translateX(-15%);
+}
+
+.majorSponsor:hover .logoText {
+    opacity: 1;
+    transform: translateX(0);
+}

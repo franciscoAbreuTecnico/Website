@@ -12,9 +12,9 @@ $image-gap: 1rem;     // Remove if unused
 // Background Styling
 .background {
     width: 100%;
-    height: 100vh;        // Fixed height matching the viewport
+    min-height: 100vh;        // Fixed height matching the viewport
     background: url('/images/blue_black_background.png') no-repeat center center / cover;
-    background-attachment: fixed;   // 🔑 Keeps the background fixed while scrolling
+    background-attachment: fixed;   // Keeps the background fixed while scrolling
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,8 +29,8 @@ $image-gap: 1rem;     // Remove if unused
     display: flex;
     justify-content: center; // Center title horizontally
     align-items: center;     // Center title vertically
-    height: 35vh;            // Use viewport height for responsive scaling
-    margin-top: 1%;           // Optional padding for layout adjustments
+    height: 20vh;            // Use viewport height for responsive scaling
+    margin-top: 8vh;
 }
 
 .title {

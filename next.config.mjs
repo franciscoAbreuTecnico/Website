@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 import withVideos from 'next-videos';
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
@@ -12,6 +14,10 @@ const nextConfig = {
   basePath: isProd ? '' : '',
 };
 
-export default withVideos({
-  ...nextConfig,
+const withAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
 });
+
+export default withAnalyzer(withVideos({
+  ...nextConfig,
+}));

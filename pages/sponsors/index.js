@@ -1,12 +1,18 @@
-import DefaultPage from '@/components/MyDefaultPage';
-import { initial_text } from '@/components/textContent/SponsorSectionTexts';
-import styles from '@/styles/MySponsors.module.scss';
+import MyDefaultPage from '@/components/MyDefaultPage';
+import MySponsorsBox from '@/components/MySponsorsBox';
+import MyFooter from '@/components/MyFooter';
+import MyMajorSponsorSection from '@/components/MyMajorSponsorSection';
 
 export default function Sponsors() {
     return (
-        <DefaultPage whiteTitle={'TLMoto\'s '} blueTitle={'Sponsors'}>
-            <span className={styles.initial_text}>{initial_text}</span>
-        </DefaultPage>
+        <div>
+            <MyDefaultPage whiteTitle={"TLMoto's "} blueTitle={"Sponsors"}>
+                <MyMajorSponsorSection />
+                {["gold", "silver", "bronze", "copper", "partners"].map((type) => (
+                    <MySponsorsBox key={type} type={type} />
+                ))}
+            </MyDefaultPage>
+            <MyFooter />
+        </div>
     );
 }
-
