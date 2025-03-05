@@ -10,23 +10,28 @@ const fadeInVariants = {
 // Predefined image counts
 const imageCounts = {
   MS18: 3,
-  MS21: 9,
-  MS22: 10,
   CNV18: 6,
   CNV19: 12,
   CNV20: 9,
+  MS21: 8,
+  MS22: 10,
 };
 
 export default function TimelineItem({ year, title, description, imageFolder }) {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const folderName = imageFolder.split("/").pop();
+    const folderName = imageFolder.split("/").filter(Boolean).pop(); // Removes empty strings from split parts
+    console.log("Extracted Folder Name:", folderName);
+  
     const count = imageCounts[folderName] || 0;
-
+    console.log("Image Count for Folder:", count);
+  
     const imageList = Array.from({ length: count }, (_, i) => `${imageFolder}${i + 1}.webp`);
+    console.log("Generated Image Paths:", imageList);
+  
     setImages(imageList);
-  }, [imageFolder]);
+  }, [imageFolder]);  
 
   return (
     <motion.div 

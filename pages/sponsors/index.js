@@ -7,7 +7,6 @@ export default function Sponsors() {
     return (
         <div>
             <MyDefaultPage whiteTitle={"TLMoto's "} blueTitle={"Sponsors"}>
-                <MyMajorSponsorSection />
                 {["gold", "silver", "bronze", "copper", "partners"].map((type) => (
                     <MySponsorsBox key={type} type={type} />
                 ))}

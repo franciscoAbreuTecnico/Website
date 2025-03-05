@@ -39,7 +39,7 @@ const timelineData = [
       index: 6, 
       title: "MOTO ENGINEERING ITALY 2022", 
       description: "TLMoto made its debut in Moto Engineering Italy in 2022 with the TLM03e, the second electric prototype. Despite the team not making it to the final race, they secured a score of 294 in static tests and 115 in dynamic tests. In this way, they achieved a total score of 409, placing them in 7th position.", 
-      imageFolder: "/images/history/MS21/" 
+      imageFolder: "/images/history/MS22/" 
     }
   ];
   
