@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/styles/MyFooter.module.scss';
+import styles from '@/styles/Footer.module.scss';
 import {
   IoLogoFacebook,
   IoLogoInstagram,

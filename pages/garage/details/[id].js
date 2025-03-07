@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
-import styles from '@/styles/MyGarageDetails.module.scss';
+import styles from '@/styles/GarageDetails.module.scss';
 import { cards } from '@/components/textContent/GarageSectionTexts';
-import MyStatsChart from '@/components/MyStatsChart';
-import MyChartToggleButtons from '@/components/MyChartToggleButtons';
+import MyStatsChart from '@/components/GarageStatsChart';
+import MyChartToggleButtons from '@/components/ChartToggleButtons';
 
 export default function GarageDetailPage() {
     const router = useRouter();

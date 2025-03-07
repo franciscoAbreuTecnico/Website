@@ -1,4 +1,4 @@
-import styles from '@/styles/MyStatsChart.module.scss';
+import styles from '@/styles/GarageStatsChart.module.scss';
 import { BarChart, Bar, XAxis, ResponsiveContainer, YAxis, LabelList } from 'recharts';
 import { backgrounds } from '@/components/textContent/GarageSectionTexts';
 

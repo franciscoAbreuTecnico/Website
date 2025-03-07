@@ -1,5 +1,5 @@
 import "@/styles/globals.scss";
-import MyLayout from "@/components/MyLayout";
+import MyLayout from "@/components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (

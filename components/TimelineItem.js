@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import styles from "../styles/MyTimeline.module.scss";
+import styles from "../styles/Timeline.module.scss";
 
 const fadeInVariants = {
   hidden: { opacity: 0, y: 50 },

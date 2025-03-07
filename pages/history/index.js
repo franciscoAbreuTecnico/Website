@@ -1,6 +1,6 @@
-import MyDefaultPage from '@/components/MyDefaultPage';
-import MyTimeline from '@/components/MyTimeline';
-import MyFooter from '@/components/MyFooter';
+import MyDefaultPage from '@/components/DefaultPage';
+import MyTimeline from '@/components/Timeline';
+import MyFooter from '@/components/Footer';
 
 export default function History() {
     return (

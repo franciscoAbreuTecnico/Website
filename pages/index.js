@@ -1,6 +1,6 @@
 import Head from "next/head";
-import MySection from "@/components/MySection.js";
-import Footer from "@/components/MyFooter.js";
+import MySection from "@/components/HomeSection.js";
+import Footer from "@/components/Footer.js";
 import styles from "@/styles/Home.module.scss";
 import { useRef } from "react";
 import { aboutUsText, animatedNumbers, competitionText, prototypeText } from "@/components/textContent/HomeSectionTexts";

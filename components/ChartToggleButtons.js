@@ -1,4 +1,4 @@
-import styles from '@/styles/MyChartToggleButtons.module.scss';
+import styles from '@/styles/ChartToggleButtons.module.scss';
 import { backgrounds } from '@/components/textContent/GarageSectionTexts';
 import { TransitionLink } from '@/components/utils/TransitionLink';
 

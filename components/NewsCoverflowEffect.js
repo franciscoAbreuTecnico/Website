@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import styles from '@/styles/MyNews.module.scss';
+import styles from '@/styles/News.module.scss';
 import Swiper from 'swiper';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';

@@ -1,6 +1,6 @@
-import DefaultPage from '@/components/MyDefaultPage';
-import MyFooter from '@/components/MyFooter';
-import styles from '@/styles/MyContacts.module.scss';
+import DefaultPage from '@/components/DefaultPage';
+import MyFooter from '@/components/Footer';
+import styles from '@/styles/Contacts.module.scss';
 import React from 'react';
 
 

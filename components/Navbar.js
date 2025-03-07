@@ -1,4 +1,4 @@
-import styles from '@/styles/MyNavbar.module.scss';
+import styles from '@/styles/Navbar.module.scss';
 import { TransitionLink } from './utils/TransitionLink';
 import { useRouter } from 'next/router';
 

@@ -1,6 +1,6 @@
-import MyNews from "@/components/MyNewsCoverflowEffect";
-import DefaultPage from "@/components/MyDefaultPage";
-import MyFooter from "@/components/MyFooter";
+import MyNews from "@/components/NewsCoverflowEffect";
+import DefaultPage from "@/components/DefaultPage";
+import MyFooter from "@/components/Footer";
 
 export default function News() {
     return (
