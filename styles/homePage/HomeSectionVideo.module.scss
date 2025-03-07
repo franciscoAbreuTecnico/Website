@@ -1,0 +1,29 @@
+.section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+    position: relative;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .downarrow {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-image: url("/images/home/downarrow.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 60px;
+      height: 60px;
+      z-index: 1000;
+    }
+  }

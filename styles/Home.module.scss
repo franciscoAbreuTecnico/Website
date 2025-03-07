@@ -3,6 +3,8 @@
     overflow-y: auto;
     overscroll-behavior-y: contain;
     scroll-snap-type: y mandatory;
+    scroll-snap-align: center;
+    scroll-snap-stop: always; /* mobile: better for big scrolling */
     height: 100vh;
     width: 100%;
     -ms-overflow-style: none;
@@ -10,4 +12,4 @@
     &::-webkit-scrollbar {
       display: none;
     }
-}
+  }

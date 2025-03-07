@@ -1,7 +1,7 @@
 export const aboutUsText = (
     <>
-      A team composed of <br/> students from various courses at <br/>  the University of Lisbon,
-      who <br/> share the same passion: electric <br/>  competition motorcycles. <br/>
+      A team composed of students from various courses <br/> at  the University of Lisbon,
+      who share the <br/> same passion: electric competition motorcycles. <br/>
     </>
   );
 

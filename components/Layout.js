@@ -5,7 +5,6 @@ export default function MyLayout({
 }) {
   return (
     <div className="layout">
-        <MyNavbar />
         { children }
     </div>
   );

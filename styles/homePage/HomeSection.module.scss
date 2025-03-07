@@ -1,0 +1,98 @@
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: center;
+  position: relative;
+  img {
+    position: relative;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    z-index: -1000;
+    filter: brightness(0.4);
+  }
+  .secImage {
+    z-index: -900;
+    width: 70%;
+    height: 85%;
+    position: absolute;
+    filter: brightness(2);
+  }
+  .copy {
+    display:block;
+    h2 {
+      position: relative;
+      z-index: 1000;
+      font-size: 3.5rem;
+      color: #3293e0;
+      text-shadow: 0 0 10px #3292e0b9;
+      @media (min-width: 768px) {
+        font-size: 4rem;
+      }
+    }
+    .sectionContent {
+      font-size: 2em;
+      color: #ffffff;
+      text-shadow: 0 0 15px #ffffffa3;
+      letter-spacing: 0.1em;
+      margin-top: 10px;
+      text-align: left;
+      display: flex;
+      gap: 20px;
+    }
+    .animatedNumbers {
+      display: inline-flex;
+      margin-top: 1.5rem;
+      font-size: 5em;
+      color: #3293e0;
+      text-shadow: 0 0 5px #3293e0;
+      gap: 3rem;
+      .numLabel {
+        font-size: 2rem;
+        color: #ffffff;
+        text-shadow: 0 0 5px #ffffff;
+        letter-spacing: 0.2rem;
+        margin-left: 1rem;
+      }
+    }
+    .buttonsContainer {
+      display: inline-flex;
+      gap: 20px;
+      margin-top: 20px;
+      justify-content: left;
+      .button {
+        padding: 10px 20px;
+        background-color: transparent;
+        color: white;
+        border: 2px solid #3293e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      
+        &:hover, 
+        &:active {
+          background-color: #3293e0;
+          color: white;
+        }      
+      }
+    }
+  }
+  .downarrow {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url("/images/home/downarrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+  }
+}
