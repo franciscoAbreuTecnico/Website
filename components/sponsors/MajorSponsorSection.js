@@ -1,4 +1,4 @@
-import styles from "../styles/MajorSponsorSection.module.scss";
+import styles from "../../styles/MajorSponsorSection.module.scss";
 
 export const headlineText = (
     <p className={styles.headline}>

@@ -1,5 +1,5 @@
-import MySponsorsBox from '@/components/SponsorsBox';
-import MyMajorSponsorSection from '@/components/MajorSponsorSection';
+import MySponsorsBox from '@/components/sponsors/SponsorsBox';
+import MyMajorSponsorSection from '@/components/sponsors/MajorSponsorSection';
 
 export default function Sponsors() {
     return (
