@@ -1,5 +1,5 @@
 .mynavbar {
-  top: 6vh;
+  top: 9vh;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -22,11 +22,11 @@
   .logo {
     position: absolute;
     top: -4.5vh;
-    left: 8vh;
+    left: 6vh;
     display: block;
 
     img {
-      max-width: 11vh;
+      max-width: 12vh;
       transition: transform 0.3s ease;
 
       &:hover {
@@ -41,7 +41,7 @@
     list-style: none;
     position: absolute;
     li {
-      font-size: 4.5vh;
+      font-size: 5.5vh;
       letter-spacing: 0.10em;
 
       a {

@@ -9,9 +9,11 @@
 
 .historyButton, 
 .backButton {
+    margin-left: -35px;
+    margin-right: 27px;
     font-size: 1.4rem;
-    padding: 14px 22px;
-    width: 107px;
+    padding: 14px 0px;
+    width: 100px;
     text-align: center;
     border-radius: 8px;
     border: 3px solid transparent;
@@ -19,6 +21,7 @@
     color: white;
     transition: all 0.3s ease-in-out;
 }
+
 
 .historyButton:hover, 
 .backButton:hover {

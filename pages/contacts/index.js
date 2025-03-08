@@ -1,5 +1,5 @@
 import DefaultPage from '@/components/DefaultPage';
-import MyFooter from '@/components/Footer';
+import MyFooter from '@/components/layout/Footer';
 import styles from '@/styles/Contacts.module.scss';
 import React from 'react';
 
@@ -43,7 +43,7 @@ export default function Contacts() {
             </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3112.528704837498!2d-9.140627224030416!3d38.73670337155637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd193381fefb1f6d%3A0xe4c8c04a8e06df26!2sPavilh%C3%A3o%20de%20Mec%C3%A2nica%20III!5e0!3m2!1sen!2spt!4v1647583982827!5m2!1sen!2spt"
-                className={styles.mapFrame} // Use class instead of inline styles
+                className={styles.mapFrame}
                 allowFullScreen=""
                 loading="lazy"
             ></iframe>

@@ -1,5 +1,5 @@
-import styles from '@/styles/Navbar.module.scss';
-import { TransitionLink } from './utils/TransitionLink';
+import styles from '@/styles/layout/Navbar.module.scss';
+import { TransitionLink } from '../utils/TransitionLink';
 import { useRouter } from 'next/router';
 
 export default function MyNavbar() {

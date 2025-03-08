@@ -1,6 +1,6 @@
-import styles from '@/styles/GarageCards.module.scss';
+import styles from '@/styles/garage/GarageCards.module.scss';
 import { cards } from '@/components/textContent/GarageSectionTexts';
-import { TransitionLink } from './utils/TransitionLink';
+import { TransitionLink } from '../utils/TransitionLink';
 
 export default function MyGarageCards() {
     return (

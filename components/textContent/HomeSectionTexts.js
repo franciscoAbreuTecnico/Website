@@ -18,6 +18,12 @@ export const competitionText = (
   </>
 );
 
+export const whiteBoxText = [
+  { label: "MS", text: "MotoStudent is an engineering competition in which different teams of university students have the opportunity to apply their knowledge in the development of a sports motorcycle. It consists of two phases: MS1, where teams are evaluated as projects through a series of reports and presentations, and MS2, held in Aragon, where each prototype is tested and given the opportunity to compete. The team made its debut in the competition in 2014, at a time when only the combustion category existed. However, it was the emergence of the electric category that motivated the team to focus on these types of models." },
+  { label: "CNV", text: "Campeonato Nacional de Velocidade (CNV), organized by Federação de Motociclismo de Portugal (FMP), is Portugal's premier motorcycle speed racing event. It differs from other competitions in its evaluation, which is solely based on race performance.The team participated from 2018 to 2020 with their combustion prototype, the TLM01i. Now, the focus has shifted exclusively to developing electric prototypes, which currently lack the autonomy for the race's required distance." },
+  { label: "MEI", text: "Moto Engineering Italy (MEI) is a university competition organized by the Motorsport Engineering Society (MES). It takes place in Italy and had its inaugural edition in 2021. The competition involves the assessment of prototypes through a series of static and dynamic tests, culminating in a race among the teams. Therefore, MEI aims not only to evaluate the prototype's engineering quality but also its on-track performance." },
+];
+
 export const prototypeText = (
   <>
     The team has three prototypes built. The first,<br/> a combustion one (TLM01i), was completed in 2014,<br/> and has been continuously developed 
