@@ -84,9 +84,9 @@ export default function MyNewsCoverflowEffect() {
           </div>
         </div>
         <div className={`swiper-pagination ${styles.swiperPagination}`}></div>
+      </div>
         <div className={`swiper-button-prev ${styles.swiperButtonPrev}`}></div>
         <div className={`swiper-button-next ${styles.swiperButtonNext}`}></div>
-      </div>
     </>
   );
 }

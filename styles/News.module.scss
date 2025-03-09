@@ -2,7 +2,7 @@
     width:100vh;
     height: 70vh;
     padding: 40px 0;
-    margin-top: -5%;
+    margin-top: 10%;
 }
 
 .swiperSlide {
@@ -37,6 +37,7 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.5s linear;
+    margin-bottom: 7.5%;
 }
 
 .title span {
@@ -68,11 +69,11 @@
 }
 
 .swiperButtonNext {
-    margin-right: -30px;
+    margin-right: 300px;
 }
 
 .swiperButtonPrev {
-    margin-left: -30px;
+    margin-left: 300px;
 }
 
 @media (max-width: 1100px) {

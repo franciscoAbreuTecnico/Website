@@ -1,8 +1,12 @@
 import MyNews from "@/components/news/NewsCoverflowEffect";
-import DefaultPage from "@/components/DefaultPage";
+import defaultPage from '@/styles/DefaultPage.module.scss';
+
 
 export default function News() {
     return (
-        <MyNews />
+        <>
+            <div className={defaultPage.background}></div>
+            <MyNews />
+        </>
     );
 }
