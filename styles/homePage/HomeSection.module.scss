@@ -71,13 +71,17 @@
         border-radius: 8px;
         font-size: 1rem;
         cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-      
-        &:hover, 
-        &:active {
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        &:hover {
+          background-color: rgba(50, 147, 224, 0.5);
+          color: white;
+        }
+        &.active {
           background-color: #3293e0;
           color: white;
-        }      
+          border-color: #1e6fb8;
+          box-shadow: 0 0 8px rgba(50, 147, 224, 0.8);
+        }
       }
     }
     .whiteBox {

@@ -22,6 +22,7 @@ export default function MySection({
   const [startCount, setStartCount] = useState(false);
   const [enterCount, setEnterCount] = useState(0);
   const [selectedText, setSelectedText] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
   const headlineRef = useRef();
   const sectionRef = useRef();
   useEffect(() => {
@@ -87,25 +88,26 @@ return (
           </div>
         )}
           <div className={styles.buttonsContainer}>
-              {buttons.map((button, index) => (
-                  button.href ? (
-                      <TransitionLink key={index} href={button.href} className={styles.button}>
-                          {button.label}
-                      </TransitionLink>
-                  ) : (
-                    <button
-                      key={index}
-                      className={styles.button}
-                      onClick={() => {
-                        const foundBox = whiteBox.find((box) => box.label === button.label);
-                        setSelectedText(foundBox ? foundBox.text : "No content found!");
-                      }}
-                    >
-                      {button.label}
-                    </button>
-                  )
-              ))}
-          </div>
+  {buttons.map((button, index) =>
+    button.href ? (
+      <TransitionLink key={index} href={button.href} className={styles.button}>
+        {button.label}
+      </TransitionLink>
+    ) : (
+      <button
+        key={index}
+        className={`${styles.button} ${activeIndex === index ? styles.active : ""}`}
+        onClick={() => {
+          setActiveIndex(index); // Set active button
+          const foundBox = whiteBox.find((box) => box.label === button.label);
+          setSelectedText(foundBox ? foundBox.text : "No content found!");
+        }}
+      >
+        {button.label}
+      </button>
+    )
+  )}
+</div>
           {selectedText && (
             <div className={styles.whiteBox}>
               <p>{selectedText}</p>
