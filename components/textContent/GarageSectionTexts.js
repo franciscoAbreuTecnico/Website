@@ -6,7 +6,7 @@ export const cards = [
         description: `Lorem ipsum odor amet, consectetuer adipiscing elit. 
                       Ac purus in massa egestas mollis varius; dignissim elementum.`,
         detailsLink: '/garage/details/m01',
-        video: '/videos/garage/details/desktop/m01.mp4',
+        video: './videos/garage/details/desktop/m01.mp4',
         stats: [
             { name: 'Max Power', value: 39, max: 80, unit: "cv" },
             { name: 'Speed', value: 192, max: 200, unit: "km/h" },
@@ -25,7 +25,7 @@ export const cards = [
         title: '02E',
         description: `Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.`,
         detailsLink: '/garage/details/m02',
-        video: '/videos/garage/details/desktop/sun/m02_sun.mp4',
+        video: './videos/garage/details/desktop/sun/m02_sun.mp4',
         stats: [
             { name: 'Max Power', value: 39, max: 80, unit: "kW" },
             { name: 'Speed', value: 160, max: 200, unit: "km/h" },
@@ -45,7 +45,7 @@ export const cards = [
         title: '03E',
         description: `Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue.`,
         detailsLink: '/garage/details/m03',
-        video: '/videos/garage/details/desktop/red/m03_red.mp4',
+        video: './videos/garage/details/desktop/red/m03_red.mp4',
         stats: [
             { name: 'Max Power', value: 36, max: 80, unit: "kW" },
             { name: 'Speed', value: 178, max: 200, unit: "km/h" },

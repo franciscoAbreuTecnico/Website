@@ -114,9 +114,9 @@ return (
             </div>
           )}
         </div>
-        <Image src={image} layout={`fill`} />
+        <Image src={image} fill />
         {secImage && <div className={styles.secImage}>
-            <Image src={secImage} layout={`fill`} />
+            <Image src={secImage} fill />
         </div>}
         {showArrow && (
             <button

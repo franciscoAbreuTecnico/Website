@@ -6,7 +6,7 @@ export default function MyGarageCards() {
     return (
         <div className={styles.wrapper}>
             <video className={styles.backgroundVideo} autoPlay muted>
-                <source src="/videos/garage/garage_menu.mp4" type="video/mp4" />
+                <source src="./videos/garage/garage_menu.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 

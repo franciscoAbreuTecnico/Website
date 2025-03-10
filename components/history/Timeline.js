@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import styles from "../../styles/Timeline.module.scss";
+import styles from "../../styles/history/Timeline.module.scss";
 import TimelineItem from "./TimelineItem";
 import timelineData from "../textContent/TimelineSectionTexts";
 

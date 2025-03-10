@@ -18,19 +18,19 @@ export default function MyFooter() {
       </div>
 
       <div className={styles["social-icons"]}>
-        <Link href="https://www.facebook.com/" target="_blank">
+        <Link href="https://www.facebook.com/tlmotostudent" target="_blank">
           <IoLogoFacebook size={35} />
         </Link>
-        <Link href="https://www.instagram.com/" target="_blank">
+        <Link href="https://www.instagram.com/tlmotostudent" target="_blank">
           <IoLogoInstagram size={35} />
         </Link>
-        <Link href="https://www.linkedin.com/" target="_blank">
+        <Link href="https://www.linkedin.com/company/tlmoto" target="_blank">
           <IoLogoLinkedin size={35} />
         </Link>
-        <Link href="https://www.tiktok.com/" target="_blank">
+        <Link href="https://www.tiktok.com/@tlmoto" target="_blank">
           <IoLogoTiktok size={35} />
         </Link>
-        <Link href="https://www.youtube.com/" target="_blank">
+        <Link href="https://www.youtube.com/@tlmoto689" target="_blank">
           <IoLogoYoutube size={35} />
         </Link>
       </div>

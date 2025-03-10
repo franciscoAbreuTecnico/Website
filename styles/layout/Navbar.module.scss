@@ -1,34 +1,33 @@
 .mynavbar {
-  top: 9vh;
+  top: 6.5vh;
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   background-color: transparent;
   position: absolute;
   text-align: center;
   box-sizing: border-box;
+  padding: 0 20vh;
 
   &::after {
     content: "";
     position: absolute;
     top: 4vh;
-    width: 80%;
+    width: 82%;
     height: 1vh;
     background: linear-gradient(to right, transparent, #97bddc, #3293e0, #97bddc, transparent);
   }
 
   .logo {
     position: absolute;
-    top: -4.5vh;
-    left: 6vh;
+    top: -4vh;
+    left: 4vh;
     display: block;
-
     img {
       max-width: 12vh;
       transition: transform 0.3s ease;
-
       &:hover {
         transform: scale(1.2);
       }
@@ -41,7 +40,7 @@
     list-style: none;
     position: absolute;
     li {
-      font-size: 5.5vh;
+      font-size: 5.7vh;
       letter-spacing: 0.10em;
 
       a {
