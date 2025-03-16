@@ -20,11 +20,11 @@ export const TransitionLink = ({ children, href, ...props }) => {
 
         body?.classList.add("page-transition");
         
-        await sleep(350);
+        await sleep(450);
         
         router.push(href);
 
-        await sleep(350);
+        await sleep(450);
 
         body?.classList.remove("page-transition");
     };

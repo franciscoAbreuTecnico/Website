@@ -1,20 +1,19 @@
 .mynavbar {
-  top: 6.5vh;
+  top: 5.5vh;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: transparent;
   position: absolute;
-  text-align: center;
-  box-sizing: border-box;
-  padding: 0 20vh;
 
   &::after {
     content: "";
     position: absolute;
-    top: 4vh;
+    top: 3.5vh;
     width: 82%;
     height: 1vh;
     background: linear-gradient(to right, transparent, #97bddc, #3293e0, #97bddc, transparent);
@@ -35,12 +34,14 @@
   }
 
   ul {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 3vh;
     list-style: none;
     position: absolute;
     li {
-      font-size: 5.7vh;
+      font-size: 5vh;
       letter-spacing: 0.10em;
 
       a {

@@ -25,7 +25,7 @@ export default function Home() {
       <div className={`container ${styles.container}`}>
         <div ref={section1}>
           <MySectionVideo
-            video={`./videos/intro_video_background.mp4`}
+            video={`/videos/intro_video_background.mp4`}
             goToSectionRef={section2}
             scrollTo={scrollTo}
             showArrow={true}

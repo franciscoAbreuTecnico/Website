@@ -15,7 +15,7 @@ export default function TeamIndex({ years }) {
 
     useEffect(() => {
         if (years.length > 0) {
-            router.replace(`/team/${years[0]}`); // Redirect to the latest year
+            router.push(`/team/${years[0]}`); // Redirect to the latest year
         }
     }, [years, router]);
 

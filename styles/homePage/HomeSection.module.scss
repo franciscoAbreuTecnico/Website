@@ -21,21 +21,24 @@
     height: 85%;
     margin-bottom: -100px;
     position: absolute;
-    filter: brightness(2);
+    filter: brightness(3);
   }
   .copy {
     padding-right: 30vh;
     h2 {
       position: relative;
       z-index: 1000;
-      font-size: 3.5rem;
+      font-size: 5.5rem !important;
+      font-weight: 500;
       color: #3293e0;
+      letter-spacing: 3px;
       text-shadow: 0 0 10px #3292e0b9;
       @media (min-width: 768px) {
         font-size: 4rem;
       }
     }
     .sectionContent {
+      padding-top: 7rem;
       font-size: 2em;
       color: #ffffff;
       text-shadow: 0 0 15px #ffffffa3;
@@ -44,9 +47,10 @@
       gap: 20px;
     }
     .animatedNumbers {
-      //display: inline-flex;
-      margin-top: 1.5rem;
-      font-size: 4.8em;
+      display: inline-flex;
+      //margin-top: 10rem;
+      //margin-bottom: -50rem;
+      font-size: 5em;
       color: #3293e0;
       text-shadow: 0 0 5px #3293e0;
       gap: 3rem;
@@ -121,9 +125,8 @@
   .downarrow {
     position: absolute;
     bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
     background-image: url("/images/home/downarrow.svg");
     background-repeat: no-repeat;
     background-size: contain;
@@ -131,4 +134,16 @@
     height: 60px;
     z-index: 1000;
   }
+  
+  @media (max-width: 760px) {
+    .downarrow {
+      bottom: 10vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .downarrow {
+      bottom: 10vh;
+    }
+  }  
 }

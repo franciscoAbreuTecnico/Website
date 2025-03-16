@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1px 10px;
+  padding: 0.5vh 3vh;
 
   a,
   span {
@@ -23,6 +23,29 @@
   .copyright {
     color: #fff;
     font-size: 1.3em;
+    letter-spacing: 0.1rem;
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.7vh;
+    padding-bottom: 5px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 }
 
@@ -38,7 +61,7 @@
   }
 
   .social-icons {
-    gap: 6px;
+    gap: 1vh;
   }
 }
 
@@ -52,6 +75,6 @@
   }
 
   .social-icons {
-    gap: 4px;
+    gap: 0.5vh;
   }
 }

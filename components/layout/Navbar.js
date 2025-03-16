@@ -7,11 +7,13 @@ export default function MyNavbar() {
   
   return (
     <nav className={styles.mynavbar}>
-      <TransitionLink href="/" passHref>
-        <div className={styles.logo}>
-          <img src="/images/home/home.png" alt="Home Logo" />
-        </div>
-      </TransitionLink>
+      {router.pathname !== '/' && (
+        <TransitionLink href="/" passHref>
+          <div className={styles.logo}>
+            <img src="/images/home/home.png" alt="Home Logo" />
+          </div>
+        </TransitionLink>
+      )}
       <ul>
         <li className={router.pathname.startsWith('/garage') ? styles.active : ''}>
           <TransitionLink href="/garage">GARAGE</TransitionLink>
