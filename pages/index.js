@@ -67,7 +67,7 @@ export default function Home() {
         </div>
         <div ref={section5}>
           <MySection
-            image={`/images/blue_black_background.png`}
+            image={`/images/blue_black_background.webp`}
             secImage={`/images/home/sponsors_background.png`}
             scrollTo={scrollTo}
             showArrow={false}

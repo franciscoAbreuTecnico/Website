@@ -29,20 +29,19 @@
 }
 
 .headline, .secHeadline {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
     width: 100%;
     margin: 0 auto 30px;
-    font-weight: bold;
     color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.5vh;
+    letter-spacing: 0.2vh;
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
     transition: text-shadow 0.3s ease-in-out;
 }
 
 .secHeadline {
-    font-size: 2rem;
+    font-size: 1.7rem;
+    letter-spacing: 0.2vh;
     animation-delay: 0.3s;
 }
 

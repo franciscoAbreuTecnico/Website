@@ -19,7 +19,7 @@ export default function FAQ() {
             className={`${styles.faqQuestion} ${openIndex === index ? styles.active : ""}`}
             >
             {faq.question}
-            <span>{openIndex === index ? "➖" : "➕"}</span>
+            <span className={styles.icon} >{openIndex === index ? "-" : "+"}</span>
             </button>
           {openIndex === index && <p className={styles.faqAnswer}>{faq.answer}</p>}
         </div>
