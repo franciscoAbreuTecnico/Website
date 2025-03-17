@@ -19,7 +19,7 @@ export function getTeamImages(year) {
     if (!fs.existsSync(yearPath)) return [];
 
     const pathpics = fs.readdirSync(yearPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding
-    .filter(file => /\.(jpg|jpeg|png|gif)$/i.test(file)); 
+    .filter(file => /\.(webp)$/i.test(file)); 
 
     var teampic = '';
     if (pathpics.length > 0) 
@@ -32,9 +32,9 @@ export function getTeamImages(year) {
 
     return {data: categories.map(category => {
         const categoryPath = path.join(yearPath, category);
-        const images = fs.readdirSync(categoryPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding
+        const images = fs.readdirSync(categoryPath, { encoding: 'utf8' }) // Ensure UTF-8 encoding  
             .filter(file =>
-                /\.(jpg|jpeg|png|gif)$/i.test(file)
+                /\.(webp)$/i.test(file) && !/_carta\.webp$/i.test(file) // Exclude "_carta.webp"
             );
 
         return {

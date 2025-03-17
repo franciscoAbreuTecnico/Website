@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getAvailableYears } from '@/components/utils/FetchFolderImages';
+// import { redirect } from 'next/navigation'; ver se é possivel usar redirect
 
 export async function getStaticProps() {
     const years = getAvailableYears(); // Ensure this works without async if using static export
@@ -15,9 +16,9 @@ export default function TeamIndex({ years }) {
 
     useEffect(() => {
         if (years.length > 0) {
-            router.push(`/team/${years[0]}`); // Redirect to the latest year
+            router.replace(`/team/${years[0]}`); // Redirect to the latest year
         }
     }, [years, router]);
 
-    return <p>Redirecting...</p>; // Optional: Show a message while redirecting
+    return; 
 }

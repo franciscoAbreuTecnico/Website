@@ -25,6 +25,7 @@ export async function getStaticPaths() {
 export default function Team({ teamData, year }) {
     const router = useRouter();
     const [focusedImage, setFocusedImage] = useState(null);
+    const [focusedCardImage, setFocusedCardImage] = useState(null);
 
     const MIN_TEAM_YEAR = 2022;
     const MAX_TEAM_YEAR = 2024;
@@ -37,7 +38,7 @@ export default function Team({ teamData, year }) {
     };
 
     useEffect(() => {
-        setFocusedImage(teamData.team);
+        setFocusedCardImage(teamData.team);
     }
     , [teamData]);
 
@@ -63,7 +64,7 @@ export default function Team({ teamData, year }) {
                         teamData.data.map(({ name, images }) => (
                             <div key={name} className={styles.teamSection}>
                                 <div className={styles.area}>
-                                    <img src="/images/team/raio.png" alt="Team Icon" className={styles.teamIcon} />
+                                    <img src="/images/team/raio.webp" alt="Team Icon" className={styles.teamIcon} />
                                     <h2>{name}</h2>
                                 </div>
                                 <div className={defaultPage.imageGrid}>
@@ -72,10 +73,11 @@ export default function Team({ teamData, year }) {
                                             key={image}
                                             src={image}
                                             alt={name}
-                                            width={150}
-                                            height={200}
+                                            width={125}
+                                            height={125}
+                                            loading="lazy" // Enable lazy loading
                                             className={`${styles.teamImage} ${focusedImage === image ? styles.focused : ''}`}
-                                            onClick={() => setFocusedImage(image)}
+                                            onClick={() => {setFocusedImage(image); setFocusedCardImage(image.slice(0, -5) + "_carta.webp");}}
                                         />
                                     ))}
                                 </div>
@@ -84,12 +86,13 @@ export default function Team({ teamData, year }) {
                     )}
                 </div>
 
-                {focusedImage && (
+                {focusedCardImage && (
                     <Image
-                        src={focusedImage}
+                        src={focusedCardImage}
                         alt="Focused Image"
                         width={300}
                         height={400}
+                        loading='lazy'
                         className={styles.mainImage}
                     />
                 )}

@@ -13,7 +13,7 @@ $image-gap: 1rem;     // Remove if unused
 .background {
     width: 100%;
     min-height: 100vh;        // Fixed height matching the viewport
-    background: url('/images/blue_black_background.png') no-repeat center center / cover;
+    background: url('/images/blue_black_background.webp') no-repeat center center / cover;
     background-attachment: fixed;   // Keeps the background fixed while scrolling
     background-position: center;
     background-repeat: no-repeat;
