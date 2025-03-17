@@ -1,8 +1,26 @@
+.subscribeButton {
+    display: block;
+    margin: 20px auto;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.subscribeButton:hover {
+    background-color: #217dbb;
+}
+
+
 .swiper {
     width:100vh;
-    height: 70vh;
+    height: 65vh;
     padding: 40px 0;
-    margin-top: 10%;
+    margin-top: 1.3vh;
 }
 
 .swiperSlide {
@@ -46,7 +64,7 @@
 }
 
 .swiperPagination {
-    --swiper-pagination-bottom: -10px;
+    --swiper-pagination-bottom: 0px;
 }
 
 .swiperPaginationBullet {
@@ -98,4 +116,36 @@
     .swiperSlide {
         width: 200px;
     }
+}
+
+.yearButtons {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 12vh;
+    gap: 15px;
+}
+
+.yearButton {
+    background-color: #ddd;
+    color: black;
+    border: none;
+    font-size: 1.3rem;
+    letter-spacing: 0.3vh;
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.yearButton:hover {
+    background-color: #bbb;
+    transform: scale(1.05);
+}
+
+.yearButton.active {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1);
 }

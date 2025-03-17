@@ -1,0 +1,77 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 65vh;
+    height: 40vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: black;
+    text-align: center;
+    top: 1.2rem;
+    position: absolute;
+    width: 100%;
+}
+
+.closeButton {
+    position: absolute;
+    top: 3vh;
+    right: 4vh;
+    font-size: 1.8rem;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+
+.input {
+    width: 88%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    letter-spacing: 0.3vh;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.subscribeButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    width: 60%;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    letter-spacing: 0.3vh;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscribeButton:hover {
+    background-color: #217dbb;
+}

@@ -1,5 +1,5 @@
+import styles from "../../styles/sponsor/SponsorsBox.module.scss";
 import { sponsorInformation } from "../textContent/SponsorsSectionTexts";
-import styles from "../../styles/SponsorsBox.module.scss";
 import Image from "next/image";
 
 export default function MySponsorsBox({ type }) {

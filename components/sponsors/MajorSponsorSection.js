@@ -1,22 +1,11 @@
-import styles from "../../styles/MajorSponsorSection.module.scss";
-
-export const headlineText = (
-    <p className={styles.headline}>
-        We want to thank all our sponsors for their invaluable support.
-    </p>
-);
-
-export const secHeadlineText = (
-    <p className={styles.secHeadline}>
-        Your generosity and commitment to our vision are truly appreciated.
-    </p>
-);
+import styles from "../../styles/sponsor/MajorSponsorSection.module.scss";
+import { headlineText, secHeadlineText } from '@/components/textContent/SponsorsSectionTexts';
 
 export default function MajorSponsorSection() {
     return (
         <div className={styles.container}>
-            {headlineText}
-            {secHeadlineText}
+            <p className={styles.headline}>{headlineText}</p>
+            <p className={styles.secHeadline}>{secHeadlineText}</p>
         </div>
     );
 }

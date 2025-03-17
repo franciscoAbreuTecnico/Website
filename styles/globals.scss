@@ -31,11 +31,8 @@ a {
 
 .page-transition {
   opacity: 0;
-  background: black;
-  transform: translateY(40px);
-  filter: blur(12px);
+  background: transparent;
+  transform: scale(1.02);
+  filter: blur(8px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out;
 }
-
-
-
-

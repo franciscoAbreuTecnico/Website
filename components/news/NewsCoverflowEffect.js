@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from '@/styles/news/News.module.scss';
 import Swiper from 'swiper';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -7,16 +7,33 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
 
+const availableYears = ['2021', '2022', '2023', '2024'];
+
 export default function MyNewsCoverflowEffect() {
   const swiperRef = useRef(null);
+  const [selectedYear, setSelectedYear] = useState('2024');
+  const [newsletters, setNewsletters] = useState([]);
 
+  const newsletterData = {
+    '2021': ['january.png', 'may.png', 'august.png', 'november.png'],
+    '2022': ['february.png', 'may.png', 'august.png', 'november.png'],
+    '2023': ['march.png', 'june.png', 'october.png', 'december.png'],
+    '2024': ['march.png'],
+  };
+  
   useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.destroy(true, true);
+    }
+  
+    setNewsletters(newsletterData[selectedYear] || []);
+  
     swiperRef.current = new Swiper('.swiper', {
       modules: [EffectCoverflow, Navigation, Pagination],
       effect: 'coverflow',
       grabCursor: true,
       centeredSlides: true,
-      initialSlide: 2,
+      initialSlide: 0,
       speed: 500,
       preventClicks: true,
       slidesPerView: 1.5,
@@ -52,41 +69,39 @@ export default function MyNewsCoverflowEffect() {
         },
       },
     });
-  }, []);  
+  }, [selectedYear]); // Runs every time the selected year changes  
 
   return (
     <>
+      {/* Year Selection Buttons */}
+      <div className={styles.yearButtons}>
+        {availableYears.map((year) => (
+          <button 
+            key={year} 
+            className={`${styles.yearButton} ${year === selectedYear ? styles.active : ''}`} 
+            onClick={() => setSelectedYear(year)}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
+
+      {/* Swiper Carousel */}
       <div className={`swiper ${styles.swiper}`}>
         <div className={`swiper-wrapper ${styles.swiperWrapper}`}>
-          <div className={`swiper-slide ${styles.swiperSlide}`}>
-            <img src="/images/newsletter/2023/march.png" alt="March Newsletter" />
-            <div className={`title ${styles.title}`}>
-              <span>March 2023</span>
+          {newsletters.map((newsletter, index) => (
+            <div key={index} className={`swiper-slide ${styles.swiperSlide}`}>
+              <img src={`/images/newsletter/${selectedYear}/${newsletter}`} alt={`${selectedYear} Newsletter`} />
+              <div className={`title ${styles.title}`}>
+                <span>{newsletter.replace('.png', '').charAt(0).toUpperCase() + newsletter.replace('.png', '').slice(1)} {selectedYear}</span>
+              </div>
             </div>
-          </div>
-          <div className={`swiper-slide ${styles.swiperSlide}`}>
-            <img src="/images/newsletter/2023/june.png" alt="June Newsletter" />
-            <div className={`title ${styles.title}`}>
-              <span>June 2023</span>
-            </div>
-          </div>
-          <div className={`swiper-slide ${styles.swiperSlide}`}>
-            <img src="/images/newsletter/2023/october.png" alt="October Newsletter" />
-            <div className={`title ${styles.title}`}>
-              <span>October 2023</span>
-            </div>
-          </div>
-          <div className={`swiper-slide ${styles.swiperSlide}`}>
-            <img src="/images/newsletter/2023/december.png" alt="December Newsletter" />
-            <div className={`title ${styles.title}`}>
-              <span>December 2023</span>
-            </div>
-          </div>
+          ))}
         </div>
         <div className={`swiper-pagination ${styles.swiperPagination}`}></div>
       </div>
-        <div className={`swiper-button-prev ${styles.swiperButtonPrev}`}></div>
-        <div className={`swiper-button-next ${styles.swiperButtonNext}`}></div>
+      <div className={`swiper-button-prev ${styles.swiperButtonPrev}`}></div>
+      <div className={`swiper-button-next ${styles.swiperButtonNext}`}></div>
     </>
   );
 }
