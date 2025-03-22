@@ -43,6 +43,7 @@ export const sponsorInformation = {
         { name: "AEIST", link: "https://aeist.pt/", logo: "/images/sponsors/aeist.png" },
         { name: "JLCPCB", link: "https://jlcpcb.com/", logo: "/images/sponsors/jlcpcb.png" },
         { name: "Turiscar", link: "https://www.turiscar.pt/", logo: "/images/sponsors/turiscar.png" },
+        { name: "Docupilot", link: "https://www.docupilot.com/", logo: "/images/sponsors/docupilot.png" },
     ],
 };
 
