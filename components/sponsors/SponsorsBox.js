@@ -12,7 +12,13 @@ export default function MySponsorsBox({ type }) {
             <div className={styles.logoGrid}>
                 {sponsors.map((sponsor, index) => (
                     <a key={index} href={sponsor.link} target="_blank" rel="noopener noreferrer">
-                        <Image src={sponsor.logo} alt={`Sponsor ${sponsor.name}`} width={150} height={75} />
+                        <Image
+                        src={sponsor.logo}
+                        alt={`Sponsor ${sponsor.name}`}
+                        width={160}
+                        height={90}
+                        style={{ objectFit: "contain" }}
+                        />
                     </a>
                 ))}
             </div>

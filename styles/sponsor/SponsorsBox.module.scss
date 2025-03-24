@@ -48,7 +48,8 @@
 }
 
 .logoGrid a {
-    width: 15%;
+    width: 30vh;
+    height: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,8 +60,8 @@
 }
 
 .logoGrid img {
-    width: 90%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     border-radius: 8px;
     padding: 10px;
