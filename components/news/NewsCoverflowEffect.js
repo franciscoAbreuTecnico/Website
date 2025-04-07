@@ -92,9 +92,6 @@ export default function MyNewsCoverflowEffect() {
           {newsletters.map((newsletter, index) => (
             <div key={index} className={`swiper-slide ${styles.swiperSlide}`}>
               <img src={`/images/newsletter/${selectedYear}/${newsletter}`} alt={`${selectedYear} Newsletter`} />
-              <div className={`title ${styles.title}`}>
-                <span>{newsletter.replace('.png', '').charAt(0).toUpperCase() + newsletter.replace('.png', '').slice(1)} {selectedYear}</span>
-              </div>
             </div>
           ))}
         </div>
