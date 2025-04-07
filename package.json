@@ -13,7 +13,7 @@
     "@next/bundle-analyzer": "^15.2.1",
     "framer-motion": "^12.4.7",
     "gsap": "^3.12.5",
-    "next": "15.1.4",
+    "next": "^13.5.0",
     "next-js-tlmoto-website": "file:",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",

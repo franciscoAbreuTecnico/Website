@@ -14,8 +14,8 @@ export default function MyStatsChart({ stats, motoId, showHistory, historyText }
 
     return (
         <div className={styles.chartContainer} style={{ background: backgrounds[motoId] || backgrounds.m01 }}>
+            <h3 className={styles.chartTitle}>{showHistory ? "History" : "Stats"}</h3>
             <div className={styles.chartHeader}>
-                <h3 className={styles.chartTitle}>{showHistory ? "History" : "Stats"}</h3>
             </div>
 
             <div className={styles.chartContent}>

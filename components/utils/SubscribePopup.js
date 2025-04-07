@@ -19,7 +19,7 @@ export default function SubscribePopup({ isOpen, onClose }) {
       // TODO - Hide the Script URL with a Serverless Proxy
       // OR Obfuscate the Script URL using .env
       // OR use VERCEL and put script behind a simple API endpoint
-      const res = await fetch("", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbxQD-hNhx8cgODBIvvnBHqhUuAAPM4G75kFgRUmiptxwTlg5tzCBG1umguPX0MOiqq_/exec", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ email, website: "" }),
