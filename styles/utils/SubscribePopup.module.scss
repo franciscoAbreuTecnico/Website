@@ -13,11 +13,11 @@
 
 .modal {
     background: white;
-    padding: 2.5rem;
+    padding: 4.5rem;
     border-radius: 10px;
     text-align: center;
-    width: 65vh;
-    height: 40vh;
+    width: 50vh;
+    height: 30vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,7 @@
 .title {
     font-size: 2rem;
     color: black;
+    letter-spacing: 0.1vh;
     text-align: center;
     top: 1.2rem;
     position: absolute;
@@ -36,9 +37,9 @@
 
 .closeButton {
     position: absolute;
-    top: 3vh;
-    right: 4vh;
-    font-size: 1.8rem;
+    top: 1.5vh;
+    right: 2vh;
+    font-size: 2rem;
     z-index: 1000;
     background: none;
     border: none;
@@ -47,21 +48,24 @@
 }
 
 .input {
-    width: 88%;
+    width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin-top: 5vh;
+    background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    letter-spacing: 0.3vh;
+    letter-spacing: 0.2vh;
     font-size: 1rem;
     text-align: center;
+    color: black;
 }
 
 .subscribeButton {
     background-color: #3498db;
     color: white;
     border: none;
-    width: 60%;
+    margin-top: 1vh;
+    width: 50%;
     padding: 12px 20px;
     cursor: pointer;
     border-radius: 5px;
@@ -75,3 +79,30 @@
 .subscribeButton:hover {
     background-color: #217dbb;
 }
+
+.statusContainer {
+    margin-top: 2vh;
+    padding: 1rem;
+    border-radius: 8px;
+    color: black;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 90%;
+  }
+  
+  .success {
+    color: #2ecc71;
+    background-color: rgba(46, 204, 113, 0.1);
+    border: 1px solid #2ecc71;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+  
+  .error {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+  
