@@ -1,10 +1,8 @@
-import MyNavbar from "./Navbar";
-import MyFooter from "./Footer";
-import Head from "next/head";
+import MyNavbar from './Navbar';
+import MyFooter from './Footer';
+import Head from 'next/head';
 
-export default function MyLayout({
-    children,
-}) {
+export default function MyLayout({ children }) {
   return (
     <div className="layout">
       <Head>

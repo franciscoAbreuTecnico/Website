@@ -1,49 +1,48 @@
 // Variables
 $border-radius: 10px; // Remove if unused
-$image-gap: 1rem;     // Remove if unused
+$image-gap: 1rem; // Remove if unused
 
 .container {
-    position: relative;
-    min-height: 100vh;    // Ensure the container covers the full viewport
-    overflow-y: auto;     // Enable vertical scrolling if content overflows
-    z-index: 1;           // Make sure content stays above the background
+  position: relative;
+  min-height: 100vh; // Ensure the container covers the full viewport
+  overflow-y: auto; // Enable vertical scrolling if content overflows
+  z-index: 1; // Make sure content stays above the background
 }
 
 // Background Styling
 .background {
-    width: 100%;
-    min-height: 100vh;        // Fixed height matching the viewport
-    background: url('/images/blue_black_background.webp') no-repeat center center / cover;
-    background-attachment: fixed;   // Keeps the background fixed while scrolling
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1000;                // Keep background behind content
-    position: fixed;               // Fix the background in place
-    top: 0;
-    left: 0;
+  width: 100%;
+  min-height: 100vh; // Fixed height matching the viewport
+  background: url("/images/blue_black_background.webp") no-repeat center center / cover;
+  background-attachment: fixed; // Keeps the background fixed while scrolling
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1000; // Keep background behind content
+  position: fixed; // Fix the background in place
+  top: 0;
+  left: 0;
 }
 
 .row {
-    position: relative;
-    display: flex;
-    justify-content: center; // Center title horizontally
-    align-items: center;     // Center title vertically
-    margin-top: 16vh;
+  position: relative;
+  display: flex;
+  justify-content: center; // Center title horizontally
+  align-items: center; // Center title vertically
+  margin-top: 16vh;
 }
 
 .title {
-    font-size: 4rem;
-    margin: 0;
-    text-align: center;
-    justify-content: center; // Center title horizontally
-
+  font-size: 4rem;
+  margin: 0;
+  text-align: center;
+  justify-content: center; // Center title horizontally
 }
 
 .white {
-    color: white;
+  color: white;
 }
 
 .blue {
-    color: #39a6ff;
+  color: #39a6ff;
 }

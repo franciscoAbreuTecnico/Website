@@ -1,48 +1,49 @@
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes subtleGlow {
-    0% {
-        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
-    }
-    50% {
-        text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
-    }
-    100% {
-        text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
-    }
+  0% {
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+  }
 }
 
 .container {
-    text-align: center;
-    margin-bottom: 2.5%;
-    width: 100%;
-    margin-top: 10%;
+  text-align: center;
+  margin-bottom: 2.5%;
+  width: 100%;
+  margin-top: 10%;
 }
 
-.headline, .secHeadline {
-    font-size: 2.2rem;
-    width: 100%;
-    margin: 0 auto 30px;
-    color: white;
-    letter-spacing: 0.1vh;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
-    transition: text-shadow 0.3s ease-in-out;
+.headline,
+.secHeadline {
+  font-size: 2.2rem;
+  width: 100%;
+  margin: 0 auto 30px;
+  color: white;
+  letter-spacing: 0.1vh;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  transition: text-shadow 0.3s ease-in-out;
 }
 
 .secHeadline {
-    font-size: 1.8rem;
-    letter-spacing: 0.1vh;
-    animation-delay: 0.3s;
+  font-size: 1.8rem;
+  letter-spacing: 0.1vh;
+  animation-delay: 0.3s;
 }
 
 // .majorSponsor {

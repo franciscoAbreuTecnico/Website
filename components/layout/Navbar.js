@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 export default function MyNavbar() {
   const router = useRouter();
-  
+
   return (
     <nav className={styles.mynavbar}>
       {router.pathname !== '/' && (

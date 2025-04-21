@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import styles from "../../styles/homePage/HomeSection.module.scss";
-import { TransitionLink } from "../utils/TransitionLink";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import CountUp from "react-countup";
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import styles from '../../styles/homePage/HomeSection.module.scss';
+import { TransitionLink } from '../utils/TransitionLink';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import CountUp from 'react-countup';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MySection({
@@ -12,7 +12,7 @@ export default function MySection({
   secImage = null,
   headline,
   text,
-  animatedNumbers=[],
+  animatedNumbers = [],
   buttons = [],
   whiteBox = [],
   scrollTo,
@@ -36,13 +36,13 @@ export default function MySection({
         y: 0,
         autoAlpha: 1,
         duration: 1,
-        ease: "power3.out",
+        ease: 'power3.out',
         scrollTrigger: {
-          scroller: ".container",
+          scroller: '.container',
           trigger: headlineRef.current,
-          start: "top 60%",
-          end: "bottom 0%",
-          toggleActions: "play none restart reverse",
+          start: 'top 60%',
+          end: 'bottom 0%',
+          toggleActions: 'play none restart reverse',
         },
       }
     );
@@ -54,7 +54,7 @@ export default function MySection({
         ([entry]) => {
           if (entry.isIntersecting && enterCount < 2) {
             setStartCount(true);
-            setEnterCount((prev) => prev + 1);
+            setEnterCount(prev => prev + 1);
           }
         },
         { threshold: 0.6 }
@@ -66,12 +66,12 @@ export default function MySection({
       };
     }
   }, [animatedNumbers, enterCount]);
-return (
+  return (
     <div className={styles.section} ref={sectionRef}>
       <div className={styles.copy}>
-          <h2 ref={headlineRef}>{headline}</h2>
-          <div className={styles.sectionContent}>{text}</div>
-          {animatedNumbers.length > 0 && (
+        <h2 ref={headlineRef}>{headline}</h2>
+        <div className={styles.sectionContent}>{text}</div>
+        {animatedNumbers.length > 0 && (
           <div className={styles.animatedNumbers}>
             {animatedNumbers.map((num, index) => (
               <p key={index}>
@@ -87,43 +87,42 @@ return (
             ))}
           </div>
         )}
-          <div className={styles.buttonsContainer}>
-  {buttons.map((button, index) =>
-    button.href ? (
-      <TransitionLink key={index} href={button.href} className={styles.button}>
-        {button.label}
-      </TransitionLink>
-    ) : (
-      <button
-        key={index}
-        className={`${styles.button} ${activeIndex === index ? styles.active : ""}`}
-        onClick={() => {
-          setActiveIndex(index); // Set active button
-          const foundBox = whiteBox.find((box) => box.label === button.label);
-          setSelectedText(foundBox ? foundBox.text : "No content found!");
-        }}
-      >
-        {button.label}
-      </button>
-    )
-  )}
-</div>
-          {selectedText && (
-            <div className={styles.whiteBox}>
-              <p>{selectedText}</p>
-            </div>
+        <div className={styles.buttonsContainer}>
+          {buttons.map((button, index) =>
+            button.href ? (
+              <TransitionLink key={index} href={button.href} className={styles.button}>
+                {button.label}
+              </TransitionLink>
+            ) : (
+              <button
+                key={index}
+                className={`${styles.button} ${activeIndex === index ? styles.active : ''}`}
+                onClick={() => {
+                  setActiveIndex(index); // Set active button
+                  const foundBox = whiteBox.find(box => box.label === button.label);
+                  setSelectedText(foundBox ? foundBox.text : 'No content found!');
+                }}
+              >
+                {button.label}
+              </button>
+            )
           )}
         </div>
-        <Image src={image} fill />
-        {secImage && <div className={styles.secImage}>
-            <Image src={secImage} fill />
-        </div>}
-        {showArrow && (
-            <button
-                className={styles.downarrow}
-                onClick={() => scrollTo(goToSectionRef)}
-            ></button>
+        {selectedText && (
+          <div className={styles.whiteBox}>
+            <p>{selectedText}</p>
+          </div>
         )}
+      </div>
+      <Image src={image} fill />
+      {secImage && (
+        <div className={styles.secImage}>
+          <Image src={secImage} fill />
+        </div>
+      )}
+      {showArrow && (
+        <button className={styles.downarrow} onClick={() => scrollTo(goToSectionRef)}></button>
+      )}
     </div>
   );
 }

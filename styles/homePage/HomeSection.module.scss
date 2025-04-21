@@ -75,7 +75,11 @@
         border-radius: 8px;
         font-size: 1rem;
         cursor: pointer;
-        transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
         &:hover {
           background-color: rgba(50, 147, 224, 0.5);
           color: white;
@@ -89,7 +93,7 @@
       }
     }
     .whiteBox {
-      background: rgba(255, 255, 255, 0.8);      
+      background: rgba(255, 255, 255, 0.8);
       color: black;
       padding: 4rem;
       letter-spacing: 0.15rem;
@@ -134,16 +138,16 @@
     height: 60px;
     z-index: 1000;
   }
-  
+
   @media (max-width: 760px) {
     .downarrow {
       bottom: 10vh;
     }
   }
-  
+
   @media (max-width: 480px) {
     .downarrow {
       bottom: 10vh;
     }
-  }  
+  }
 }

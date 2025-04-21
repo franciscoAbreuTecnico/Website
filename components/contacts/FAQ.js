@@ -1,11 +1,11 @@
-import { useState } from "react";
-import styles from "@/styles/contacts/FAQ.module.scss";
-import { faqs } from "@/components/textContent/FAQText";
+import { useState } from 'react';
+import styles from '@/styles/contacts/FAQ.module.scss';
+import { faqs } from '@/components/textContent/FAQText';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = index => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -16,11 +16,11 @@ export default function FAQ() {
         <div key={index} className={styles.faqItem}>
           <button
             onClick={() => toggleFAQ(index)}
-            className={`${styles.faqQuestion} ${openIndex === index ? styles.active : ""}`}
-            >
+            className={`${styles.faqQuestion} ${openIndex === index ? styles.active : ''}`}
+          >
             {faq.question}
-            <span className={styles.icon} >{openIndex === index ? "-" : "+"}</span>
-            </button>
+            <span className={styles.icon}>{openIndex === index ? '-' : '+'}</span>
+          </button>
           {openIndex === index && <p className={styles.faqAnswer}>{faq.answer}</p>}
         </div>
       ))}

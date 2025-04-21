@@ -1,8 +1,8 @@
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
-import styles from "../../styles/history/Timeline.module.scss";
-import TimelineItem from "./TimelineItem";
-import timelineData from "../textContent/TimelineSectionTexts";
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import styles from '../../styles/history/Timeline.module.scss';
+import TimelineItem from './TimelineItem';
+import timelineData from '../textContent/TimelineSectionTexts';
 
 // Group events by year BEFORE useState
 const groupedData = timelineData.reduce((acc, item) => {
@@ -25,8 +25,8 @@ export default function Timeline() {
         {Object.keys(groupedData).map((year, index) => (
           <motion.button
             key={index}
-            ref={(el) => (buttonRefs.current[index] = el)}
-            className={`${styles.year} ${styles.large} ${selectedYear === year ? styles.active : ""}`}
+            ref={el => (buttonRefs.current[index] = el)}
+            className={`${styles.year} ${styles.large} ${selectedYear === year ? styles.active : ''}`}
             onClick={() => setSelectedYear(year)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -39,13 +39,13 @@ export default function Timeline() {
       </div>
 
       {/* White Box to Show All Events for the Selected Year */}
-      <motion.div 
+      <motion.div
         className={styles.timelineContent}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {groupedData[selectedYear].map((item) => (
+        {groupedData[selectedYear].map(item => (
           <TimelineItem key={item.index} {...item} />
         ))}
       </motion.div>

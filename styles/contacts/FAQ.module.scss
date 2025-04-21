@@ -14,7 +14,6 @@
   }
 }
 
-
 .faqItem {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding: 10px 0;
@@ -33,13 +32,13 @@
   color: white;
   transition: color 0.3s ease;
   &:hover {
-      color: #39a6ff;
-    }
-  
-    span {
-      font-size: 20px;
-    }
+    color: #39a6ff;
   }
+
+  span {
+    font-size: 20px;
+  }
+}
 
 .faqQuestion.active {
   color: #39a6ff; // Blue color for the active question
@@ -52,8 +51,7 @@
   padding-left: 10px;
 }
 
-.icon{
+.icon {
   color: white;
   font-size: 20px;
 }
-  

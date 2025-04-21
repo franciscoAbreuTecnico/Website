@@ -7,7 +7,7 @@ import {
   IoLogoLinkedin,
   IoLogoTiktok,
   IoLogoYoutube,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 
 export default function MyFooter() {
   const currentYear = new Date().getFullYear();
@@ -17,7 +17,7 @@ export default function MyFooter() {
         <p>RACING TOWARDS THE FUTURE</p>
       </div>
 
-      <div className={styles["social-icons"]}>
+      <div className={styles['social-icons']}>
         <Link href="https://www.facebook.com/tlmotostudent" target="_blank">
           <IoLogoFacebook size={35} />
         </Link>

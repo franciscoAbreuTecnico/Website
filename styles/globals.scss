@@ -1,15 +1,16 @@
 @use "./reset";
 
 @font-face {
-  font-family: 'EuroStyle';
-  src: url('/local-fonts/eurostyle.ttf') format('truetype');
-  src: url('/local-fonts/EuroStyleNormal.woff2') format('woff2');
+  font-family: "EuroStyle";
+  src: url("/local-fonts/eurostyle.ttf") format("truetype");
+  src: url("/local-fonts/EuroStyleNormal.woff2") format("woff2");
   font-display: swap;
 }
 
-body, html {
+body,
+html {
   width: 100%;
-  font-family: 'EuroStyle', sans-serif;
+  font-family: "EuroStyle", sans-serif;
   transition-property: opacity, background, transform, filter;
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
@@ -34,5 +35,8 @@ a {
   background: transparent;
   transform: scale(1.02);
   filter: blur(8px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out;
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out,
+    filter 0.4s ease-out;
 }

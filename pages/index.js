@@ -1,43 +1,40 @@
-import { useRef, useState, useEffect } from "react";
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
-import MySection from "../components/homePage/Home";
-import MySectionVideo from "../components/homePage/HomeVideo";
+import { useRef, useState, useEffect } from 'react';
+import Head from 'next/head';
+import styles from '../styles/Home.module.scss';
+import MySection from '../components/homePage/Home';
+import MySectionVideo from '../components/homePage/HomeVideo';
 import {
   aboutUsText,
   animatedNumbers,
   competitionText,
   prototypeText,
   whiteBoxText,
-} from "@/components/textContent/HomeSectionTexts";
+} from '@/components/textContent/HomeSectionTexts';
 
 export default function Home() {
   const sections = [useRef(), useRef(), useRef(), useRef(), useRef()];
   const [activeIndex, setActiveIndex] = useState(0);
 
   function scrollTo(index) {
-    sections[index].current.scrollIntoView({ behavior: "smooth" });
+    sections[index].current.scrollIntoView({ behavior: 'smooth' });
   }
 
   useEffect(() => {
-    const observerOptions = { root: null, rootMargin: "0px", threshold: 0.5 };
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
 
     const observers = sections.map((sectionRef, index) => {
-      return new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveIndex(index);
-          }
-        },
-        observerOptions
-      );
+      return new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveIndex(index);
+        }
+      }, observerOptions);
     });
 
     sections.forEach((section, index) => {
       if (section.current) observers[index].observe(section.current);
     });
 
-    return () => observers.forEach((observer) => observer.disconnect());
+    return () => observers.forEach(observer => observer.disconnect());
   }, []);
 
   return (
@@ -67,7 +64,7 @@ export default function Home() {
             image={`/images/home/aragon_background.jpg`}
             headline={`COMPETITIONS`}
             text={competitionText}
-            buttons={[{ label: "MS" }, { label: "CNV" }, { label: "MEI" }]}
+            buttons={[{ label: 'MS' }, { label: 'CNV' }, { label: 'MEI' }]}
             whiteBox={whiteBoxText}
             goToSectionRef={3}
             scrollTo={scrollTo}
@@ -79,7 +76,7 @@ export default function Home() {
             image={`/images/home/prototype_background.jpg`}
             headline={`PROTOTYPES`}
             text={prototypeText}
-            buttons={[{ label: "LEARN MORE", href: "/garage" }]}
+            buttons={[{ label: 'LEARN MORE', href: '/garage' }]}
             goToSectionRef={4}
             scrollTo={scrollTo}
             showArrow={true}
@@ -99,7 +96,7 @@ export default function Home() {
         {sections.map((_, index) => (
           <div
             key={index}
-            className={`${styles.dot} ${index === activeIndex ? styles.active : ""}`}
+            className={`${styles.dot} ${index === activeIndex ? styles.active : ''}`}
             onClick={() => scrollTo(index)}
           ></div>
         ))}

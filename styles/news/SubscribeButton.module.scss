@@ -1,21 +1,20 @@
 .subscribeButton {
-    position: fixed;
-    bottom: 6vh;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #3498db;
-    color: white;
-    font-size: 1.2rem;
-    letter-spacing: 0.2vh;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  position: fixed;
+  bottom: 6vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3498db;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 0.2vh;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
-    &:hover {
-        background-color: #1c74af;;
-        transform: translateX(-50%) scale(1.05);
-    }
+  &:hover {
+    background-color: #1c74af;
+    transform: translateX(-50%) scale(1.05);
+  }
 }
-  
