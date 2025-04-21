@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import styles from '@/styles/news/News.module.scss';
 import Swiper from 'swiper';
 import { Navigation, Pagination, EffectCoverflow } from 'swiper/modules';
@@ -14,14 +15,14 @@ export default function MyNewsCoverflowEffect() {
   const [selectedYear, setSelectedYear] = useState('2024');
   const [newsletters, setNewsletters] = useState([]);
 
-  const newsletterData = {
-    2021: ['january.png', 'may.png', 'august.png', 'november.png'],
-    2022: ['february.png', 'may.png', 'august.png', 'november.png'],
-    2023: ['march.png', 'june.png', 'october.png', 'december.png'],
-    2024: ['march.png'],
-  };
-
   useEffect(() => {
+    const newsletterData = {
+      2021: ['january.png', 'may.png', 'august.png', 'november.png'],
+      2022: ['february.png', 'may.png', 'august.png', 'november.png'],
+      2023: ['march.png', 'june.png', 'october.png', 'december.png'],
+      2024: ['march.png'],
+    };
+
     if (swiperRef.current) {
       swiperRef.current.destroy(true, true);
     }

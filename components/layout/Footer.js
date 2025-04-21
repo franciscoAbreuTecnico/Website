@@ -10,7 +10,6 @@ import {
 } from 'react-icons/io5';
 
 export default function MyFooter() {
-  const currentYear = new Date().getFullYear();
   return (
     <div id="section_footer" className={styles.footer}>
       <div className={styles.copyright}>

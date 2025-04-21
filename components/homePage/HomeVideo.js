@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
 import styles from '../../styles/homePage/HomeSectionVideo.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';

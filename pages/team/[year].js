@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { use, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getTeamImages, getAvailableYears } from '@/components/utils/FetchFolderImages';
 import styles from '@/styles/Team.module.scss';
 import defaultPage from '@/styles/DefaultPage.module.scss';
