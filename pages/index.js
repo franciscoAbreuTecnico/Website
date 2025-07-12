@@ -37,6 +37,11 @@ export default function Home() {
   }, []);
 
   return (
+    <div className="bg-black text-white min-h-screen flex items-center justify-center">
+      <h1 className="text-3xl font-bold">Black Page</h1>
+    </div>
+    // The following block is commented out for now:
+    /*
     <div>
       <div className={`container ${styles.container}`}>
         <div ref={sections[0]}>
@@ -101,5 +106,6 @@ export default function Home() {
         ))}
       </div>
     </div>
+    */
   );
 }
