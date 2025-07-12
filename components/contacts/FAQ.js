@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '@/styles/contacts/FAQ.module.scss';
+//import styles from '@/styles/contacts/FAQ.module.scss';
 import { faqs } from '@/components/textContent/FAQText';
 
 export default function FAQ() {

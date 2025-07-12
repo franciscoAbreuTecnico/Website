@@ -1,5 +1,5 @@
-import defaultPage from '@/styles/DefaultPage.module.scss';
-import styles from '@/styles/contacts/Contacts.module.scss';
+//import defaultPage from '@/styles/DefaultPage.module.scss';
+//import styles from '@/styles/contacts/Contacts.module.scss';
 import React from 'react';
 import FAQ from '@/components/contacts/FAQ';
 

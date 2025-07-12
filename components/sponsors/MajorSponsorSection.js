@@ -1,4 +1,4 @@
-import styles from '../../styles/sponsor/MajorSponsorSection.module.scss';
+//import styles from '../../styles/sponsor/MajorSponsorSection.module.scss';
 import { headlineText, secHeadlineText } from '@/components/textContent/SponsorsSectionTexts';
 
 export default function MajorSponsorSection() {

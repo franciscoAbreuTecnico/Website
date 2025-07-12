@@ -1,4 +1,4 @@
-import styles from '@/styles/garage/GarageCards.module.scss';
+//import styles from '@/styles/garage/GarageCards.module.scss';
 import { cards } from '@/components/textContent/GarageSectionTexts';
 import { TransitionLink } from '../utils/TransitionLink';
 

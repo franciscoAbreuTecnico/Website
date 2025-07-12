@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '@/styles/utils/SubscribePopup.module.scss';
+//import styles from '@/styles/utils/SubscribePopup.module.scss';
 
 export default function SubscribePopup({ isOpen, onClose }) {
   const [email, setEmail] = useState('');

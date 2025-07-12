@@ -1,4 +1,4 @@
-import styles from '@/styles/garage/ChartToggleButtons.module.scss';
+//import styles from '@/styles/garage/ChartToggleButtons.module.scss';
 import { backgrounds } from '@/components/textContent/GarageSectionTexts';
 
 export default function MyChartToggleButtons({

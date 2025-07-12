@@ -1,5 +1,5 @@
-import defaultPage from '@/styles/DefaultPage.module.scss';
-import styles from '@/styles/shop/Shop.module.scss';
+//import defaultPage from '@/styles/DefaultPage.module.scss';
+//import styles from '@/styles/shop/Shop.module.scss';
 
 export default function Shop() {
   return (

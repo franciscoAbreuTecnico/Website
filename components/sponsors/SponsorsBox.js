@@ -1,4 +1,4 @@
-import styles from '../../styles/sponsor/SponsorsBox.module.scss';
+//import styles from '../../styles/sponsor/SponsorsBox.module.scss';
 import { sponsorInformation } from '../textContent/SponsorsSectionTexts';
 import Image from 'next/image';
 

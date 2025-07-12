@@ -1,4 +1,4 @@
-import styles from '@/styles/DefaultPage.module.scss';
+//import styles from '@/styles/DefaultPage.module.scss';
 
 export default function MyDefaultPage({ children }) {
   return (

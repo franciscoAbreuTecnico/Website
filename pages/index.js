@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import styles from '../styles/Home.module.scss';
+//import styles from '../styles/Home.module.scss';
 import MySection from '../components/homePage/Home';
 import MySectionVideo from '../components/homePage/HomeVideo';
 import {

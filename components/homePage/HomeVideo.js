@@ -1,4 +1,4 @@
-import styles from '../../styles/homePage/HomeSectionVideo.module.scss';
+//import styles from '../../styles/homePage/HomeSectionVideo.module.scss';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);

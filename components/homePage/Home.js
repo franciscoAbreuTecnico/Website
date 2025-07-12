@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import styles from '../../styles/homePage/HomeSection.module.scss';
+//import styles from '../../styles/homePage/HomeSection.module.scss';
 import { TransitionLink } from '../utils/TransitionLink';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
