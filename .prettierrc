@@ -8,7 +8,7 @@
   "arrowParens": "avoid",
   "overrides": [
     {
-      "files": "*.scss",
+      "files": "*.tsx",
       "options": {
         "singleQuote": false
       }

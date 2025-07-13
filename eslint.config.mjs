@@ -10,23 +10,7 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.config({
-    extends: ['next', 'prettier', 'eslint:recommended', 'plugin:prettier/recommended'],
-    plugins: ['prettier'],
-    rules: {
-      'react/no-unescaped-entities': 'off',
-      '@next/next/no-page-custom-font': 'off',
-    },
-    ignorePatterns: ['node_modules',
-      '.next',
-      '.prettierignore',
-      '*.log',
-      'out',
-      'public',
-      '*.json',
-      '*.config.*'
-    ]
-  }),
+  ...compat.extends('next', 'prettier', 'plugin:prettier/recommended', "next/core-web-vitals", "next/typescript"),
 ];
 
 export default eslintConfig
