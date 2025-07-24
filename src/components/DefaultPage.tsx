@@ -1,4 +1,6 @@
-export default function MyDefaultPage({ children }) {
+import { ReactNode } from "react";
+
+export default function MyDefaultPage({ children }: { children: ReactNode }) {
   return (
     <div className="relative">
       {/* Background Layer */}
@@ -8,9 +10,7 @@ export default function MyDefaultPage({ children }) {
       ></div>
 
       {/* Foreground Content */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }
