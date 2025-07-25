@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col min-h-screen relative z-20">
-        {/* <MyNavbar /> */}
+        <MyNavbar />
         <main className="flex-grow">{children}</main>
         <MyFooter />
       </div>
