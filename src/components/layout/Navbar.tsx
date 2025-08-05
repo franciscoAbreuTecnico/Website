@@ -14,7 +14,6 @@ export default function MyNavbar() {
 
   const liStyleActive = liStyle + " text-[#3293e0] text-shadow-[0_0_2vh_#97bddc,0_0_2vh_#3293e0]";
 
-
   return (
     <nav className="h-[10vh] left-[0vw] z-20 w-screen bg-transparent fixed text-[clamp(2vh,2vw,5vh)]">
       <div className="hidden lg:flex w-[85%] h-[1vh] absolute  bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
@@ -71,7 +70,7 @@ export default function MyNavbar() {
         <div className="h-full px-5 flex items-center justify-between">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-[90%] pt-5 transition-transform duration-500 ${isOpen ? 'rotate-90' : 'rotate-0'}`}
+            className={`h-[90%] pt-5 transition-transform duration-500 ${isOpen ? "rotate-90" : "rotate-0"}`}
             viewBox="0 0 24 24"
             fill="currentColor"
             onClick={toggleMenu}
@@ -80,39 +79,51 @@ export default function MyNavbar() {
           </svg>
 
           <div className="h-full flex items-center justify-center">
-            <img
-              className="h-[70%] "
-              src="/images/home/TLMOTO_PRINCIPAL.png"
-              alt="Home Logo"
-            />
+            <img className="h-[70%] " src="/images/home/TLMOTO_PRINCIPAL.png" alt="Home Logo" />
           </div>
         </div>
 
-        <ul className={`p-5 flex flex-col list-none gap-10 transition-opacity duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <ul
+          className={`p-5 flex flex-col list-none gap-10 transition-opacity duration-500 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        >
           {/* Menu Links */}
           <li className={router.pathname.startsWith("/garage") ? liStyleActive : liStyle}>
-            <TransitionLink href="/garage" onClick={() => setIsOpen(false)}>GARAGE</TransitionLink>
+            <TransitionLink href="/garage" onClick={() => setIsOpen(false)}>
+              GARAGE
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/team") ? liStyleActive : liStyle}>
-            <TransitionLink href="/team" onClick={() => setIsOpen(false)}>TEAM</TransitionLink>
+            <TransitionLink href="/team" onClick={() => setIsOpen(false)}>
+              TEAM
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/history") ? liStyleActive : liStyle}>
-            <TransitionLink href="/history" onClick={() => setIsOpen(false)}>HISTORY</TransitionLink>
+            <TransitionLink href="/history" onClick={() => setIsOpen(false)}>
+              HISTORY
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/news") ? liStyleActive : liStyle}>
-            <TransitionLink href="/news" onClick={() => setIsOpen(false)}>NEWS</TransitionLink>
+            <TransitionLink href="/news" onClick={() => setIsOpen(false)}>
+              NEWS
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/shop") ? liStyleActive : liStyle}>
-            <TransitionLink href="/shop" onClick={() => setIsOpen(false)}>SHOP</TransitionLink>
+            <TransitionLink href="/shop" onClick={() => setIsOpen(false)}>
+              SHOP
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/sponsors") ? liStyleActive : liStyle}>
-            <TransitionLink href="/sponsors" onClick={() => setIsOpen(false)}>SPONSORS</TransitionLink>
+            <TransitionLink href="/sponsors" onClick={() => setIsOpen(false)}>
+              SPONSORS
+            </TransitionLink>
           </li>
           <li className={router.pathname.startsWith("/contacts") ? liStyleActive : liStyle}>
-            <TransitionLink href="/contacts" onClick={() => setIsOpen(false)}>CONTACTS</TransitionLink>
+            <TransitionLink href="/contacts" onClick={() => setIsOpen(false)}>
+              CONTACTS
+            </TransitionLink>
           </li>
         </ul>
       </div>
-    </nav >
+    </nav>
   );
 }
