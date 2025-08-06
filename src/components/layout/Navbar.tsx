@@ -2,6 +2,7 @@
 import { TransitionLink } from "../utils/TransitionLink";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Image from 'next/image';
 
 export default function MyNavbar() {
   const router = useRouter();
@@ -16,16 +17,19 @@ export default function MyNavbar() {
 
   return (
     <nav className="h-[10vh] left-[0vw] z-20 w-screen bg-transparent fixed text-[clamp(2vh,2vw,5vh)]">
-      <div className="hidden lg:flex w-[85%] h-[1vh] absolute  bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
-      <ul className="hidden lg:flex px-5 w-[100%] h-[100%] justify-around items-center list-none">
+      <div className="hidden xl:flex w-[85%] h-[1vh] absolute  bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
+      <ul className="hidden xl:flex px-5 w-[100%] h-[100%] justify-around items-center list-none">
         {router.pathname !== "/" && (
           <li className="h-[80%]">
             <TransitionLink href="/" passHref>
               <div className="aspect-[207/169] h-full">
-                <img
-                  className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
+                <Image
                   src="/images/home/RAIO_NEGATIVO.png"
                   alt="Home Logo"
+                  width={207}
+                  height={169}
+                  priority
+                  className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
                 />
               </div>
             </TransitionLink>
@@ -66,7 +70,7 @@ export default function MyNavbar() {
       )}
 
       {/* Mobile Menu */}
-      <div className="z-20 relative lg:hidden w-full h-full">
+      <div className="z-20 relative xl:hidden w-full h-full">
         <div className="h-full px-5 flex items-center justify-between">
           <svg
             xmlns="http://www.w3.org/2000/svg"

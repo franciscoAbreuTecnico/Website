@@ -15,7 +15,7 @@ const HeroSection = () => {
     >
       {/* Video Background (large screens) */}
       <video
-        className="hidden lg:block absolute inset-0 w-full h-full object-cover filter z-0"
+        className="hidden xl:block absolute inset-0 w-full h-full object-cover filter z-0"
         muted
         autoPlay
         playsInline
@@ -27,7 +27,7 @@ const HeroSection = () => {
 
       {/* Image Background (small screens) */}
       <div
-        className="block lg:hidden absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center z-0"
+        className="block xl:hidden absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center z-0"
         style={{ backgroundImage: "url('/images/home/moto_blue_black_background.png')" }}
       />
 
