@@ -1,16 +1,21 @@
+/* components/homePage/AboutSection.tsx */
+import React from "react";
 import { Card, CardContent } from "../ui/card";
 import { Zap, Target, Lightbulb } from "lucide-react";
 
 const sectionStyle =
-  "tracking-[.15em] h-auto flex flex-col justify-center items-center snap-start " +
-  "pt-8 pb-8 px-10 " +
-  "md:pt-32 md:pb-32 " +
-  "md:min-h-screen " +
+  "tracking-[.17em] h-auto flex flex-col justify-center items-center snap-start " +
+  "pt-16 pb-10 px-10 " +
+  "sm:pt-24 sm:pb-20 sm:min-h-[100vh] " +
   "relative";
 
-const AboutSection = () => {
+const AboutSection: React.FC = () => {
   return (
-    <section id="section2" className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}>
+    <section
+      id="section2"
+      className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
+    >
+      {/* background */}
       <div
         className="
           absolute inset-0
@@ -20,80 +25,117 @@ const AboutSection = () => {
           -z-10
         "
       />
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
 
-      <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-7xl mb-3 text-[#39a6ff]">
-          ABOUT <span className="hero-text">US</span>
-        </h2>
-          <div className="w-18 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-1" />
-        <p className="text-xl md:text-3xl text-white text-muted-foreground max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10">
-          We are a passionate team of engineering students from the University of Lisbon, 
-          united by our commitment to advancing electric motorcycle technology and sustainable motorsport.
-        </p>
-
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8 mt-12">
-    {[
-      { icon: <Zap />, title: "Innovation", text: "Pushing the boundaries…" },
-      { icon: <Target />, title: "Competition", text: "Competing at the highest level…" },
-      { icon: <Lightbulb />, title: "Education", text: "Learning through hands-on…" },
-    ].map(({ icon, title, text }) => (
-      <Card
-        key={title}
+      {/* content */}
+      <div
         className="
-          bg-[#16263c]/70
-          border border-[#39a6ff]/25 hover:border-[#39a6ff]/60
-          shadow-lg shadow-black/30
-          backdrop-blur-sm
-          transition-all duration-300
-          group hover:scale-[1.02]
+          relative z-10
+          w-full
+          px-6 xl:px-12 2xl:px-2
+          pt-6 sm:pt-10 md:pt-8 lg:pt-18 xl:pt-14 2xl:pt-20
+          pb-6 sm:pb-10 md:pb-8 lg:pb-18 xl:pb-14 2xl:pb-20
+          max-w-6xl sm:max-w-4xl md:max-w-3xl lg:max-w-6xl xl:max-w-full 2xl:max-w-400
         "
       >
-        <CardContent className="p-8 text-center">
-          <div className="w-16 h-16 bg-gradient-to-b from-[#39a6ff] to-[#19376d] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform duration-300 shadow">
-            {icon}
-          </div>
-          <h3 className="text-2xl font-bold mb-4 text-[#39a6ff]">
-            {title}
-          </h3>
-          <p className="text-white text-base">{text}</p>
-        </CardContent>
-      </Card>
-    ))}
-  </div>
+        {/* heading */}
+        <h2 className="text-center text-5xl sm:text-8xl md:text-6xl lg:text-8xl xl:text-9xl 2xl:text-8xl mb-8 text-[#39a6ff]">
+          ABOUT <span className="hero-text">US</span>
+        </h2>
+        <div className="w-20 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-1 xl:-mb-2" />
 
- <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-40 pt-1 max-w-5xl mx-auto">
-  <div className="text-center animate-slide-in-left">
-    <div className="flex justify-center space-x-1 md:space-x-2">
-      <span className="text-5xl sm:text-7xl md:text-7xl font-extrabold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow">7</span>
-      <span className="text-5xl sm:text-7xl md:text-7xl font-extrabold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow">0</span>
-      <span className="text-4xl sm:text-5xl md:text-4xl font-bold text-[#39a6ff] align-top">+</span>
-    </div>
-    <div className="text-2xl sm:text-3xl md:text-4xl text-white mt-4 tracking-[.20em]">
-      MEMBERS
-    </div>
-  </div>
-  <div className="text-center animate-fade-in" style={{ animationDelay: "0.2s" }}>
-    <div className="flex justify-center space-x-1 md:space-x-2">
-      <span className="text-5xl sm:text-7xl md:text-7xl font-extrabold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow">1</span>
-      <span className="text-5xl sm:text-7xl md:text-7xl font-extrabold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow">0</span>
-      <span className="text-4xl sm:text-5xl md:text-4xl font-bold text-[#39a6ff] align-top">+</span>
-    </div>
-    <div className="text-2xl sm:text-3xl md:text-4xl text-white mt-4 tracking-[.20em]">
-      COMPETITIONS
-    </div>
-  </div>
-  <div className="text-center animate-fade-in" style={{ animationDelay: "0.2s" }}>
-    <div className="flex justify-center space-x-1 md:space-x-2">
-      <span className="text-5xl sm:text-7xl md:text-7xl font-extrabold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow">4</span>
-      <span className="text-4xl sm:text-5xl md:text-4xl font-bold text-[#39a6ff] align-top">+</span>
-    </div>
-    <div className="text-2xl sm:text-3xl md:text-4xl text-white mt-4 tracking-[.20em]">
-      PROTOTYPES
-    </div>
-  </div>
-</div>
+        {/* paragraph */}
+        <p
+          className="
+            text-lg sm:text-2xl md:text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl
+            text-white text-muted-foreground
+            mx-auto leading-snug
+            max-w-3xl sm:max-w-4xl md:max-w-5xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-6xl
+            mb-3 sm:mb-5 md:mb-4 lg:mb-50 xl:mb-8 2xl:mb-8
+          "
+        >
+          We are a passionate team of engineering students from the University
+          of Lisbon, committed to advancing electric motorcycle technology.
+        </p>
+
+        {/* feature cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-10 sm:gap-6 md:gap-3 lg:gap-4 xl:gap-12 2xl:gap-12 mb-6 sm:mb-8 md:mb-12 lg:mb-5 xl:mb-12 2xl:mb-12 mt-10 sm:mt-12 md:mt-10 lg:mt-8">
+          {[
+            { icon: <Zap />, title: "Innovation", text: "Pushing the boundaries" },
+            { icon: <Target />, title: "Competition", text: "Competing at the highest level…" },
+            { icon: <Lightbulb />, title: "Education", text: "Learning through hands-on…" },
+          ].map(({ icon, title, text }) => (
+            <Card
+              key={title}
+              className="
+                bg-[#16263c]/70
+                border border-[#39a6ff]/25 hover:border-[#39a6ff]/60
+                shadow-lg shadow-black/30
+                backdrop-blur-sm
+                transition-all duration-300
+                group hover:scale-[1.05]
+              "
+            >
+              <CardContent className="p-6 sm:p-8 md:p-6 lg:p-8 xl:p-10 2xl:p-12 text-center">
+                <div
+                  className="
+                    w-14 h-14 sm:w-16 sm:h-16 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-20 xl:h-20 2xl:w-20 2xl:h-20
+                    bg-gradient-to-b from-[#39a6ff] to-[#19376d]
+                    rounded-full flex items-center justify-center
+                    mx-auto mb-5 sm:mb-3 md:mb-4 lg:mb-5 xl:mb-6 2xl:mb-6
+                    group-hover:scale-105 transition-transform duration-300 shadow
+                  "
+                >
+                  {icon}
+                </div>
+                <h3 className="text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-2 text-[#39a6ff]">
+                  {title}
+                </h3>
+                <p className="text-white text-sm sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-3xl">
+                  {text}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 md:gap-10 lg:gap-10 xl:gap-32 2xl:gap-32 pt-1 sm:pt-3 md:pt-2 lg:pt-1 xl:pt-2 2xl:pt-4 max-w-4xl xl:max-w-full 2xl:max-w-full mx-auto mb-8 xl:mb-8 2xl:mb-8">
+          {[
+            { value: ["7", "0", "+"], label: "MEMBERS", delay: 0 },
+            { value: ["1", "0", "+"], label: "COMPETITIONS", delay: 0.2 },
+            { value: ["4", "+"], label: "PROTOTYPES", delay: 0.4 },
+          ].map(({ value, label, delay }, i) => (
+            <div
+              key={i}
+              className={`text-center ${
+                i === 0 ? "animate-slide-in-left" : "animate-fade-in"
+              }`}
+              style={{ animationDelay: `${delay}s` }}
+            >
+              <div className="flex justify-center space-x-1 sm:space-x-2 md:space-x-1 lg:space-x-2 xl:space-x-3 mb-1 sm:mb-2 lg:mb-1 xl:mb-4 2xl:mb-4">
+                {value.map((num, idx) => (
+                  <span
+                    key={idx}
+                    className={`${
+                      idx < 2
+                        ? "text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+                        : "text-3xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl"
+                    } font-semibold text-[#39a6ff] text-tlmoto-cyan tlmoto-glow ${
+                      idx === value.length - 1 ? "align-top" : ""
+                    }`}
+                  >
+                    {num}
+                  </span>
+                ))}
+              </div>
+              <div className="text-lg sm:text-xl md:text-xl lg:text-3xl xl:text-3xl 2xl:text-5xl text-white mt-1 sm:mt-2 lg:mt-1 xl:mt-4 2xl:mt-4 tracking-[.20em]">
+                {label}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
