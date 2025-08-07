@@ -53,7 +53,6 @@ export default function MyNavbar() {
               </div>
           </Link>
         </li>
-        {/* Navigation links */}
         {NAV_LINKS.map(({ path, label }) => (
           <li
             key={path}
@@ -63,11 +62,8 @@ export default function MyNavbar() {
             <Link href={path}>{label}</Link>
           </li>
         ))}
-        {/* Right-side spacing/placeholder for layout symmetry */}
         <li className="aspect-[207/169] h-full"></li>
       </ul>
-      {/* MOBILE NAV */}
-      {/* Backdrop Blur Overlay (only visible when menu is open) */}
       <div
         className={`fixed inset-0 z-30 transition-opacity duration-300 pointer-events-none ${
           isOpen ? "opacity-100 backdrop-blur-sm bg-black/40 pointer-events-auto" : "opacity-0"
@@ -77,7 +73,6 @@ export default function MyNavbar() {
       />
       <div className="z-40 relative xl:hidden w-full h-full">
         <div className="h-full px-5 flex items-center justify-between">
-          {/* Hamburger Button */}
           <button
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             className="h-[90%] pt-5 transition-transform duration-500 focus:outline-none"
@@ -85,8 +80,8 @@ export default function MyNavbar() {
             tabIndex={0}
           >
             <svg
-              width={40}
-              height={40}
+              width={80}
+              height={80}
               fill="none"
               stroke="currentColor"
               strokeWidth={2}
@@ -110,7 +105,7 @@ export default function MyNavbar() {
         </div>
         {/* Slide-down Mobile Menu */}
         <ul
-          className={`absolute left-0 text-2xl gap-10 right-0 top-full z-40 px-7 py-12 rounded-b-2xl flex flex-col list-none gap-7 transition-all duration-400 ${
+          className={`absolute left-0 text-4xl gap-10 right-0 top-full z-40 px-7 py-13 rounded-b-2xl flex flex-col list-none gap-14 transition-all duration-400 ${
             isOpen
               ? "opacity-100 pointer-events-auto translate-y-0"
               : "opacity-0 pointer-events-none -translate-y-3"
