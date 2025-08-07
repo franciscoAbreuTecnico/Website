@@ -12,6 +12,7 @@ export default function Home() {
         <AboutSection />
         <CompetitionsSection />
         <PrototypesSection />
+        <SponsorSection />
       </div>
     </div>
   );

@@ -82,7 +82,7 @@ export const MotorbikeCarousel = () => {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
+    <div className="relative w-[80%] lg:max-w-6xl xl:max-w-6xl 2xl:max-w-6xl mx-auto">
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#111827]/90 via-[#1e293b]/80 to-[#0a192f]/80 border border-[#39a6ff]/10">
         <div
           className="flex transition-transform duration-500 ease-electric"
@@ -92,7 +92,7 @@ export const MotorbikeCarousel = () => {
             <div key={motorbike.id} className="w-full flex-shrink-0">
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 p-4 sm:p-6 lg:p-12 2xl:max-w-1xl">
                 <div className="relative w-full max-w-[240px] mx-auto group">
-                  <div className="relative w-full h-[280px] sm:h-[350px] md:h-[400px] overflow-hidden rounded-xl bg-gradient-to-t from-[#39a6ff]/20 to-transparent flex items-center justify-center">
+                  <div className="relative w-[240px] h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden rounded-xl to-transparent flex items-center justify-center">
                     <Image
                       src={motorbike.image}
                       alt={motorbike.name}
@@ -101,11 +101,11 @@ export const MotorbikeCarousel = () => {
                       sizes="(max-width: 768px) 80vw, 240px"
                       quality={60}
                       loading="lazy"
-                      className="transition-transform duration-700 group-hover:scale-105"
+                      className="transition-transform duration-700 group-hover:scale-105 rounded-2xl"
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
                   </div>
-                  <div className="absolute top-4 -left-9 2xl:left-4 bg-[#39a6ff]/80 backdrop-blur-sm text-white text-background px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-4 -left-11 2xl:text-2xl md:text-3xl md:-left-30 2xl:left-4 bg-[#39a6ff]/15 backdrop-blur-sm text-white text-background px-4 py-2 rounded-full text-sm font-semibold">
                     {motorbike.year}
                   </div>
                 </div>
@@ -122,7 +122,7 @@ export const MotorbikeCarousel = () => {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full md:w-auto 2xl:w-[32vw]">
                     <div className="bg-[#16263c]/70 backdrop-blur-sm rounded-lg p-2 sm:p-4 border border-[#39a6ff]/25">
                       <div className="text-blue-300 text-xs sm:text-sm font-medium">Power</div>
                       <div className="text-base sm:text-lg font-bold text-white">{motorbike.specs.power}</div>
@@ -139,7 +139,7 @@ export const MotorbikeCarousel = () => {
 
                   <Button
                     variant="outline"
-                    className="w-fit border-[#39a6ff] bg-blue-50 text-black hover:bg-[#39a6ff] hover:text-white transition-all duration-300 mt-2"
+                    className="w-fit border-[#39a6ff] bg-blue-1520 backdrop-blur-sm text-white hover:bg-[#39a6ff] hover:text-white transition-all duration-300 mt-2"
                   >
                     Learn More
                   </Button>

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/router"; // If using app router, replace with usePathname from 'next/navigation'
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
@@ -18,45 +18,39 @@ export default function MyNavbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
 
-  // Prevent scrolling when mobile menu is open (improved UX)
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Styling for active/inactive nav link
   const isActive = (href: string) =>
     router.pathname === href || router.pathname.startsWith(href + "/");
   const liStyle =
-    "tracking-[0.1em] px-[1vh] transition-all duration-300 ease-in-out text-white hover:text-[#3293e0] hover:tracking-[0.15em]";
+    "tracking-[0.1em] px-[1vh] transition-all duration-300 ease-in-out text-white hover:text-[#39a6ff] hover:tracking-[0.20em]";
   const liStyleActive =
     liStyle +
     " text-[#3293e0] font-bold text-shadow-[0_0_2vh_#97bddc,0_0_2vh_#3293e0]";
 
   return (
     <nav
-      className="h-[10vh] left-0 top-0 z-40 w-screen bg-transparent fixed text-[clamp(2vh,2vw,5vh)]"
+      className="h-[14vh] left-0 top-0 z-40 w-screen bg-transparent fixed text-[clamp(2vh,2vw,5vh)]"
       aria-label="Main Navigation"
     >
-      {/* Gradient Bar Below Navbar (desktop only) */}
       <div className="hidden xl:flex w-[85%] h-[1vh] absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
       <ul className="hidden xl:flex px-5 w-full h-full justify-around items-center list-none">
-        {/* Home logo/placeholder */}
         <li className="h-[80%]">
-          <Link href="/" passHref legacyBehavior>
-            <a aria-label="Home">
+          <Link href="/" aria-label="Home" className="h-[80%]">
               <div className="aspect-[207/169] h-full">
                 <Image
-                  src="/images/home/RAIO_NEGATIVO.png"
+                  src="/images/home/home.webp"
                   alt="Home Logo"
                   width={207}
                   height={169}
-                  priority // Always optimized, above the fold
+                  priority
                   className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
                 />
               </div>
-            </a>
           </Link>
         </li>
         {/* Navigation links */}
@@ -72,7 +66,6 @@ export default function MyNavbar() {
         {/* Right-side spacing/placeholder for layout symmetry */}
         <li className="aspect-[207/169] h-full"></li>
       </ul>
-
       {/* MOBILE NAV */}
       {/* Backdrop Blur Overlay (only visible when menu is open) */}
       <div
@@ -82,7 +75,6 @@ export default function MyNavbar() {
         aria-hidden={!isOpen}
         onClick={() => setIsOpen(false)}
       />
-
       <div className="z-40 relative xl:hidden w-full h-full">
         <div className="h-full px-5 flex items-center justify-between">
           {/* Hamburger Button */}
@@ -105,17 +97,15 @@ export default function MyNavbar() {
             </svg>
           </button>
           {/* Center logo */}
-          <Link href="/" passHref legacyBehavior>
-            <a className="h-full flex items-center" aria-label="Home">
+          <Link href="/" className="h-full flex items-center" aria-label="Home">
               <Image
-                src="/images/home/TLMOTO_PRINCIPAL.png"
+                src="/images/home/tlmoto_principal.webp"
                 alt="Home Logo"
                 width={130}
                 height={70}
                 priority
                 className="h-[70%] w-auto"
               />
-            </a>
           </Link>
         </div>
         {/* Slide-down Mobile Menu */}

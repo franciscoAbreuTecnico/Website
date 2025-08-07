@@ -115,10 +115,10 @@ const AboutSection: React.FC = () => {
                 >
                   {icon}
                 </div>
-                <h3 className="text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-5xl font-semibold mb-3 sm:mb-4 lg:mb-2 text-[#39a6ff]">
+                <h3 className="text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-semibold mb-3 sm:mb-4 lg:mb-2 text-[#39a6ff]">
                   {title}
                 </h3>
-                <p className="text-white text-sm sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-3xl">
+                <p className="text-white text-sm sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-2xl">
                   {text}
                 </p>
               </CardContent>
