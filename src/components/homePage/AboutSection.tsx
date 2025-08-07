@@ -1,25 +1,39 @@
-/* components/homePage/AboutSection.tsx */
 import React from "react";
 import { Card, CardContent } from "../ui/card";
 import { Zap, Target, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+};
 
 const sectionStyle =
-  "tracking-[.17em] h-auto flex flex-col justify-center items-center snap-start " +
-  "pt-16 pb-10 px-10 " +
-  "sm:pt-24 sm:pb-20 sm:min-h-[100vh] " +
-  "relative";
+  "tracking-[.17em] h-auto flex flex-col justify-center items-center pt-16 pb-10 px-10 sm:pt-24 sm:pb-20 sm:min-h-[100vh] relative";
 
 const AboutSection: React.FC = () => {
   return (
-    <section
+    <motion.section
       id="section2"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.35 }}
       className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
     >
       {/* background */}
       <div
         className="
           absolute inset-0
-          bg-[url('/images/home/team_background.png')]
+          bg-[url('/images/home/team_background.webp')]
           bg-cover bg-center
           filter
           -z-10
@@ -39,25 +53,37 @@ const AboutSection: React.FC = () => {
           max-w-6xl sm:max-w-4xl md:max-w-3xl lg:max-w-6xl xl:max-w-full 2xl:max-w-400
         "
       >
-        {/* heading */}
-        <h2 className="text-center text-5xl sm:text-8xl md:text-6xl lg:text-8xl xl:text-9xl 2xl:text-8xl mb-8 text-[#39a6ff]">
-          ABOUT <span className="hero-text">US</span>
-        </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-1 xl:-mb-2" />
-
-        {/* paragraph */}
-        <p
-          className="
-            text-lg sm:text-2xl md:text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl
-            text-white text-muted-foreground
-            mx-auto leading-snug
-            max-w-3xl sm:max-w-4xl md:max-w-5xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-6xl
-            mb-3 sm:mb-5 md:mb-4 lg:mb-50 xl:mb-8 2xl:mb-8
-          "
+        {/* Animated Hero Area */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
         >
-          We are a passionate team of engineering students from the University
-          of Lisbon, committed to advancing electric motorcycle technology.
-        </p>
+          <motion.h2
+            className="text-center text-5xl sm:text-8xl md:text-6xl lg:text-8xl xl:text-9xl 2xl:text-8xl mb-8 text-[#39a6ff]"
+            variants={itemVariants}
+          >
+            ABOUT <span className="hero-text">US</span>
+          </motion.h2>
+          <motion.div
+            className="w-20 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-1 xl:-mb-2"
+            variants={itemVariants}
+          />
+          <motion.p
+            className="
+              text-lg sm:text-2xl md:text-2xl lg:text-4xl xl:text-3xl 2xl:text-4xl
+              text-white text-muted-foreground
+              mx-auto leading-snug
+              max-w-3xl sm:max-w-4xl md:max-w-5xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-6xl
+              mb-3 sm:mb-5 md:mb-4 lg:mb-50 xl:mb-8 2xl:mb-8
+            "
+            variants={itemVariants}
+          >
+            We are a passionate team of engineering students from the University
+            of Lisbon, committed to advancing electric motorcycle technology.
+          </motion.p>
+        </motion.div>
 
         {/* feature cards */}
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-10 sm:gap-6 md:gap-3 lg:gap-4 xl:gap-12 2xl:gap-12 mb-6 sm:mb-8 md:mb-12 lg:mb-5 xl:mb-12 2xl:mb-12 mt-10 sm:mt-12 md:mt-10 lg:mt-8">
@@ -137,8 +163,9 @@ const AboutSection: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 export default AboutSection;
+

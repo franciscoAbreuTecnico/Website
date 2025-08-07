@@ -1,12 +1,25 @@
-/* eslint-disable prettier/prettier */
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import { Trophy, MapPin, Calendar, Users, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
+};
 
 const sectionStyle =
-  "tracking-[.17em] h-auto flex flex-col justify-center items-center snap-start " +
-  "pt-16 pb-10 px-10 " +
+  "tracking-[.17em] h-auto flex flex-col justify-center items-center pt-16 pb-10 px-10 " +
   "sm:pt-24 sm:pb-20 sm:min-h-[100vh] " +
   "md:pt-36 md:pb-28 md:min-h-[90vh] " +
   "lg:pt-24 lg:pb-28 lg:min-h-[100vh] " +
@@ -38,36 +51,64 @@ const CompetitionsSection = () => {
   ];
 
   return (
-    <section
+    <motion.section
       id="section3"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
       className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
-      style={{ backgroundImage: `url('/images/home/aragon_background.jpg')` }}
+      style={{ backgroundImage: `url('/images/home/aragon_background.webp')` }}
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
-
+      <div
+        className="
+          absolute left-0 right-0 bottom-0 z-10 pointer-events-none
+        "
+        style={{
+          height: '12%',
+          background:
+            'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 65%, #000 98%, #000 100%)'
+        }}
+      />
       <div className="max-w-[95rem] mx-auto px-4 sm:px-8 lg:px-12 2xl:px-6">
-        <div className="relative z-10 max-w-7xl mx-auto px-0 text-center space-y-4 lg:space-y-6">
-          <h2 className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-8xl text-[#39a6ff]">
+        <motion.div
+          className="relative z-10 max-w-7xl mx-auto px-0 text-center space-y-4 lg:space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+        >
+          <motion.h2
+            className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-8xl text-[#39a6ff]"
+            variants={itemVariants}
+          >
             <span className="hero-text">COMPETITIONS</span>
-          </h2>
-          <div className="w-18 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-2" />
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground 2xl:max-w-full max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10">
+          </motion.h2>
+          <motion.div
+            className="w-18 h-1 bg-gradient-to-r from-electric to-electric-glow mx-auto -mb-2"
+            variants={itemVariants}
+          />
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground 2xl:max-w-full max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10"
+            variants={itemVariants}
+          >
             The TLMoto is involved in major competitions that challenge our engineering skills
             and validate our electric motorcycle technologies against the best in the world.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
-          {/* Competition Image */}
           <div className="animate-slide-in-left">
             <div className="relative rounded-2xl overflow-hidden group">
               <Image
-                src="/images/home/aragon_background.jpg"
+                src="/images/home/aragon_background.webp"
                 width={600}
                 height={450}
                 alt="Racing Competition"
                 className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
+                quality={60}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
@@ -158,7 +199,7 @@ const CompetitionsSection = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
