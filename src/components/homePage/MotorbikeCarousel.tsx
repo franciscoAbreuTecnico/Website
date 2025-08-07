@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/button';
+import Image from "next/image";
 
 interface MotorbikeData {
   id: number;
@@ -24,7 +25,7 @@ const motorbikes: MotorbikeData[] = [
     year: "2014",
     description:
       "Our first prototype, a combustion-powered racing motorcycle that marked the beginning of our journey in competitive motorsports.",
-    image: "/images/garage/01.jpg",
+    image: "/images/garage/01.webp",
     specs: {
       power: "85 HP",
       weight: "125 kg",
@@ -38,7 +39,7 @@ const motorbikes: MotorbikeData[] = [
     year: "2018",
     description:
       "The transition to electric power. This prototype represents our commitment to sustainable racing technology and innovation.",
-    image: "/images/garage/02.jpg",
+    image: "/images/garage/02.webp",
     specs: {
       power: "75 kW",
       weight: "110 kg",
@@ -52,7 +53,7 @@ const motorbikes: MotorbikeData[] = [
     year: "2021",
     description:
       "Our latest electric racing machine featuring cutting-edge technology and aerodynamic design for maximum performance.",
-    image: "/images/garage/03.jpg",
+    image: "/images/garage/03.webp",
     specs: {
       power: "90 kW",
       weight: "105 kg",
@@ -89,15 +90,18 @@ export const MotorbikeCarousel = () => {
         >
           {motorbikes.map((motorbike) => (
             <div key={motorbike.id} className="w-full flex-shrink-0">
-              {/* Responsive grid: col on mobile, row on desktop */}
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-4 p-4 sm:p-6 lg:p-12 2xl:max-w-1xl">
-                {/* Image: center always */}
                 <div className="relative w-full max-w-[240px] mx-auto group">
                   <div className="relative w-full h-[280px] sm:h-[350px] md:h-[400px] overflow-hidden rounded-xl bg-gradient-to-t from-[#39a6ff]/20 to-transparent flex items-center justify-center">
-                    <img
+                    <Image
                       src={motorbike.image}
                       alt={motorbike.name}
-                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      style={{ objectFit: "contain" }}
+                      sizes="(max-width: 768px) 80vw, 240px"
+                      quality={60}
+                      loading="lazy"
+                      className="transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-background/60 to-transparent pointer-events-none" />
                   </div>
@@ -105,7 +109,6 @@ export const MotorbikeCarousel = () => {
                     {motorbike.year}
                   </div>
                 </div>
-                {/* Text: center on mobile, left on desktop */}
                 <div className="flex flex-col justify-center items-center lg:items-start space-y-6 text-base md:text-lg lg:text-xl 2xl:text-2xl text-center lg:text-left">
                   <div>
                     <h3 className="text-3xl lg:text-4xl font-bold text-[#39a6ff] mb-2">
@@ -181,3 +184,5 @@ export const MotorbikeCarousel = () => {
     </div>
   );
 };
+
+export default MotorbikeCarousel;
