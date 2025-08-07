@@ -39,13 +39,11 @@ export const PrototypesSection = () => {
       style={{ backgroundImage: `url('/images/home/prototype_background.webp')` }}
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
-      <div className="max-w-[95rem] mx-auto px-4 sm:px-8 lg:px-12 2xl:px-6">
+
+      <div className="max-w-[95rem] mx-auto px-4 sm:px-8 lg:px-12 2xl:px-6 relative z-10">
         <motion.div
-          className="relative z-10 max-w-7xl mx-auto px-0 text-center space-y-4 lg:space-y-6"
+          className="max-w-7xl mx-auto px-0 text-center space-y-4 lg:space-y-6"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
         >
           <motion.h2
             className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-8xl text-[#39a6ff]"
@@ -58,7 +56,7 @@ export const PrototypesSection = () => {
             variants={itemVariants}
           />
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground 2xl:max-w-full max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10"
+            className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10"
             variants={itemVariants}
           >
             From our first combustion prototype to our latest electric racing machines,
@@ -67,6 +65,16 @@ export const PrototypesSection = () => {
         </motion.div>
         <MotorbikeCarousel />
       </div>
+
+      <div
+        className="absolute inset-x-0 bottom-0 h-24 z-20 pointer-events-none"
+        style={{
+          background: 
+            "linear-gradient(to top, #000 20%, rgba(0,0,0,0) 80%)"
+        }}
+      />
     </motion.section>
   );
 };
+
+export default PrototypesSection;

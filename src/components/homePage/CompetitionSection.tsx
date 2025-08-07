@@ -104,9 +104,9 @@ const CompetitionsSection = () => {
               <Image
                 src="/images/home/aragon_background.webp"
                 width={600}
-                height={450}
+                height={500}
                 alt="Racing Competition"
-                className="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
                 quality={60}
                 loading="lazy"
               />
@@ -191,10 +191,10 @@ const CompetitionsSection = () => {
               key={idx}
               className="text-center p-4 bg-[#16263c]/70 backdrop-blur-sm rounded-lg border border-[#39a6ff]/25 hover:border-[#39a6ff]/60 transition-all duration-300 hover:scale-105 shadow-lg shadow-black/30"
             >
-              <div className="text-2xl md:text-4xl text-white mb-1 drop-shadow">
+              <div className="lg:text-3xl md:text-4xl xl:text-2xl 2xl:text-2xl text-white mb-1 drop-shadow">
                 {num}
               </div>
-              <div className="text-base md:text-2xl text-blue-100">{label}</div>
+              <div className="lg:text-base xl:text-base 2xl:text-base md:text-1xl text-blue-100">{label}</div>
             </div>
           ))}
         </div>

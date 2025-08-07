@@ -1,30 +1,83 @@
-/* components/homePage/SponsorSection.tsx */
-import React from "react";
-import { Card, CardContent } from "../ui/card";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
-const sectionStyle = "h-screen text-white flex flex-col justify-center items-center snap-start p-8";
+const sectionStyle =
+  "h-auto flex flex-col justify-center items-center pt-16 pb-10 px-4 min-h-[120vh] relative overflow-hidden";
 
-const sponsors = [
-  { name: "ACME Corp", logo: "/images/sponsors/acme.png" },
-  { name: "Volt Industries", logo: "/images/sponsors/volt.png" },
-  { name: "GreenRide", logo: "/images/sponsors/greenride.png" },
-];
+export const SponsorSection = () => {
+  return (
+    <motion.section
+      id="section-sponsors"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      viewport={{ once: false, amount: 0.5 }}
+      className={sectionStyle}
+      style={{
+        backgroundColor: "#000",
+      }}
+    >
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/images/blue_black_background.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
 
-export const SponsorSection: React.FC = () => (
-    <section id="section5" className={`bg-gray-800 ${sectionStyle}`}>
-    <h2 className="text-4xl mb-6">Our Sponsors</h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-4xl">
-      {sponsors.map(({ name, logo }) => (
-        <Card
-          key={name}
-          className="flex flex-col items-center bg-gray-800 border border-gray-700 shadow-lg p-4 hover:scale-105 transition-transform"
-        >
-          <img src={logo} alt={`${name} logo`} className="h-24 object-contain mb-4" />
-          <CardContent>
-            <h3 className="text-2xl font-bold text-center">{name}</h3>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  </section>
-);
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(" +
+            "to bottom, " +
+            "#000 0%, " +
+            "#000 1%, " +
+            "rgba(0,0,0,0.5) 8%, " +
+            "rgba(0,0,0,0) 85%" +
+            ")",
+        }}
+      />
+
+      <Image
+        src="/images/home/sponsors_background.webp"
+          alt="Sponsors"
+          className="
+            absolute top-1/2 left-1/2
+            -translate-x-1/2 -translate-y-1/2
+            w-[95vw] max-w-2xl 
+            sm:max-w-3xl
+            md:max-w-4xl
+            lg:max-w-5xl
+            xl:max-w-6xl
+            2xl:max-w-7xl
+            h-auto
+            pointer-events-none select-none z-20
+          "
+          width={1920}
+          height={1080}
+          style={{
+            objectFit: "contain",
+            objectPosition: "center",
+          }}
+          draggable={false}
+        />
+
+      <div
+        className="absolute inset-x-0 bottom-0 h-24 z-30 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(" +
+            "to top, " +
+            "#000 0%, " +
+            "rgba(0,0,0,0) 80%" +
+            ")",
+        }}
+      />
+    </motion.section>
+  );
+};
+
+export default SponsorSection;
