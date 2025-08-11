@@ -21,7 +21,9 @@ export default function MyNavbar() {
   useEffect(() => {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const isActive = (href: string) =>
@@ -29,8 +31,7 @@ export default function MyNavbar() {
   const liStyle =
     "tracking-[0.1em] px-[1vh] transition-all duration-300 ease-in-out text-white hover:text-[#39a6ff] hover:tracking-[0.20em]";
   const liStyleActive =
-    liStyle +
-    " text-[#3293e0] font-bold text-shadow-[0_0_2vh_#97bddc,0_0_2vh_#3293e0]";
+    liStyle + " text-[#3293e0] font-bold text-shadow-[0_0_2vh_#97bddc,0_0_2vh_#3293e0]";
 
   return (
     <nav
@@ -41,16 +42,16 @@ export default function MyNavbar() {
       <ul className="hidden xl:flex px-5 w-full h-full justify-around items-center list-none">
         <li className="h-[80%]">
           <Link href="/" aria-label="Home" className="h-[80%]">
-              <div className="aspect-[207/169] h-full">
-                <Image
-                  src="/images/home/home.webp"
-                  alt="Home Logo"
-                  width={207}
-                  height={169}
-                  priority
-                  className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
-                />
-              </div>
+            <div className="aspect-[207/169] h-full">
+              <Image
+                src="/images/home/home.webp"
+                alt="Home Logo"
+                width={207}
+                height={169}
+                priority
+                className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
+              />
+            </div>
           </Link>
         </li>
         {NAV_LINKS.map(({ path, label }) => (
@@ -83,9 +84,13 @@ export default function MyNavbar() {
               width={80}
               height={80}
               fill="none"
-              stroke="currentColor"
+              stroke="#ffffff"
               strokeWidth={2}
-              className={isOpen ? "rotate-90 transition-transform duration-300" : "rotate-0 transition-transform duration-300"}
+              className={
+                isOpen
+                  ? "rotate-90 transition-transform duration-300"
+                  : "rotate-0 transition-transform duration-300"
+              }
               viewBox="0 0 24 24"
             >
               <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" />
@@ -93,19 +98,19 @@ export default function MyNavbar() {
           </button>
           {/* Center logo */}
           <Link href="/" className="h-full flex items-center" aria-label="Home">
-              <Image
-                src="/images/home/tlmoto_principal.webp"
-                alt="Home Logo"
-                width={130}
-                height={70}
-                priority
-                className="h-[70%] w-auto"
-              />
+            <Image
+              src="/images/home/tlmoto_principal.webp"
+              alt="Home Logo"
+              width={130}
+              height={70}
+              priority
+              className="h-[70%] w-auto"
+            />
           </Link>
         </div>
         {/* Slide-down Mobile Menu */}
         <ul
-          className={`absolute left-0 text-4xl gap-10 right-0 top-full z-40 px-7 py-13 rounded-b-2xl flex flex-col list-none gap-14 transition-all duration-400 ${
+          className={`absolute left-0 text-3xl right-0 top-full z-40 px-7 py-13 rounded-b-2xl flex flex-col list-none gap-5 transition-all duration-400 ${
             isOpen
               ? "opacity-100 pointer-events-auto translate-y-0"
               : "opacity-0 pointer-events-none -translate-y-3"
@@ -127,6 +132,6 @@ export default function MyNavbar() {
     </nav>
   );
   function toggleMenu() {
-    setIsOpen((prev) => !prev);
+    setIsOpen(prev => !prev);
   }
 }
