@@ -1,7 +1,7 @@
 import { getImages } from "../../components/utils/FetchFolderImages";
 import MyDefaultPage from "../../components/DefaultPage";
 import { timelineData, TimelineDataItem } from "@/src/components/textContent/TimelineSectionTexts";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import TiltedCard from "@/src/components/extras/TiltedCard";
@@ -45,7 +45,6 @@ export default function History({
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <MyDefaultPage>
       <div className="flex flex-col">
@@ -80,7 +79,7 @@ export default function History({
         </div>
 
         {/* Timeline Years - Mobile */}
-        <div className="flex md:hidden items-center justify-center gap-4 my-4 mt-35">
+        <div className="flex items-center text-white text-5xl justify-center gap-4 my-4 mt-35 md:hidden">
           {/* Previous Year */}
           <button
             onClick={() => {
@@ -88,35 +87,14 @@ export default function History({
               if (idx > 0) router.push(`/history/${years[idx - 1]}`);
             }}
             disabled={selectedYear === years[0]}
-            className="text-2xl text-white disabled:opacity-40"
+            className="disabled:opacity-40"
           >
             &lt;
           </button>
 
           {/* Dropdown for Year Selection */}
           <div className="relative">
-            <button
-              onClick={() => setShowDropdown(prev => !prev)}
-              className="bg-[#39a6ff] text-white px-4 py-2 rounded-md font-bold"
-            >
-              {selectedYear}
-            </button>
-            {showDropdown && (
-              <div className="absolute top-full mt-2 bg-white shadow-lg rounded-md z-20">
-                {years.map(year => (
-                  <div
-                    key={year}
-                    onClick={() => {
-                      setShowDropdown(false);
-                      router.push(`/history/${year}`);
-                    }}
-                    className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-                  >
-                    {year}
-                  </div>
-                ))}
-              </div>
-            )}
+            <text>{selectedYear}</text>
           </div>
 
           {/* Next Year */}
@@ -126,7 +104,7 @@ export default function History({
               if (idx < years.length - 1) router.push(`/history/${years[idx + 1]}`);
             }}
             disabled={selectedYear === years[years.length - 1]}
-            className="text-2xl text-white disabled:opacity-40"
+            className="disabled:opacity-40"
           >
             &gt;
           </button>
@@ -134,26 +112,26 @@ export default function History({
 
         {/* White Box for Events */}
         <motion.div
-          className="md:mt-10 relative top-[6.32vh] w-[95%] sm:w-4/5 lg:w-2/3 bg-white/85 text-black p-6 sm:p-10 lg:p-12 rounded-lg shadow-lg mx-auto text-center animate-fadeIn"
+          className="relative w-[85%] bg-white/85 text-black p-6 rounded-lg shadow-lg mx-auto text-center animate-fadeIn md:top-[10vh] md:w-[65%] lg:p-12 "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           {timelineData[selectedYear].map((item: TimelineDataItem) => (
             <div key={item.title} className="mb-15">
-              <h3 className="text-3xl font-bold mb-2">{item.title}</h3>
-              <p className="mb-4">{item.description}</p>
-              <div className="flex flex-wrap justify-center gap-4 sm:grid sm:grid-cols-2 lg:flex justify-items-center">
+              <h3 className="text-4xl font-bold mb-2">{item.title}</h3>
+              <p className="text-xl mb-4">{item.description}</p>
+              <div className="grid grid-cols-2 gap-5 justify-items-center md:grid-cols-3 2xl:grid-cols-4 2xl:justify-items-stretch">
                 {yearData[item.imageFolder].map((element: string) => (
                   <TiltedCard
                     key={element}
                     imageSrc={element}
-                    containerHeight="clamp(100px, 20vw, 200px)"
-                    containerWidth="clamp(100px, 20vw, 200px)"
-                    imageHeight="clamp(100px, 20vw, 200px)"
-                    imageWidth="clamp(100px, 20vw, 200px)"
+                    containerHeight="clamp(125px, 25vw, 250px)"
+                    containerWidth="clamp(125px, 25vw, 250px)"
+                    imageHeight="clamp(125px, 25vw, 250px)"
+                    imageWidth="clamp(125px, 25vw, 250px)"
                     rotateAmplitude={12}
-                    scaleOnHover={1.15}
+                    scaleOnHover={1.2}
                     showMobileWarning={false}
                     showTooltip={false}
                     displayOverlayContent={true}

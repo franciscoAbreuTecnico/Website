@@ -12,31 +12,31 @@ const SOCIALS = [
     href: "https://www.facebook.com/tlmotostudent",
     Icon: IoLogoFacebook,
     label: "Facebook",
-    hover: "hover:text-blue-500"
+    hover: "hover:text-blue-500",
   },
   {
     href: "https://www.instagram.com/tlmotostudent",
     Icon: IoLogoInstagram,
     label: "Instagram",
-    hover: "hover:text-pink-500"
+    hover: "hover:text-pink-500",
   },
   {
     href: "https://www.linkedin.com/company/tlmoto",
     Icon: IoLogoLinkedin,
     label: "LinkedIn",
-    hover: "hover:text-blue-700"
+    hover: "hover:text-blue-700",
   },
   {
     href: "https://www.tiktok.com/@tlmoto",
     Icon: IoLogoTiktok,
     label: "TikTok",
-    hover: "hover:text-gray-300"
+    hover: "hover:text-gray-300",
   },
   {
     href: "https://www.youtube.com/@tlmoto689",
     Icon: IoLogoYoutube,
     label: "YouTube",
-    hover: "hover:text-red-600"
+    hover: "hover:text-red-600",
   },
 ];
 
