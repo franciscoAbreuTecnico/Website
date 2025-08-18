@@ -44,16 +44,16 @@ export default function MyFooter() {
   return (
     <footer
       id="section_footer"
-      className="fixed bottom-0 left-0 w-full text-white py-4 px-4 md:px-8 z-30"
+      className="absolute bottom-0 left-0 w-full text-white py-[1vh] px-[1vh] z-30 md:px-[2vh] md:py-[2vh]"
       aria-label="Site Footer"
     >
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 max-w-screen-2xl mx-auto">
+      <div className="flex flex-col justify-between items-center gap-[0.25vh] max-w-screen-2xl mx-auto md:flex-row">
         <div className="text-center md:text-left">
-          <p className="text-xs md:text-base tracking-widest font-semibold uppercase">
+          <p className="text-s tracking-widest font-semibold uppercase md:text-m xl:text-xl">
             RACING TOWARDS THE FUTURE
           </p>
         </div>
-        <div className="flex justify-center md:justify-end md:items-center gap-3 md:gap-6">
+        <div className="flex justify-center md:justify-end gap-[0.75vh] md:items-center md:gap-[1.5vh]">
           {SOCIALS.map(({ href, Icon, label, hover }) => (
             <Link
               key={href}

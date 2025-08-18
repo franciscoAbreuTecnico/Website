@@ -44,38 +44,175 @@ export default function History({
   const years = Object.keys(timelineData).map(String);
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
-  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
   return (
     <MyDefaultPage>
-      <div className="flex flex-col">
+      <div className="flex flex-col mb-[5%]">
         {/* Timeline Years */}
         <div
           ref={timelineRef}
-          className="hidden md:flex justify-evenly items-center mt-35 relative w-2/3 mx-auto
-    before:content-[''] before:absolute before:w-full before:h-1 
-    before:bg-gradient-to-r before:from-[#39a6ff] before:to-white 
-    before:top-[14.7vh] before:z-0"
+          className="hidden md:flex items-center mt-[10%] relative w-2/3 mx-auto
+    "
         >
-          {years.map((year, index) => (
-            <motion.button
-              key={index}
-              ref={el => {
-                buttonRefs.current[index] = el;
-              }}
-              className={`border-4 border-white rounded-full text-white font-bold relative transition-all duration-300 ease-in-out tracking-[1.7px] z-10 mr-[-20px]
-      w-[65px] h-[65px] text-lg
-      after:content-[''] after:absolute after:w-2 after:h-2 after:bg-white after:rounded-full after:top-[12vh] after:left-1/2 after:-translate-x-1/2
-      ${
-        selectedYear === year
-          ? "bg-[#39a6ff] shadow-[0_0_10px_white] scale-110 after:bg-sky-400"
-          : "opacity-60 hover:bg-[#39a6ff] hover:shadow-[0_0_10px_white] hover:scale-110"
-      }
-    `}
-              onClick={() => router.push(`/history/${year}`)}
-            >
-              {year}
-            </motion.button>
-          ))}
+          {/* Horizontal line on top */}
+          <div className="absolute top-0 left-0 w-full h-[0.5vh] bg-sky-500" />
+
+          {(() => {
+            const idx = years.indexOf(selectedYear);
+
+            return (
+              <div className="grid grid-cols-11 items-start w-full">
+                {/* Prev year (col 1) */}
+                <div className="flex justify-center">
+                  <motion.button
+                    className="flex flex-col items-center group cursor-pointer"
+                    onClick={() => idx > 0 && router.push(`/history/${years[idx - 1]}`)}
+                  >
+                    {idx > 0 ? (
+                      <>
+                        <div className="w-[0.5vh] h-[7.5vh] bg-sky-400 group-hover:bg-sky-400 transition-colors" />
+                        <motion.div
+                          className="mt-2 text-xl font-bold tracking-wide text-white opacity-60 
+              group-hover:text-sky-400 group-hover:opacity-100 transition-all"
+                        >
+                          {years[idx - 1]}
+                        </motion.div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="w-[0.5vh] h-[7.5vh] opacity-0" />
+                        <span className="mt-2 text-xl font-bold opacity-0">-</span>
+                      </>
+                    )}
+                  </motion.button>
+                </div>
+
+                {/* Ticks col 2 */}
+                <div className="flex justify-center">
+                  {idx > 0 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" /> // placeholder
+                  )}
+                </div>
+
+                {/* Ticks col 3 */}
+                <div className="flex justify-center">
+                  {idx > 0 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" />
+                  )}
+                </div>
+
+                {/* Ticks col 4 */}
+                <div className="flex justify-center">
+                  {idx > 0 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" /> // placeholder
+                  )}
+                </div>
+
+                {/* Ticks col 5 */}
+                <div className="flex justify-center">
+                  {idx > 0 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" /> // placeholder
+                  )}
+                </div>
+
+                {/* Current year (col 6) */}
+                <div className="flex justify-center">
+                  <motion.div className="flex flex-col items-center">
+                    <div className="w-[0.5vh] h-[10vh] bg-sky-400" />
+                    <motion.div className="mt-2 text-xl font-bold tracking-wide text-sky-400 scale-125">
+                      {years[idx]}
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Ticks col 7 */}
+                <div className="flex justify-center">
+                  {idx < years.length - 1 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" />
+                  )}
+                </div>
+
+                {/* Ticks col 8 */}
+                <div className="flex justify-center">
+                  {idx < years.length - 1 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" />
+                  )}
+                </div>
+
+                {/* Ticks col 9 */}
+                <div className="flex justify-center">
+                  {idx < years.length - 1 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" />
+                  )}
+                </div>
+
+                {/* Ticks col 10 */}
+                <div className="flex justify-center">
+                  {idx < years.length - 1 ? (
+                    <div className="flex flex-col items-center gap-y-2">
+                      <div className="w-[0.5vh] h-[5vh] bg-sky-500 opacity-50" />
+                    </div>
+                  ) : (
+                    <div className="h-20" />
+                  )}
+                </div>
+
+                {/* Next year (col 11) */}
+                <div className="flex justify-center">
+                  <motion.button
+                    className="flex flex-col items-center group cursor-pointer"
+                    onClick={() =>
+                      idx < years.length - 1 && router.push(`/history/${years[idx + 1]}`)
+                    }
+                  >
+                    {idx < years.length - 1 ? (
+                      <>
+                        <div className="w-[0.5vh] h-[7.5vh] bg-sky-400 group-hover:bg-sky-400 transition-colors" />
+                        <motion.div
+                          className="mt-2 text-xl font-bold tracking-wide text-white opacity-60 
+              group-hover:text-sky-400 group-hover:opacity-100 transition-all"
+                        >
+                          {years[idx + 1]}
+                        </motion.div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="w-[0.5vh] h-[7.5vh] opacity-0" />
+                        <span className="mt-2 text-xl font-bold opacity-0">-</span>
+                      </>
+                    )}
+                  </motion.button>
+                </div>
+              </div>
+            );
+          })()}
         </div>
 
         {/* Timeline Years - Mobile */}
@@ -92,7 +229,6 @@ export default function History({
             &lt;
           </button>
 
-          {/* Dropdown for Year Selection */}
           <div className="relative">
             <text>{selectedYear}</text>
           </div>
@@ -112,26 +248,26 @@ export default function History({
 
         {/* White Box for Events */}
         <motion.div
-          className="relative w-[85%] bg-white/85 text-black p-6 rounded-lg shadow-lg mx-auto text-center animate-fadeIn md:top-[10vh] md:w-[65%] lg:p-12 "
+          className="relative w-[85%] bg-white/85 text-black p-6 rounded-lg shadow-lg mx-auto text-center animate-fadeIn mb-[7.5vh] md:mt-[5vh] md:mb-[0vh] md:w-[65%] lg:p-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           {timelineData[selectedYear].map((item: TimelineDataItem) => (
-            <div key={item.title} className="mb-15">
-              <h3 className="text-4xl font-bold mb-2">{item.title}</h3>
-              <p className="text-xl mb-4">{item.description}</p>
-              <div className="grid grid-cols-2 gap-5 justify-items-center md:grid-cols-3 2xl:grid-cols-4 2xl:justify-items-stretch">
+            <div key={item.title} className="mb-[2vh]">
+              <h3 className="text-4xl font-bold mb-[0.125vh]">{item.title}</h3>
+              <p className="text-xl mb-[2vh]">{item.description}</p>
+              <div className="grid grid-cols-2 gap-[1.5vh] justify-items-center md:grid-cols-3 lg:grid-cols-4">
                 {yearData[item.imageFolder].map((element: string) => (
                   <TiltedCard
                     key={element}
                     imageSrc={element}
-                    containerHeight="clamp(125px, 25vw, 250px)"
-                    containerWidth="clamp(125px, 25vw, 250px)"
-                    imageHeight="clamp(125px, 25vw, 250px)"
-                    imageWidth="clamp(125px, 25vw, 250px)"
+                    containerHeight="clamp(100px, 30vw, 200px)"
+                    containerWidth="clamp(100px, 30vw, 200px)"
+                    imageHeight="clamp(100px, 30vw, 200px)"
+                    imageWidth="clamp(100px, 30vw, 200px)"
                     rotateAmplitude={12}
-                    scaleOnHover={1.2}
+                    scaleOnHover={1.5}
                     showMobileWarning={false}
                     showTooltip={false}
                     displayOverlayContent={true}

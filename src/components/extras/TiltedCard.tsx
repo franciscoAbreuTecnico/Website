@@ -124,12 +124,18 @@ export default function TiltedCard({
   }
 
   function handleMouseEnter() {
+    if (ref.current) {
+      ref.current.style.zIndex = "50"; // bring card to front
+    }
     scale.set(scaleOnHover);
 
     opacity.set(1);
   }
 
   function handleMouseLeave() {
+    if (ref.current) {
+      ref.current.style.zIndex = "0"; // reset when leaving
+    }
     opacity.set(0);
 
     scale.set(1);
