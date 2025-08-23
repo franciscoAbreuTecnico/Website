@@ -2,9 +2,9 @@ import { useState } from "react";
 import { faqs } from "@/src/components/textContent/FAQText";
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = index => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -15,12 +15,14 @@ export default function FAQ() {
         <div key={index} className="border-b  border-opacity-30 border-white py-2.5">
           <button
             onClick={() => toggleFAQ(index)}
-            className={`w-full text-left flex  font-bold justify-between items-center  p-2.5 text-lg md:text-xl text-white hover:text-[#39a6ff] transition-colors ${openIndex === index ? 'text-[#39a6ff]' : ''}`}
+            className={`w-full text-left flex  font-bold justify-between items-center  p-2.5 text-lg md:text-xl text-white hover:text-[#39a6ff] transition-colors ${openIndex === index ? "text-[#39a6ff]" : ""}`}
           >
             {faq.question}
             <span className="text-xl">{openIndex === index ? "-" : "+"}</span>
           </button>
-          {openIndex === index && <p className="mt-2.5 text-base text-white/80 pl-2.5">{faq.answer}</p>}
+          {openIndex === index && (
+            <p className="mt-2.5 text-base text-white/80 pl-2.5">{faq.answer}</p>
+          )}
         </div>
       ))}
     </div>

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Newsletter {
   name: string;
@@ -17,7 +18,6 @@ interface MyNewsCoverflowEffectProps {
 const availableYears = ["Complete Archive", "2021", "2022", "2023", "2024", "2025"];
 
 export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverflowEffectProps) {
-  const carouselRef = useRef<HTMLDivElement>(null);
   const [selectedYear, setSelectedYear] = useState("2025");
   const [newsletters, setNewsletters] = useState<Newsletter[]>([]);
   const [isMobile, setIsMobile] = useState(false);
@@ -32,7 +32,8 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
   // Textos em português e inglês
   const texts = {
     pt: {
-      mainTitle: "A newsletter de Março está repleta das mais recentes informações, entrevistas e dicas técnicas, sendo uma leitura obrigatória para te manteres atualizado. Não percas as futuras edições e fica a conhecer todo o trabalho realizado pela nossa equipa.",
+      mainTitle:
+        "A newsletter de Março está repleta das mais recentes informações, entrevistas e dicas técnicas, sendo uma leitura obrigatória para te manteres atualizado. Não percas as futuras edições e fica a conhecer todo o trabalho realizado pela nossa equipa.",
       subscribeButton: "Subscrever a nossa Newsletter",
       allNewsletters: "Todas as Newsletters",
       completeArchive: "Arquivo completo organizado por ano",
@@ -40,10 +41,11 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
       tapToView: "Toque para visualizar",
       latestNewsletter: "Newsletter Mais Recente",
       newsletter: "Newsletter",
-      closeModal: "Fechar modal"
+      closeModal: "Fechar modal",
     },
     en: {
-      mainTitle: "The March 2025 newsletter is packed with the latest insights, interviews, and expert tips, it's a must-read to stay ahead. Don't miss out on future editions and stay updated on all the work done by the team.",
+      mainTitle:
+        "The March 2025 newsletter is packed with the latest insights, interviews, and expert tips, it's a must-read to stay ahead. Don't miss out on future editions and stay updated on all the work done by the team.",
       subscribeButton: "Subscribe to our Newsletter",
       allNewsletters: "All Newsletters",
       completeArchive: "Complete archive organized by year",
@@ -51,161 +53,14 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
       tapToView: "Tap to view",
       latestNewsletter: "Latest Newsletter",
       newsletter: "Newsletter",
-      closeModal: "Close modal"
-    }
+      closeModal: "Close modal",
+    },
   };
 
   // Estados para o modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState("");
   const [modalTitle, setModalTitle] = useState("");
-
-  // Função para combinar todas as newsletters
-  const combineAllNewsletters = (): Newsletter[] => {
-    const newsletterData: { [key: string]: { name: string; month: number; link: string; linkPt?: string }[] } = {
-      2021: [
-        {
-          name: "january.png",
-          month: 1,
-          link: "https://online.pubhtml5.com/rzzqg/jggt/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/mrmn/",
-        },
-        {
-          name: "may.png",
-          month: 5,
-          link: "https://online.pubhtml5.com/rzzqg/pdtr/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/lrhz/",
-        },
-        {
-          name: "august.png",
-          month: 8,
-          link: "https://online.pubhtml5.com/rzzqg/swnv/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/xdfz/",
-        },
-        {
-          name: "november.png",
-          month: 11,
-          link: "https://online.pubhtml5.com/rzzqg/rfgg/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/kjkg/",
-        },
-      ],
-      2022: [
-        {
-          name: "february.png",
-          month: 2,
-          link: "https://online.pubhtml5.com/rzzqg/sytw/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/ooky/",
-        },
-        {
-          name: "may.png",
-          month: 5,
-          link: "https://online.pubhtml5.com/rzzqg/vpnh/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/ynqz/",
-        },
-        {
-          name: "august.png",
-          month: 8,
-          link: "https://online.pubhtml5.com/rzzqg/wpko/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/gwde/",
-        },
-        {
-          name: "november.png",
-          month: 11,
-          link: "https://online.pubhtml5.com/rzzqg/whql/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/aafy/",
-        },
-      ],
-      2023: [
-        {
-          name: "march.png",
-          month: 3,
-          link: "https://online.pubhtml5.com/rzzqg/lzir/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/khio/",
-        },
-        {
-          name: "june.png",
-          month: 6,
-          link: "https://online.pubhtml5.com/rzzqg/jjgo/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/yikm/",
-        },
-        {
-          name: "october.png",
-          month: 10,
-          link: "https://online.pubhtml5.com/rzzqg/mctf/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/lsxd/",
-        },
-        {
-          name: "december.png",
-          month: 12,
-          link: "https://online.pubhtml5.com/rzzqg/xzpj/",
-          linkPt: "https://online.pubhtml5.com/rzzqg/puhg/",
-        },
-      ],
-      2024: [
-        {
-          name: "march.png",
-          month: 3,
-          link: "https://online.pubhtml5.com/ffstg/javr/",
-          linkPt: "https://online.pubhtml5.com/ffstg/aqvm/",
-        },
-        {
-          name: "june.png",
-          month: 6,
-          link: "https://online.pubhtml5.com/qlvfj/teux/",
-          linkPt: "https://online.pubhtml5.com/qlvfj/prrj/",
-        },
-        {
-          name: "september.png",
-          month: 9,
-          link: "https://online.pubhtml5.com/qlvfj/svrs/",
-          linkPt: "https://online.pubhtml5.com/qlvfj/xaiw/",
-        },
-        {
-          name: "december.jpg",
-          month: 12,
-          link: "https://online.pubhtml5.com/qlvfj/gzzc/",
-          linkPt: "https://online.pubhtml5.com/qlvfj/zffw/",
-        },
-      ],
-      2025: [
-        {
-          name: "march.jpg",
-          month: 3,
-          link: "https://online.pubhtml5.com/qlvfj/ccjc/",
-          linkPt: "https://online.pubhtml5.com/qlvfj/sjsg/",
-        },
-      ],
-    };
-
-    if (selectedYear === "Complete Archive") {
-      const allNewsletters: Newsletter[] = [];
-      Object.keys(newsletterData).forEach(year => {
-        newsletterData[year].forEach(newsletter => {
-          allNewsletters.push({
-            ...newsletter,
-            year: year,
-            fullPath: `/images/newsletter/${year}/${newsletter.name}`,
-            link: newsletter.link, // Usar o link específico de cada newsletter
-          });
-        });
-      });
-
-      // Ordenar por ano (mais recente primeiro) e depois por mês (mais recente primeiro)
-      return allNewsletters.sort((a, b) => {
-        if (a.year !== b.year) {
-          return parseInt(b.year!) - parseInt(a.year!);
-        }
-        return b.month - a.month;
-      });
-    } else {
-      return (newsletterData[selectedYear] || []).map(newsletter => ({
-        ...newsletter,
-        year: selectedYear,
-        fullPath: `/images/newsletter/${selectedYear}/${newsletter.name}`,
-        link: newsletter.link, // Usar o link específico de cada newsletter
-      }));
-    }
-  };
 
   // Funções do modal
   const openModal = (imagePath: string, title: string) => {
@@ -224,7 +79,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
   const handleImageClick = (newsletter: Newsletter, event: React.MouseEvent) => {
     // Determinar qual link usar baseado no idioma
     const linkToUse = language === "pt" && newsletter.linkPt ? newsletter.linkPt : newsletter.link;
-    
+
     if (event.ctrlKey || event.metaKey) {
       // Ctrl+Click ou Cmd+Click - abre diretamente em nova aba
       window.open(linkToUse, "_blank");
@@ -328,9 +183,159 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
 
   // Função para obter todas as newsletters (desktop) ou por ano (mobile)
   const getAllNewslettersForDisplay = useCallback((): Newsletter[] => {
+    // Função para combinar todas as newsletters
+    const combineAllNewsletters = (): Newsletter[] => {
+      const newsletterData: {
+        [key: string]: { name: string; month: number; link: string; linkPt?: string }[];
+      } = {
+        2021: [
+          {
+            name: "january.png",
+            month: 1,
+            link: "https://online.pubhtml5.com/rzzqg/jggt/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/mrmn/",
+          },
+          {
+            name: "may.png",
+            month: 5,
+            link: "https://online.pubhtml5.com/rzzqg/pdtr/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/lrhz/",
+          },
+          {
+            name: "august.png",
+            month: 8,
+            link: "https://online.pubhtml5.com/rzzqg/swnv/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/xdfz/",
+          },
+          {
+            name: "november.png",
+            month: 11,
+            link: "https://online.pubhtml5.com/rzzqg/rfgg/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/kjkg/",
+          },
+        ],
+        2022: [
+          {
+            name: "february.png",
+            month: 2,
+            link: "https://online.pubhtml5.com/rzzqg/sytw/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/ooky/",
+          },
+          {
+            name: "may.png",
+            month: 5,
+            link: "https://online.pubhtml5.com/rzzqg/vpnh/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/ynqz/",
+          },
+          {
+            name: "august.png",
+            month: 8,
+            link: "https://online.pubhtml5.com/rzzqg/wpko/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/gwde/",
+          },
+          {
+            name: "november.png",
+            month: 11,
+            link: "https://online.pubhtml5.com/rzzqg/whql/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/aafy/",
+          },
+        ],
+        2023: [
+          {
+            name: "march.png",
+            month: 3,
+            link: "https://online.pubhtml5.com/rzzqg/lzir/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/khio/",
+          },
+          {
+            name: "june.png",
+            month: 6,
+            link: "https://online.pubhtml5.com/rzzqg/jjgo/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/yikm/",
+          },
+          {
+            name: "october.png",
+            month: 10,
+            link: "https://online.pubhtml5.com/rzzqg/mctf/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/lsxd/",
+          },
+          {
+            name: "december.png",
+            month: 12,
+            link: "https://online.pubhtml5.com/rzzqg/xzpj/",
+            linkPt: "https://online.pubhtml5.com/rzzqg/puhg/",
+          },
+        ],
+        2024: [
+          {
+            name: "march.png",
+            month: 3,
+            link: "https://online.pubhtml5.com/ffstg/javr/",
+            linkPt: "https://online.pubhtml5.com/ffstg/aqvm/",
+          },
+          {
+            name: "june.png",
+            month: 6,
+            link: "https://online.pubhtml5.com/qlvfj/teux/",
+            linkPt: "https://online.pubhtml5.com/qlvfj/prrj/",
+          },
+          {
+            name: "september.png",
+            month: 9,
+            link: "https://online.pubhtml5.com/qlvfj/svrs/",
+            linkPt: "https://online.pubhtml5.com/qlvfj/xaiw/",
+          },
+          {
+            name: "december.jpg",
+            month: 12,
+            link: "https://online.pubhtml5.com/qlvfj/gzzc/",
+            linkPt: "https://online.pubhtml5.com/qlvfj/zffw/",
+          },
+        ],
+        2025: [
+          {
+            name: "march.jpg",
+            month: 3,
+            link: "https://online.pubhtml5.com/qlvfj/ccjc/",
+            linkPt: "https://online.pubhtml5.com/qlvfj/sjsg/",
+          },
+        ],
+      };
+
+      if (selectedYear === "Complete Archive") {
+        const allNewsletters: Newsletter[] = [];
+        Object.keys(newsletterData).forEach(year => {
+          newsletterData[year].forEach(newsletter => {
+            allNewsletters.push({
+              ...newsletter,
+              year: year,
+              fullPath: `/images/newsletter/${year}/${newsletter.name}`,
+              link: newsletter.link, // Usar o link específico de cada newsletter
+            });
+          });
+        });
+
+        // Ordenar por ano (mais recente primeiro) e depois por mês (mais recente primeiro)
+        return allNewsletters.sort((a, b) => {
+          if (a.year !== b.year) {
+            return parseInt(b.year!) - parseInt(a.year!);
+          }
+          return b.month - a.month;
+        });
+      } else {
+        return (newsletterData[selectedYear] || []).map(newsletter => ({
+          ...newsletter,
+          year: selectedYear,
+          fullPath: `/images/newsletter/${selectedYear}/${newsletter.name}`,
+          link: newsletter.link, // Usar o link específico de cada newsletter
+        }));
+      }
+    };
     if (!isMobile) {
       // Desktop: mostrar todas as newsletters organizadas por ano (mais recente → mais antiga)
-      const newsletterData: { [key: string]: { name: string; month: number; link: string; linkPt?: string }[] } = {
+      const newsletterData: {
+        [key: string]: { name: string; month: number; link: string; linkPt?: string }[];
+      } = {
         2025: [
           {
             name: "march.jpg",
@@ -448,7 +453,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
       const allNewsletters: Newsletter[] = [];
       // Ordenar anos de mais recente para mais antigo (2025, 2024, 2023, 2022, 2021)
       const sortedYears = Object.keys(newsletterData).sort((a, b) => parseInt(b) - parseInt(a));
-      
+
       sortedYears.forEach(year => {
         // Dentro de cada ano, ordenar por mês (mais recente primeiro)
         const yearNewsletters = newsletterData[year]
@@ -478,28 +483,40 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
   }, [selectedYear, isMobile, language, getAllNewslettersForDisplay]);
 
   // Navigation functions for mobile carousel only
-  const navigateSlide = useCallback((direction: "prev" | "next") => {
-    if (!isMobile || isTransitioning || newsletters.length === 0) return;
+  const navigateSlide = useCallback(
+    (direction: "prev" | "next") => {
+      if (!isMobile || isTransitioning || newsletters.length === 0) return;
 
-    setIsTransitioning(true);
+      setIsTransitioning(true);
 
-    if (direction === "prev") {
-      setCurrentSlide(prev => (prev === 0 ? newsletters.length - 1 : prev - 1));
-    } else {
-      setCurrentSlide(prev => (prev === newsletters.length - 1 ? 0 : prev + 1));
-    }
+      if (direction === "prev") {
+        setCurrentSlide(prev => (prev === 0 ? newsletters.length - 1 : prev - 1));
+      } else {
+        setCurrentSlide(prev => (prev === newsletters.length - 1 ? 0 : prev + 1));
+      }
 
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [isMobile, isTransitioning, newsletters.length]);
+      setTimeout(() => setIsTransitioning(false), 500);
+    },
+    [isMobile, isTransitioning, newsletters.length]
+  );
 
-  const goToSlide = useCallback((index: number) => {
-    if (!isMobile || isTransitioning || index === currentSlide || index < 0 || index >= newsletters.length)
-      return;
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (
+        !isMobile ||
+        isTransitioning ||
+        index === currentSlide ||
+        index < 0 ||
+        index >= newsletters.length
+      )
+        return;
 
-    setIsTransitioning(true);
-    setCurrentSlide(index);
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [isMobile, isTransitioning, currentSlide, newsletters.length]);
+      setIsTransitioning(true);
+      setCurrentSlide(index);
+      setTimeout(() => setIsTransitioning(false), 500);
+    },
+    [isMobile, isTransitioning, currentSlide, newsletters.length]
+  );
 
   // Reset slide when newsletters change
   useEffect(() => {
@@ -509,7 +526,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
   // Keyboard navigation for mobile only
   useEffect(() => {
     if (!isMobile) return;
-    
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (newsletters.length === 0) return;
 
@@ -597,7 +614,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
               {modalTitle}
             </h3>
             <div className="flex-1 flex justify-center items-center overflow-hidden rounded-xl">
-              <img
+              <motion.img
                 src={modalImage}
                 alt={modalTitle}
                 className="max-w-full max-h-full object-contain rounded-xl"
@@ -665,7 +682,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
               <h1 className="text-3xl font-bold text-white mb-8 leading-tight">
                 {texts[language].mainTitle}
               </h1>
-              
+
               {onSubscribeClick && (
                 <button
                   onClick={onSubscribeClick}
@@ -675,41 +692,41 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
                   {texts[language].subscribeButton}
                 </button>
               )}
-              </div>
+            </div>
 
-              {/* Right Newsletter */}
-              <div className="flex-shrink-0">
-                <div
-                  className="relative w-[350px] h-[490px] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
-                  onClick={e => handleImageClick(newsletters[0], e)}
-                  title={`${texts[language].latestNewsletter} ${newsletters[0].year} - ${getMonthName(newsletters[0].month)} • ${texts[language].clickToView} • Duplo-click para abrir • Ctrl+Click para link direto`}
-                >
-                  {/* Newsletter Image */}
-                  <div className="relative w-full h-full overflow-hidden rounded-lg shadow-2xl bg-gray-100">
-                    <Image
-                      src={newsletters[0].fullPath!}
-                      alt={`${texts[language].latestNewsletter} ${newsletters[0].year} - ${getMonthName(newsletters[0].month)}`}
-                      fill
-                      className="object-contain transition-transform duration-300 group-hover:scale-110"
-                      onError={e => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = "/images/newsletter/placeholder.jpg";
-                      }}
-                    />
-                    
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-6">
-                      <h3 className="text-xl font-bold mb-2 text-center">
-                        {getMonthName(newsletters[0].month)} {newsletters[0].year}
-                      </h3>
-                      <div className="text-blue-300 underline cursor-pointer hover:text-blue-200">
-                        {texts[language].clickToView}
-                      </div>
+            {/* Right Newsletter */}
+            <div className="flex-shrink-0">
+              <div
+                className="relative w-[350px] h-[490px] cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+                onClick={e => handleImageClick(newsletters[0], e)}
+                title={`${texts[language].latestNewsletter} ${newsletters[0].year} - ${getMonthName(newsletters[0].month)} • ${texts[language].clickToView} • Duplo-click para abrir • Ctrl+Click para link direto`}
+              >
+                {/* Newsletter Image */}
+                <div className="relative w-full h-full overflow-hidden rounded-lg shadow-2xl bg-gray-100">
+                  <Image
+                    src={newsletters[0].fullPath!}
+                    alt={`${texts[language].latestNewsletter} ${newsletters[0].year} - ${getMonthName(newsletters[0].month)}`}
+                    fill
+                    className="object-contain transition-transform duration-300 group-hover:scale-110"
+                    onError={e => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/images/newsletter/placeholder.jpg";
+                    }}
+                  />
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-6">
+                    <h3 className="text-xl font-bold mb-2 text-center">
+                      {getMonthName(newsletters[0].month)} {newsletters[0].year}
+                    </h3>
+                    <div className="text-blue-300 underline cursor-pointer hover:text-blue-200">
+                      {texts[language].clickToView}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         </div>
       )}
 

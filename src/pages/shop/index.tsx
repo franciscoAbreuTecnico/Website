@@ -1,10 +1,11 @@
-//import defaultPage from '@/styles/DefaultPage.module.scss';
-//import styles from '@/styles/shop/Shop.module.scss';
+import MyDefaultPage from "@/src/components/DefaultPage";
 
 export default function Shop() {
   return (
-    <div className={defaultPage.background}>
-      <div className={styles.comingSoon}>COMING SOON...</div>
-    </div>
+    <MyDefaultPage>
+      <div className="relative h-screen flex items-center justify-center">
+        <h1 className="text-white text-6xl font-bold">COMING SOON...</h1>
+      </div>
+    </MyDefaultPage>
   );
 }

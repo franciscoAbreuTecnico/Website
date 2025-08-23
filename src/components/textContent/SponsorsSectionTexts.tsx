@@ -1,5 +1,3 @@
-import { link } from "fs";
-
 export const headlineText = "We want to thank all our sponsors for their invaluable support.";
 
 export const secHeadlineText =
@@ -10,123 +8,93 @@ export const sponsorInformation = {
     { name: "Galp", link: "https://galp.com/pt/", logo: "/images/sponsors/diamond/galp.webp" },
   ],
   gold: [
-    {
-      name: "Berner",
-      link: "https://shop.berner.eu/pt-pt/",
-      logo: "/images/sponsors/gold/berner.webp",
-    },
     { name: "MCG", link: "https://www.mcg.pt/", logo: "/images/sponsors/gold/mcg.webp" },
-    { name: "RE/MAX", link: "https://www.remax.pt/", logo: "/images/sponsors/gold/remax.webp" },
-    {
-      name: "Técnico",
-      link: "https://tecnico.ulisboa.pt/",
-      logo: "/images/sponsors/gold/tecnico.webp",
-    },
-    { name: "TAP", link: "https://www.flytap.com/pt-pt/", logo: "/images/sponsors/gold/tap.webp" },
     { name: "Batemo", link: "https://www.batemo.com/", logo: "/images/sponsors/gold/batemo.webp" },
-    { name: "Altair", link: "https://www.altair.com/", logo: "/images/sponsors/gold/altair.webp" },
-    {
-      name: "Althima",
-      link: "https://althima.com/#home",
-      logo: "/images/sponsors/gold/althima.webp",
-    },
-    {
-      name: "Santander",
-      link: "https://www.santander.pt/",
-      logo: "/images/sponsors/gold/santander.webp",
-    },
+    { name: "TAP", link: "https://www.flytap.com/pt-pt/", logo: "/images/sponsors/gold/tap.webp" },
     {
       name: "Einhell",
       link: "https://www.einhell.pt/",
       logo: "/images/sponsors/gold/einhell.webp",
     },
     {
-      name: "Optimal",
-      link: "https://www.optimal.pt/",
-      logo: "/images/sponsors/gold/optimal.webp",
+      name: "Berner",
+      link: "https://shop.berner.eu/pt-pt/",
+      logo: "/images/sponsors/gold/berner.webp",
+    },
+    { name: "Altair", link: "https://www.altair.com/", logo: "/images/sponsors/gold/altair.webp" },
+    {
+      name: "Althima",
+      link: "https://althima.com/#home",
+      logo: "/images/sponsors/gold/althima.webp",
+    },
+    { name: "RE/MAX", link: "https://www.remax.pt/", logo: "/images/sponsors/gold/remax.webp" },
+    {
+      name: "Santander",
+      link: "https://www.santander.pt/",
+      logo: "/images/sponsors/gold/santander.webp",
+    },
+    {
+      name: "Técnico",
+      link: "https://tecnico.ulisboa.pt/",
+      logo: "/images/sponsors/gold/tecnico.webp",
     },
   ],
   silver: [
     { name: "Rat Rig", link: "https://ratrig.com/", logo: "/images/sponsors/silver/ratrig.webp" },
     {
+      name: "Multimoto",
+      link: "https://multimoto.pt/",
+      logo: "/images/sponsors/silver/multimoto.webp",
+    },
+    { name: "Mouser", link: "https://pt.mouser.com/", logo: "/images/sponsors/silver/mouser.webp" },
+    {
       name: "Lacovale",
       link: "https://www.lacovale.com",
       logo: "/images/sponsors/silver/lacovale.webp",
+    },
+    { name: "Caixa", link: "https://www.cgd.pt/", logo: "/images/sponsors/silver/caixa.webp" },
+    { name: "FMP", link: "https://www.fmp.pt", logo: "/images/sponsors/silver/fmp.webp" },
+    {
+      name: "DEM IST",
+      link: "https://dem.tecnico.ulisboa.pt/",
+      logo: "/images/sponsors/silver/dem.webp",
     },
     {
       name: "Thyssenkrupp",
       link: "https://www.thyssenkrupp.com/en/home",
       logo: "/images/sponsors/silver/thyssenkrupp.webp",
     },
-    { name: "Mouser", link: "https://pt.mouser.com/", logo: "/images/sponsors/silver/mouser.webp" },
-    {
-      name: "Coficab",
-      link: "https://www.coficab.com",
-      logo: "/images/sponsors/silver/coficab.webp",
-    },
-    {
-      name: "Multimoto",
-      link: "https://multimoto.pt/",
-      logo: "/images/sponsors/silver/multimoto.webp",
-    },
-    {
-      name: "DEM IST",
-      link: "https://dem.tecnico.ulisboa.pt/",
-      logo: "/images/sponsors/silver/dem.webp",
-    },
-    { name: "Caixa", link: "https://www.cgd.pt/", logo: "/images/sponsors/silver/caixa.webp" },
-    { name: "FMP", link: "https://www.fmp.pt", logo: "/images/sponsors/silver/fmp.webp" },
   ],
   bronze: [
+    { name: "Fhorex", link: "https://fhorex.pt/pt/", logo: "/images/sponsors/bronze/fhorex.webp" },
     {
-      name: "FIGplásticos",
-      link: "https://figplasticos.pt/",
-      logo: "/images/sponsors/bronze/fig_plasticos.webp",
+      name: "WavEC",
+      link: "https://www.wavec.org/",
+      logo: "/images/sponsors/bronze/wavec.webp",
     },
     { name: "RMC", link: "https://www.rmc.com", logo: "/images/sponsors/bronze/rmc.webp" },
-    { name: "Fhorex", link: "https://fhorex.pt/pt/", logo: "/images/sponsors/bronze/fhorex.webp" },
-    { name: "JDEUS", link: "https://www.jdeus.com/", logo: "/images/sponsors/bronze/jdeus.webp" },
     {
       name: "AGRacing",
       link: "https://agracing.pt/",
       logo: "/images/sponsors/bronze/agracing.webp",
     },
     {
-      name: "HELUKABEL",
-      link: "https://www.helukabel.pt/pt-pt/Home/",
-      logo: "/images/sponsors/bronze/helukabel.webp",
+      name: "Coficab",
+      link: "https://www.coficab.com",
+      logo: "/images/sponsors/bronze/coficab.webp",
     },
+    { name: "JDEUS", link: "https://www.jdeus.com/", logo: "/images/sponsors/bronze/jdeus.webp" },
     {
-      name: "Cubotonic",
-      link: "https://www.cubotonic.pt/",
-      logo: "/images/sponsors/bronze/cubotonic.webp",
-    },
-    {
-      name: "WavEC",
-      link: "https://www.wavec.org/",
-      logo: "/images/sponsors/bronze/wavec.webp",
+      name: "Optimal",
+      link: "https://www.optimal.pt/",
+      logo: "/images/sponsors/bronze/optimal.webp",
     },
   ],
   copper: [
     {
-      name: "JLCPCB",
-      link: "https://jlcpcb.com/",
-      logo: "/images/sponsors/copper/jlcpcb.webp",
-    },
-    {
-      name: "VI-grade",
-      link: "https://www.vi-grade.com/",
-      logo: "/images/sponsors/copper/vigrade.webp",
-    },
-    {
-      name: "Imagine Virtual",
-      link: "https://www.imaginevirtual.com",
-      logo: "/images/sponsors/copper/imagine_virtual.webp",
-    },
-    {
-      name: "Rodorent",
-      link: "https://www.rodorent.pt/",
-      logo: "/images/sponsors/copper/rodorent.webp",
+      name: "FIGplásticos",
+      link: "https://figplasticos.pt/",
+      logo: "/images/sponsors/copper/fig_plasticos.webp",
     },
     {
       name: "Silicon Gate",
@@ -139,9 +107,24 @@ export const sponsorInformation = {
       logo: "/images/sponsors/copper/hexagon.webp",
     },
     {
+      name: "Energest",
+      link: "https://www.energest.pt/",
+      logo: "/images/sponsors/copper/energest.webp",
+    },
+    {
       name: "Filkemp",
       link: "https://filkemp.com/pt/",
       logo: "/images/sponsors/copper/filkemp.webp",
+    },
+    {
+      name: "Imagine Virtual",
+      link: "https://www.imaginevirtual.com",
+      logo: "/images/sponsors/copper/imagine_virtual.webp",
+    },
+    {
+      name: "Rodorent",
+      link: "https://www.rodorent.pt/",
+      logo: "/images/sponsors/copper/rodorent.webp",
     },
     {
       name: "Norelem",
@@ -149,13 +132,23 @@ export const sponsorInformation = {
       logo: "/images/sponsors/copper/norelem.webp",
     },
     {
-      name: "Energest",
-      link: "https://www.energest.pt/",
-      logo: "/images/sponsors/copper/energest.webp",
+      name: "Tucab",
+      link: "https://tucab.pt/",
+      logo: "/images/sponsors/copper/tucab.webp",
+    },
+    {
+      name: "HELUKABEL",
+      link: "https://www.helukabel.pt/pt-pt/Home/",
+      logo: "/images/sponsors/copper/helukabel.webp",
+    },
+    {
+      name: "VI-grade",
+      link: "https://www.vi-grade.com/",
+      logo: "/images/sponsors/copper/vigrade.webp",
     },
   ],
   partners: [
-    {
+    /* {
       name: "PT Robotics",
       link: "https://www.ptrobotics.com/",
       logo: "/images/sponsors/partners/pt_robotics.webp",
@@ -180,11 +173,15 @@ export const sponsorInformation = {
       name: "CAD Booster",
       link: "https://cadbooster.com/",
       logo: "/images/sponsors/partners/cad_booster.webp",
-    },
-    {
-      name: "Tucab",
-      link: "https://tucab.pt/",
-      logo: "/images/sponsors/partners/tucab.webp",
-    },
+    }, */
   ],
 };
+
+/* Restos
+ {
+    name: "Cubotonic",
+    link: "https://www.cubotonic.pt/",
+    logo: "/images/sponsors/bronze/cubotonic.webp",
+  },
+  
+ */

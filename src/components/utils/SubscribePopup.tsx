@@ -9,11 +9,6 @@ export default function SubscribePopupFixed({ isOpen, onClose }: SubscribePopupP
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
 
-  // Debug logging
-  useEffect(() => {
-    console.log("SubscribePopupFixed mounted, isOpen:", isOpen);
-  }, []);
-
   useEffect(() => {
     console.log("SubscribePopupFixed isOpen changed to:", isOpen);
 

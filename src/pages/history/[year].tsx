@@ -1,10 +1,10 @@
 import { getImages } from "../../components/utils/FetchFolderImages";
 import MyDefaultPage from "../../components/DefaultPage";
 import { timelineData, TimelineDataItem } from "@/src/components/textContent/TimelineSectionTexts";
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import TiltedCard from "@/src/components/extras/TiltedCard";
+import { motion, AnimatePresence } from "framer-motion";
 
 export async function getStaticProps({ params }: { params: { year: string } }) {
   const { year } = params;
@@ -40,6 +40,8 @@ export default function History({
   yearData: { [key: string]: string[] };
   selectedYear: string;
 }) {
+  // inside History component
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const router = useRouter();
   const years = Object.keys(timelineData).map(String);
 
@@ -248,36 +250,58 @@ export default function History({
 
         {/* White Box for Events */}
         <motion.div
-          className="relative w-[85%] bg-white/85 text-black p-6 rounded-lg shadow-lg mx-auto text-center animate-fadeIn mb-[7.5vh] md:mt-[5vh] md:mb-[0vh] md:w-[65%] lg:p-12"
+          className="relative w-[85%] bg-white/85 text-black px-6 py-2 rounded-lg shadow-lg mx-auto text-center animate-fadeIn mb-[7.5vh] md:mt-[5vh] md:w-[65%]"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           {timelineData[selectedYear].map((item: TimelineDataItem) => (
-            <div key={item.title} className="mb-[2vh]">
+            <div key={item.title} className="mt-[2.5vh] mb-[2.5vh] lg:mb-[0vh] xl:mb-[10vh]">
               <h3 className="text-4xl font-bold mb-[0.125vh]">{item.title}</h3>
               <p className="text-xl mb-[2vh]">{item.description}</p>
-              <div className="grid grid-cols-2 gap-[1.5vh] justify-items-center md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-2 gap-y-[1.5vh] justify-items-center md:grid-cols-3 lg:gap-x-[1.5vw] lg:gap-y-[1.5vh] lg:grid-cols-4 xl:gap-x-[2vw] xl:gap-y-[2vh]">
                 {yearData[item.imageFolder].map((element: string) => (
-                  <TiltedCard
-                    key={element}
-                    imageSrc={element}
-                    containerHeight="clamp(100px, 30vw, 200px)"
-                    containerWidth="clamp(100px, 30vw, 200px)"
-                    imageHeight="clamp(100px, 30vw, 200px)"
-                    imageWidth="clamp(100px, 30vw, 200px)"
-                    rotateAmplitude={12}
-                    scaleOnHover={1.5}
-                    showMobileWarning={false}
-                    showTooltip={false}
-                    displayOverlayContent={true}
-                    overlayContent=""
-                  />
+                  <div key={element} onClick={() => setFullscreenImage(element)}>
+                    <TiltedCard
+                      imageSrc={element}
+                      containerHeight="clamp(100px, 30vw, 175px)"
+                      containerWidth="clamp(100px, 30vw, 175px)"
+                      imageHeight="clamp(100px, 30vw, 175px)"
+                      imageWidth="clamp(100px, 30vw, 175px)"
+                      rotateAmplitude={12}
+                      scaleOnHover={1.5}
+                      showMobileWarning={false}
+                      showTooltip={false}
+                      displayOverlayContent={true}
+                      overlayContent=""
+                    />
+                  </div>
                 ))}
               </div>
             </div>
           ))}
         </motion.div>
+        <AnimatePresence>
+          {fullscreenImage && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setFullscreenImage(null)}
+            >
+              <motion.img
+                src={fullscreenImage}
+                alt="Fullscreen"
+                className="max-h-screen max-w-[85] rounded-lg object-contain mt-[10vh]"
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.9 }}
+                onClick={e => e.stopPropagation()}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </MyDefaultPage>
   );

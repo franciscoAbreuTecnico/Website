@@ -70,7 +70,6 @@ const AboutSection: React.FC = () => {
       <div
         className="
           absolute inset-0
-          bg-[url('/images/home/team_background.webp')]
           bg-cover bg-center
           filter
           -z-10

@@ -1,4 +1,4 @@
-import SubscribePopupFixed from "@/src/components/utils/SubscribePopupFixed";
+import SubscribePopup from "@/src/components/utils/SubscribePopup";
 import { useState, useEffect } from "react";
 import MyNews from "@/src/components/news/NewsCoverflowEffect";
 import MyDefaultPage from "@/src/components/DefaultPage";
@@ -32,7 +32,7 @@ export default function News() {
           <MyNews onSubscribeClick={handleSubscribeClick} />
         </div>
       </div>
-      <SubscribePopupFixed isOpen={isPopupOpen} onClose={handleClosePopup} />
+      <SubscribePopup isOpen={isPopupOpen} onClose={handleClosePopup} />
     </MyDefaultPage>
   );
 }

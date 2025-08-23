@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getAvailableYears } from "../../components/utils/FetchFolderImages";
 
 export async function getStaticProps() {
-  const years = await getAvailableYears(); 
+  const years = await getAvailableYears();
   return {
     props: { years },
   };
@@ -18,7 +18,7 @@ export default function TeamIndex({ years }: TeamIndexProps) {
 
   useEffect(() => {
     if (years.length > 0) {
-      router.replace(`/team/${years[0]}`); 
+      router.replace(`/team/${years[0]}`);
     }
   }, [years, router]);
 
