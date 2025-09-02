@@ -148,7 +148,7 @@ export const sponsorInformation = {
     },
   ],
   partners: [
-    /* {
+    {
       name: "PT Robotics",
       link: "https://www.ptrobotics.com/",
       logo: "/images/sponsors/partners/pt_robotics.webp",
@@ -173,7 +173,7 @@ export const sponsorInformation = {
       name: "CAD Booster",
       link: "https://cadbooster.com/",
       logo: "/images/sponsors/partners/cad_booster.webp",
-    }, */
+    },
   ],
 };
 

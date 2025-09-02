@@ -56,7 +56,7 @@ export default function History({
     "
         >
           {/* Horizontal line on top */}
-          <div className="absolute top-0 left-0 w-full h-[0.5vh] bg-sky-500" />
+          <div className="absolute top-0 left-0 w-full h-[0.5vh] bg-sky-400 z-50" />
 
           {(() => {
             const idx = years.indexOf(selectedYear);
@@ -264,10 +264,10 @@ export default function History({
                   <div key={element} onClick={() => setFullscreenImage(element)}>
                     <TiltedCard
                       imageSrc={element}
-                      containerHeight="clamp(100px, 30vw, 175px)"
-                      containerWidth="clamp(100px, 30vw, 175px)"
-                      imageHeight="clamp(100px, 30vw, 175px)"
-                      imageWidth="clamp(100px, 30vw, 175px)"
+                      containerHeight="clamp(125px, 35vw, 200px)"
+                      containerWidth="clamp(125px, 35vw, 200px)"
+                      imageHeight="clamp(125px, 35vw, 200px)"
+                      imageWidth="clamp(125px, 35vw, 200px)"
                       rotateAmplitude={12}
                       scaleOnHover={1.5}
                       showMobileWarning={false}

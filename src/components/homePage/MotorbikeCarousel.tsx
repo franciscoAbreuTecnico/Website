@@ -119,13 +119,15 @@ export const MotorbikeCarousel = () => {
                 </div>
                 <div className="flex flex-col justify-center items-center lg:items-start space-y-6 text-base md:text-lg lg:text-xl 2xl:text-lg text-center lg:text-left">
                   <div>
-                    <h3 className="text-3xl lg:text-4xl 2xl:text-3xl font-bold text-[#39a6ff] mb-2">
+                    <h3 className="text-4xl lg:text-4xl 2xl:text-5xl font-bold text-[#39a6ff] mb-2">
                       {motorbike.name}
                     </h3>
-                    <p className="text-blue-300 text-lg 2xl:text-base font-medium mb-4">
+                    <p className="text-blue-300 text-2xl 2xl:text-2xl font-medium mb-4">
                       {motorbike.model}
                     </p>
-                    <p className="text-blue-100 leading-relaxed">{motorbike.description}</p>
+                    <p className="text-blue-100 leading-relaxed text-xl 2xl:text-2xl">
+                      {motorbike.description}
+                    </p>
                   </div>
                   <div className="flex justify-center">
                     <div className="grid grid-cols-3 gap-2 sm:gap-4 w-full md:w-auto 2xl:w-[30vw]">
@@ -134,10 +136,10 @@ export const MotorbikeCarousel = () => {
                           key={label}
                           className="bg-[#16263c]/70 backdrop-blur-sm rounded-lg p-2 sm:p-4 2xl:p-3 border border-[#39a6ff]/25 text-center"
                         >
-                          <div className="text-blue-300 text-xs sm:text-sm font-medium">
+                          <div className="text-blue-300 text-xl sm:text-sm 2xl:text-xl font-medium">
                             {label}
                           </div>
-                          <div className="text-base sm:text-lg 2xl:text-base font-bold text-white">
+                          <div className="text-lg sm:text-lg 2xl:text-xl font-bold text-white">
                             {value}
                           </div>
                         </div>
@@ -147,7 +149,7 @@ export const MotorbikeCarousel = () => {
                   <TransitionLink href="/garage">
                     <Button
                       variant="outline"
-                      className="w-fit border-[#39a6ff] bg-blue-1520 backdrop-blur-sm text-white hover:bg-[#39a6ff] hover:text-white transition-all duration-300 mt-5 2xl:text-sm cursor-pointer"
+                      className="w-fit border-[#39a6ff] bg-blue-1520 backdrop-blur-sm text-xl text-white hover:bg-[#39a6ff] hover:text-white transition-all duration-300 mt-5 2xl:text-lg cursor-pointer"
                     >
                       Learn More
                     </Button>

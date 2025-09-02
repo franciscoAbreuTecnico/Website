@@ -9,7 +9,7 @@ export default function FAQ() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-[-2.5%] text-white p-2.5 pb-[10%] font-sans max-sm:mb-30 max-md:mb-20 max-lg:mb-10">
+    <div className="max-w-4xl mx-auto mt-[-2.5%] text-white p-2.5 pb-[10%] max-sm:mb-30 max-md:mb-20 max-lg:mb-10">
       <h2 className="text-center text-2xl md:text-3xl mb-2.5">Frequently Asked Questions</h2>
       {faqs.map((faq, index) => (
         <div key={index} className="border-b  border-opacity-30 border-white py-2.5">

@@ -80,7 +80,7 @@ const CompetitionsSection = () => {
           viewport={{ once: false, amount: 0.5 }}
         >
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-7xl text-[#39a6ff]"
+            className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-8xl text-[#39a6ff]"
             variants={itemVariants}
           >
             <span className="hero-text">COMPETITIONS</span>
@@ -90,7 +90,7 @@ const CompetitionsSection = () => {
             variants={itemVariants}
           />
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-3xl text-white text-muted-foreground 2xl:max-w-full max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10 2xl:mb-6"
+            className="text-xl sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground 2xl:max-w-full max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10 2xl:mb-6"
             variants={itemVariants}
           >
             The TLMoto is involved in major competitions that challenge our engineering skills and
@@ -99,7 +99,7 @@ const CompetitionsSection = () => {
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 2xl:gap-6 items-center mb-12 2xl:mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 2xl:gap-12 items-center mb-12 2xl:mb-14">
           <div className="animate-slide-in-left">
             <div className="relative rounded-2xl overflow-hidden group">
               <Image
@@ -107,18 +107,18 @@ const CompetitionsSection = () => {
                 width={600}
                 height={500}
                 alt="Racing Competition"
-                className="w-full h-64 sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-64 sm:h-[500px] 2xl:h-[700px] object-cover transition-transform duration-700 group-hover:scale-110"
                 quality={60}
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
+              <div className="absolute bottom-2 2xl:bottom-6 left-6 right-6">
                 <TransitionLink href="/history">
                   <Button
                     variant="ghost"
-                    className="2xl:text-2xl w-full justify-between text-base text-gray-200 hover:text-[#39a6ff] hover:text-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                    className="2xl:text-3xl w-full justify-between text-xl text-gray-200 hover:text-[#39a6ff] hover:text-lg hover:scale-105 transition-all duration-200 cursor-pointer"
                   >
-                    Learn More <ArrowRight className="w-4 h-4" />
+                    Learn More <ArrowRight className="w-4 h-4 2xl:w-6 2xl:h-6" />
                   </Button>
                 </TransitionLink>
               </div>
@@ -126,50 +126,50 @@ const CompetitionsSection = () => {
           </div>
 
           {/* Competition Details */}
-          <div className="animate-slide-in-right space-y-6 md:space-y-8 2xl:space-y-6">
+          <div className="animate-slide-in-right space-y-6 md:space-y-8 2xl:space-y-10">
             {competitions.map(competition => (
               <Card
                 key={competition.name}
                 className="bg-gradient-to-br from-[#111827]/90 via-[#1e293b]/80 to-[#0a192f]/80 backdrop-blur-md border border-[#39a6ff]/10 hover:border-[#39a6ff]/40 shadow-xl transition-all duration-300 group hover:scale-[1.02]"
               >
-                <CardContent className="p-6 sm:p-8 md:p-6 lg:p-8 xl:p-8 2xl:p-7 text-center lg:text-left">
-                  <div className="flex items-start justify-between mb-4 2xl:mb-3">
+                <CardContent className="p-6 sm:p-8 md:p-6 lg:p-8 xl:p-8 2xl:p-10 text-center lg:text-left">
+                  <div className="flex items-start justify-between mb-4 2xl:mb-5">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 2xl:w-9 2xl:h-9 bg-gradient-to-b from-[#39a6ff] to-deepskyblue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#39a6ff]/20">
+                      <div className="w-12 h-12 2xl:w-12 2xl:h-12 bg-gradient-to-b from-[#39a6ff] to-deepskyblue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#39a6ff]/20">
                         {competition.icon}
                       </div>
                       <div>
-                        <h3 className="text-xl sm:text-2xl 2xl:text-xl font-bold text-[#39a6ff]">
+                        <h3 className="text-3xl sm:text-2xl 2xl:text-3xl font-bold text-[#39a6ff]">
                           {competition.name}
                         </h3>
                         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-xs sm:text-sm text-blue-300/80 mt-1 space-y-1 sm:space-y-0">
-                          <span className="flex items-center space-x-1 2xl:text-base">
+                          <span className="flex items-center space-x-1 text-xl 2xl:text-lg">
                             <MapPin className="w-4 h-4 text-[#39a6ff]" />
                             <span>{competition.location}</span>
                           </span>
-                          <span className="flex items-center space-x-1 2xl:text-base">
+                          <span className="flex items-center space-x-1 text-lg 2xl:text-lg">
                             <Calendar className="w-4 h-4 text-deepskyblue" />
                             <span>{competition.status}</span>
                           </span>
                         </div>
                       </div>
                     </div>
-                    <Users className="w-6 h-6 2xl:w-5 2xl:h-5 text-blue-400/60" />
+                    <Users className="w-6 h-6 2xl:w-7 2xl:h-7 text-blue-400/60" />
                   </div>
 
-                  <p className="text-blue-100 mb-8 2xl:mb-6 leading-relaxed text-base 2xl:text-base">
+                  <p className="text-blue-100 mb-8 2xl:mb-8 leading-relaxed text-lg 2xl:text-lg">
                     {competition.description}
                   </p>
 
-                  <div className="space-y-4 2xl:space-y-3">
-                    <h4 className="text-xl sm:text-2xl 2xl:text-2xl font-semibold bg-gradient-to-r from-[#39a6ff] to-deepskyblue bg-clip-text text-transparent">
+                  <div className="space-y-4 2xl:space-y-5">
+                    <h4 className="text-3xl sm:text-2xl 2xl:text-3xl font-semibold bg-gradient-to-r from-[#39a6ff] to-deepskyblue bg-clip-text text-transparent">
                       Key Achievements:
                     </h4>
-                    <div className="flex flex-wrap gap-3 2xl:gap-2">
+                    <div className="flex flex-wrap gap-3 2xl:gap-4">
                       {competition.achievements.map((ach, idx) => (
                         <span
                           key={idx}
-                          className="2xl:text-sm px-2 py-1 bg-gradient-to-r from-[#39a6ff]/20 to-deepskyblue/20 border border-[#39a6ff]/30 rounded-full text-sm text-blue-300/90 hover:border-[#39a6ff]/50 transition-colors duration-200"
+                          className="2xl:text-base 2xl:px-3 2xl:py-1.5 px-2 py-1 bg-gradient-to-r from-[#39a6ff]/20 to-deepskyblue/20 border border-[#39a6ff]/30 rounded-full text-lg text-blue-300/90 hover:border-[#39a6ff]/50 transition-colors duration-200"
                         >
                           {ach}
                         </span>
@@ -183,21 +183,21 @@ const CompetitionsSection = () => {
         </div>
 
         {/* Competition Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 2xl:gap-5 mb-8 md:mb-10 2xl:mb-8 mt-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 2xl:gap-8 mb-8 md:mb-10 2xl:mb-12 mt-2">
           {[
             ["2014", "First Competition"],
             ["5", "International Events"],
-            ["2", "Major Championships"],
+            ["2", "Major Champions"],
             ["3", "Racing Prototypes"],
           ].map(([num, label], idx) => (
             <div
               key={idx}
-              className="text-center p-4 2xl:p-3 bg-[#16263c]/70 backdrop-blur-sm rounded-lg border border-[#39a6ff]/25 hover:border-[#39a6ff]/60 transition-all duration-300 hover:scale-105 shadow-lg shadow-black/30"
+              className="text-center p-4 2xl:p-6 bg-[#16263c]/70 backdrop-blur-sm rounded-lg border border-[#39a6ff]/25 hover:border-[#39a6ff]/60 transition-all duration-300 hover:scale-105 shadow-lg shadow-black/30"
             >
-              <div className="lg:text-3xl md:text-4xl xl:text-2xl 2xl:text-xl text-white mb-1 2xl:mb-0.5 drop-shadow">
+              <div className="lg:text-3xl text-3xl md:text-4xl xl:text-2xl 2xl:text-4xl text-white mb-1 2xl:mb-1 drop-shadow">
                 {num}
               </div>
-              <div className="lg:text-base xl:text-base 2xl:text-sm md:text-1xl text-blue-100">
+              <div className="lg:text-base text-lg xl:text-base 2xl:text-base md:text-1xl text-blue-100">
                 {label}
               </div>
             </div>

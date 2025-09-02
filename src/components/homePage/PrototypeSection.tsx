@@ -22,6 +22,7 @@ const itemVariants = {
 
 const sectionStyle =
   "tracking-[.17em] h-auto flex flex-col justify-center items-center" +
+  "pt-24 pb-24 min-h-[80vh] " +
   "sm:pt-24 sm:pb-20 sm:min-h-[100vh] " +
   "md:pt-36 md:pb-28 md:min-h-[90vh] " +
   "lg:pt-24 lg:pb-28 lg:min-h-[100vh] " +
@@ -46,17 +47,17 @@ export const PrototypesSection = () => {
           variants={containerVariants}
         >
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-7xl text-[#39a6ff]"
+            className="text-6xl sm:text-7xl md:text-6xl lg:text-8xl xl:text-7xl 2xl:text-8xl text-[#39a6ff]"
             variants={itemVariants}
           >
-            Our <span className="text-[#39a6ff] text-glow">Prototypes</span>
+            <span className="text-[#39a6ff] text-glow">PROTOTYPES</span>
           </motion.h2>
           <motion.div
             className="w-18 h-1 mx-auto -mb-2 bg-gradient-to-r from-electric to-electric-glow"
             variants={itemVariants}
           />
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-3xl text-white text-muted-foreground max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10 2xl:mb-6"
+            className="text-2xl sm:text-xl md:text-2xl lg:text-4xl xl:text-2xl 2xl:text-4xl text-white text-muted-foreground max-w-4xl md:max-w-6xl mx-auto leading-relaxed mb-6 md:mb-10 2xl:mb-6"
             variants={itemVariants}
           >
             From our first combustion prototype to our latest electric racing machines, explore the

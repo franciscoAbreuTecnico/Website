@@ -1,26 +1,18 @@
 import SubscribePopup from "@/src/components/utils/SubscribePopup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import MyNews from "@/src/components/news/NewsCoverflowEffect";
 import MyDefaultPage from "@/src/components/DefaultPage";
 
 export default function News() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  useEffect(() => {
-    console.log("Popup state changed:", isPopupOpen);
-  }, [isPopupOpen]);
-
   const handleSubscribeClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Subscribe button clicked!");
-    console.log("Current popup state:", isPopupOpen);
     setIsPopupOpen(true);
-    console.log("Setting popup state to true");
   };
 
   const handleClosePopup = () => {
-    console.log("Closing popup");
     setIsPopupOpen(false);
   };
 

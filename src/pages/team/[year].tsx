@@ -107,15 +107,15 @@ export default function Team({ teamData, year }: TeamProps) {
             ) : (
               teamData.data.map(({ name, members }) => (
                 <div key={name} className="mb-20">
-                  <div className="flex items-center pl-0 sm:pl-2 lg:pl-2 rounded-xl transition-all duration-300 -mt-12">
+                  <div className="flex items-center justify-center md:justify-start pl-0 sm:pl-2 lg:pl-2 rounded-xl transition-all duration-300 -mt-12">
                     <Image
                       src="/images/team/raio.webp"
                       alt="Team Icon"
                       width={40}
                       height={40}
-                      className="w-10 h-10 mr-4 object-contain -translate-y-2"
+                      className="w-10 h-10 mr-4 object-contain"
                     />
-                    <h2 className="text-white text-2xl font-bold uppercase tracking-[2.5px] mb-4">
+                    <h2 className="text-white text-2xl font-bold uppercase tracking-[2.5px] mb-0">
                       {name}
                     </h2>
                   </div>
@@ -161,7 +161,7 @@ export default function Team({ teamData, year }: TeamProps) {
             <>
               <div className="hidden lg:flex fixed left-[65%] bottom-[10%] flex-col items-center z-10">
                 <motion.img
-                  style={{ height: "50vh", width: "300px" }}
+                  style={{ height: "50vh", width: "35vh" }}
                   src={focusedCardImage}
                   alt="Focused Image"
                   loading="lazy"
@@ -184,11 +184,11 @@ export default function Team({ teamData, year }: TeamProps) {
                 <div className="lg:hidden fixed inset-0 backdrop-blur-lg bg-black/30 flex items-center justify-center z-50 p-4">
                   <div className="relative flex flex-col items-center">
                     <motion.img
-                      style={{ height: "80vh", width: "90vw" }}
+                      style={{ height: "80vh", width: "60vw" }}
                       src={focusedCardImage}
                       alt="Focused Image"
                       loading="lazy"
-                      className="w-full h-auto max-h-[45vh] max-w-[70vw] object-contain"
+                      className="w-full h-auto max-h-[80vh] max-w-[60vw] object-contain"
                     />
 
                     <div

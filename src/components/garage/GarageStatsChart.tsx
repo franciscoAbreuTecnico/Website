@@ -65,7 +65,7 @@ export default function MyStatsChart({
             type="button"
             onClick={() => setActiveTab("stats")}
             aria-pressed={activeTab === "stats"}
-            className={`flex-1 text-center rounded-tl-2xl rounded-tr-none rounded-b-none px-3 py-2 text-sm md:text-base font-semibold transition-colors duration-150 ease-in-out
+            className={`flex-1 text-center rounded-tl-2xl rounded-tr-none rounded-b-none px-3 py-2 text-sm md:text-lg font-semibold transition-colors duration-150 ease-in-out
               ${
                 activeTab === "stats"
                   ? "bg-black/40 border-2 border-white/30"
@@ -80,7 +80,7 @@ export default function MyStatsChart({
             type="button"
             onClick={() => setActiveTab("history")}
             aria-pressed={activeTab === "history"}
-            className={`flex-1 text-center rounded-tr-2xl rounded-tl-none rounded-b-none px-3 py-2 text-sm md:text-base font-semibold transition-colors duration-150 ease-in-out
+            className={`flex-1 text-center rounded-tr-2xl rounded-tl-none rounded-b-none px-3 py-2 text-sm md:text-lg font-semibold transition-colors duration-150 ease-in-out
               ${
                 activeTab === "history"
                   ? "bg-black/40 border-2 border-white/30"
@@ -101,7 +101,7 @@ export default function MyStatsChart({
           className={`${activeTab === "history" ? "block" : "hidden"} h-full`}
         >
           <div className="bg-white p-2 md:p-3 rounded-lg text-black h-full overflow-auto mt-5">
-            <p className="text-sm md:text-base lg:text-lg leading-relaxed">{historyText}</p>
+            <p className="text-sm md:text-base lg:text-xl leading-relaxed">{historyText}</p>
           </div>
         </div>
 

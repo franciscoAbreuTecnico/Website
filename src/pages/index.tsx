@@ -2,7 +2,7 @@ import AboutSection from "../components/homePage/AboutSection";
 import CompetitionsSection from "../components/homePage/CompetitionSection";
 import HeroSection from "../components/homePage/HeroSection";
 import { PrototypesSection } from "../components/homePage/PrototypeSection";
-import { SponsorSection } from "../components/homePage/SponsorSection";
+import SponsorSection from "../components/homePage/SponsorSection";
 
 export default function Home() {
   return (

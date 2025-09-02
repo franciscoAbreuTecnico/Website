@@ -71,7 +71,7 @@ export default function Contacts() {
         {/* Main Content */}
         <div className="relative flex max-md:flex-col items-center justify-center mt-[10vh] max-lg:mt-[18vh]  max-md:p-5">
           {/* Form Container */}
-          <div className="m-[5%] ml-[10%] w-[60%] p-[1.3%] bg-white rounded-lg shadow-md font-sans max-md:w-[90%] max-md:ml-0 max-md:m-0 max-md:mb-8 ">
+          <div className="m-[5%] ml-[10%] w-[60%] p-[1.3%] bg-white rounded-lg shadow-md max-md:w-[90%] max-md:ml-0 max-md:m-0 max-md:mb-8 ">
             <h2 className="text-[#007bff] text-xl md:text-2xl -mt-[1.5%] max-md:mt-0 max-md:text-xl">
               Send a Message
             </h2>
@@ -178,7 +178,7 @@ export default function Contacts() {
 
           {/* Contact Info Column */}
           <div className="flex flex-col w-1/3 mr-[10%] max-xl:w-lg max-md:w-[90%] max-md:mr-0 ">
-            <div className="bg-[#39a6ff] text-white p-5 rounded-lg shadow-md w-full font-sans max-md:p-4">
+            <div className="bg-[#39a6ff] text-white p-5 rounded-lg shadow-md w-full max-md:p-4">
               <h3 className="mb-2.5 text-xl md:text-2xl max-md:text-lg">Contact Info</h3>
               <p>
                 <strong>Pavilhão de Mecânica III</strong>

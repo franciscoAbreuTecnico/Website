@@ -34,7 +34,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
     pt: {
       mainTitle:
         "A newsletter de Março está repleta das mais recentes informações, entrevistas e dicas técnicas, sendo uma leitura obrigatória para te manteres atualizado. Não percas as futuras edições e fica a conhecer todo o trabalho realizado pela nossa equipa.",
-      subscribeButton: "Subscrever a nossa Newsletter",
+      subscribeButton: "Subscreve a nossa Newsletter",
       allNewsletters: "Todas as Newsletters",
       completeArchive: "Arquivo completo organizado por ano",
       clickToView: "Click para visualizar",
@@ -547,7 +547,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
   return (
     <div className="flex flex-col items-center justify-start min-h-[calc(var(--vh)*100)] text-white pt-0">
       {/* Language Selector - Flags */}
-      <div className="absolute top-34 left-1/2 transform -translate-x-1/2 z-50 flex gap-3">
+      <div className="absolute top-30 md:top-34 left-1/2 transform -translate-x-1/2 z-50 flex gap-3">
         <button
           onClick={() => setLanguage("pt")}
           className={`transition-all duration-300 hover:scale-110 ${
@@ -558,8 +558,8 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
           <Image
             src="/images/newsletter/flags/flagPortugal.png"
             alt="Português"
-            width={32}
-            height={22}
+            width={50}
+            height={40}
             className="rounded-sm shadow-lg"
           />
         </button>
@@ -573,8 +573,8 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
           <Image
             src="/images/newsletter/flags/flagUK.png"
             alt="English"
-            width={32}
-            height={22}
+            width={50}
+            height={40}
             className="rounded-sm shadow-lg"
           />
         </button>
@@ -626,7 +626,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
 
       {/* Year Selection - Mobile */}
       {isMobile && (
-        <div className="flex items-center justify-center gap-4 mt-26 px-4">
+        <div className="flex items-center justify-center gap-4 mt-30 px-4">
           <button
             onClick={() => navigateYear("prev")}
             disabled={visibleYears.indexOf(selectedYear) === 0}
@@ -796,7 +796,7 @@ export default function MyNewsCoverflowEffect({ onSubscribeClick }: MyNewsCoverf
 
       {/* Newsletter Carousel - Mobile */}
       {isMobile && (
-        <div className="relative w-full px-4 mt-4">
+        <div className="relative w-full px-4 mt-0">
           {/* Main Mobile Carousel Container */}
           <div className="relative h-[330px] overflow-hidden rounded-lg">
             {/* Mobile Carousel Track */}

@@ -5,8 +5,7 @@
 
 @font-face {
   font-family: "EuroStyle";
-  src: url("/local-fonts/eurostyle.ttf") format("truetype");
-  src: url("/local-fonts/EuroStyleNormal.woff2") format("woff2");
+  src: url("/local-fonts/eurostile.ttf") format("truetype"), url("/local-fonts/EuroStyleNormal.ttf") format("truetype");
   font-display: swap;
 }
 
