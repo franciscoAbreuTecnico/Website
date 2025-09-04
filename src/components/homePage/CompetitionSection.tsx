@@ -20,7 +20,7 @@ const itemVariants = {
 };
 
 const sectionStyle =
-  "tracking-[.17em] h-auto min-h-[100svh] flex flex-col items-center pt-16 pb-10 px-10 " +
+  "tracking-[.17em] h-auto min-h-[100svh] flex flex-col items-center pt-16 pb-10" +
   "sm:pt-24 sm:pb-20 sm:min-h-[100svh] " +
   "md:pt-36 md:pb-28 md:min-h-[90vh] " +
   "lg:pt-24 lg:pb-28 lg:min-h-[100vh] " +
@@ -68,7 +68,7 @@ const CompetitionsSection = () => {
         style={{
           height: "12%",
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 80%, #000 98%, #000 100%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 85%, #000 98%, #000 100%)",
         }}
       />
       <div className="max-w-[95rem] mx-auto px-4 sm:px-8 lg:px-12 2xl:px-6">

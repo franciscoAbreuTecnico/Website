@@ -149,11 +149,11 @@ const AboutSection: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="text-3xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-semibold mb-2 sm:mb-3 lg:mb-2 text-[#39a6ff] uppercase tracking-[.20em]">
+                <h3 className="text-2xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-semibold mb-2 sm:mb-3 lg:mb-2 text-[#39a6ff] uppercase tracking-[.20em]">
                   {title}
                 </h3>
 
-                <p className="text-white/80 text-xl sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-2xl">
+                <p className="text-white/80 text-lg sm:text-base md:text-sm lg:text-base xl:text-base 2xl:text-2xl">
                   {title === "Members" && "Dedicated teammates and collaborators"}
                   {title === "Competitions" && "Racing and engineering challenges"}
                   {title === "Prototypes" && "Iterating toward peak performance"}
