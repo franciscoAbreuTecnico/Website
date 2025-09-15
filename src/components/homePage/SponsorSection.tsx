@@ -5,7 +5,7 @@ const SponsorsCarousel: React.FC = () => {
   return (
     <section
       className="py-20 relative overflow-hidden bg-no-repeat bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/home/aragon_background.webp')" }}
+      style={{ backgroundImage: "url(/images/home/aragon_background.webp)" }}
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
       <div

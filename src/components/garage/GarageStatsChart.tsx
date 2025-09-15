@@ -114,7 +114,7 @@ export default function MyStatsChart({
           <div className="bg-white/6 p-2 md:p-3 rounded-lg">
             <div className="h-[140px] sm:h-[120px] md:h-[200px] ">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={normalizedData} layout="vertical">
+                <BarChart data={normalizedData} margin={{ left: 20 }} layout="vertical">
                   <XAxis type="number" hide={true} />
                   <YAxis
                     dataKey="name"

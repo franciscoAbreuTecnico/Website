@@ -37,7 +37,7 @@ export const PrototypesSection = () => {
       whileInView="visible"
       viewport={{ once: false, amount: 0.25 }}
       className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
-      style={{ backgroundImage: `url('/images/home/prototype_background.webp')` }}
+      style={{ backgroundImage: `url(/images/home/prototype_background.webp)` }}
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
 

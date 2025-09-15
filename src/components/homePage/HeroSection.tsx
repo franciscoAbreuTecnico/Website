@@ -60,7 +60,7 @@ const HeroSection = () => {
       )}
       <div
         className="block xl:hidden absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center z-0"
-        style={{ backgroundImage: "url('/images/home/moto_blue_black_background.webp')" }}
+        style={{ backgroundImage: "url(/images/home/moto_blue_black_background.webp)" }}
       />
       {/* Main content */}
       <button

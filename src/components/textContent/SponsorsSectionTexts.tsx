@@ -6,10 +6,13 @@ export const secHeadlineText =
 export const sponsorInformation = {
   diamond: [
     { name: "Galp", link: "https://galp.com/pt/", logo: "/images/sponsors/diamond/galp.webp" },
+    {
+      name: "Técnico",
+      link: "https://tecnico.ulisboa.pt/",
+      logo: "/images/sponsors/diamond/tecnico.webp",
+    },
   ],
   gold: [
-    { name: "MCG", link: "https://www.mcg.pt/", logo: "/images/sponsors/gold/mcg.webp" },
-    { name: "Batemo", link: "https://www.batemo.com/", logo: "/images/sponsors/gold/batemo.webp" },
     { name: "TAP", link: "https://www.flytap.com/pt-pt/", logo: "/images/sponsors/gold/tap.webp" },
     {
       name: "Einhell",
@@ -28,16 +31,13 @@ export const sponsorInformation = {
       logo: "/images/sponsors/gold/althima.webp",
     },
     { name: "RE/MAX", link: "https://www.remax.pt/", logo: "/images/sponsors/gold/remax.webp" },
+    { name: "MCG", link: "https://www.mcg.pt/", logo: "/images/sponsors/gold/mcg.webp" },
     {
       name: "Santander",
       link: "https://www.santander.pt/",
       logo: "/images/sponsors/gold/santander.webp",
     },
-    {
-      name: "Técnico",
-      link: "https://tecnico.ulisboa.pt/",
-      logo: "/images/sponsors/gold/tecnico.webp",
-    },
+    { name: "Batemo", link: "https://www.batemo.com/", logo: "/images/sponsors/gold/batemo.webp" },
   ],
   silver: [
     { name: "Rat Rig", link: "https://ratrig.com/", logo: "/images/sponsors/silver/ratrig.webp" },
