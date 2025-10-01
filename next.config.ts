@@ -3,15 +3,7 @@ import type { NextConfig } from 'next';
 
 const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const normalizedBasePath = rawBasePath ? `/${rawBasePath.replace(/^\/+|\/+$/g, '')}` : '';
-const preferRelativeAssets =
-  process.env.NEXT_EXPORT_RELATIVE_ASSETS === 'true' ||
-  process.env.NEXT_EXPORT_RELATIVE_ASSETS === '1';
-
-const normalizedAssetPrefix = normalizedBasePath
-  ? `${normalizedBasePath}/`
-  : preferRelativeAssets
-    ? './'
-    : undefined;
+const normalizedAssetPrefix = normalizedBasePath ? `${normalizedBasePath}/` : undefined;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
