@@ -1,11 +1,12 @@
-/* @import "tailwindcss";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
   font-family: "EuroStyle";
-  src: url("/local-fonts/eurostile.ttf") format("truetype"), url("/local-fonts/EuroStyleNormal.ttf") format("truetype");
+  src: url("/local-fonts/eurostile.ttf") format("truetype"),
+    url("/local-fonts/EuroStyleNormal.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -133,13 +134,15 @@ body {
 }
 
 @layer base {
-  /* Development Feature: To see every element's border and outline, comment everything else
-   * {
+  /*
+    Development Feature: To see every element's border and outline, uncomment the block below.
+    * {
       @apply border-border outline-ring/50;
     }
-    body {
-      @apply bg-background text-foreground;
-    }
+  */
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @keyframes modalAppear {
@@ -151,4 +154,4 @@ body {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
-} */
+}
