@@ -73,13 +73,13 @@ const AboutSection: React.FC = () => {
       className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
     >
       <div
-        className="
+        className={`
           absolute inset-0
-          bg-[url('/images/home/team_background.webp')]
           bg-cover bg-center
           filter
           -z-10
-        "
+        `}
+        style={{ backgroundImage: "url('/images/home/team_background.webp')" }}
       />
       <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
 
