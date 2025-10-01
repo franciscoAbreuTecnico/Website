@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readdir, readFile, stat, writeFile } from 'node:fs/promises';
-import { join, relative, resolve } from 'node:path';
+import { dirname, join, relative, resolve, sep } from 'node:path';
 
 const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -23,7 +23,23 @@ async function collectHtmlFiles(directory) {
   return files;
 }
 
-function rewriteToRelative(content) {
+function withTrailingSlash(path) {
+  if (path === '.') {
+    return './';
+  }
+
+  return path.endsWith('/') ? path : `${path}/`;
+}
+
+function normalizeRelativePath(path) {
+  if (!path) {
+    return '.';
+  }
+
+  return path.split(sep).join('/');
+}
+
+function rewriteToRelative(content, basePrefix) {
   let result = content;
   const directoryPrefixes = ['_next/', 'images/', 'local-fonts/', 'videos/', 'icons/', 'fonts/'];
   const fileTargets = ['favicon.ico', 'manifest.webmanifest'];
@@ -34,24 +50,25 @@ function rewriteToRelative(content) {
     const commaPattern = new RegExp(`(,\s*)\/${escaped}`, 'g');
     const jsonPattern = new RegExp(`(["'])\/${escaped}`, 'g');
 
-    result = result.replace(attrPattern, (_, start) => `${start}./${prefix}`);
-    result = result.replace(commaPattern, (_, start) => `${start}./${prefix}`);
-    result = result.replace(jsonPattern, (_, quote) => `${quote}./${prefix}`);
+    result = result.replace(attrPattern, (_, start) => `${start}${basePrefix}${prefix}`);
+    result = result.replace(commaPattern, (_, start) => `${start}${basePrefix}${prefix}`);
+    result = result.replace(jsonPattern, (_, quote) => `${quote}${basePrefix}${prefix}`);
   }
 
   for (const file of fileTargets) {
     const escaped = escapeRegex(file);
     const attrPattern = new RegExp(`(["'=])\/${escaped}`, 'g');
-    result = result.replace(attrPattern, (_, start) => `${start}./${file}`);
+    result = result.replace(attrPattern, (_, start) => `${start}${basePrefix}${file}`);
   }
 
   result = result.replace(
     /(href=|src=|content=|data-src=|data-href=|poster=|data-poster=)(['"])\/(?!\/)/g,
-    (_, attr, quote) => `${attr}${quote}./`,
+    (_, attr, quote) => `${attr}${quote}${basePrefix}`,
   );
 
-  result = result.replace(/url\((['"]?)\/(?!\/)/g, (_, quote) => `url(${quote}./`);
-  result = result.replace(/(href=['"])\.\/\#/g, '$1#');
+  result = result.replace(/url\((['"]?)\/(?!\/)/g, (_, quote) => `url(${quote}${basePrefix}`);
+  const escapedBasePrefix = escapeRegex(basePrefix);
+  result = result.replace(new RegExp(`(href=['"])${escapedBasePrefix}#`, 'g'), '$1#');
 
   return result;
 }
@@ -84,7 +101,10 @@ async function main() {
 
   for (const file of htmlFiles) {
     const original = await readFile(file, 'utf8');
-    const rewritten = rewriteToRelative(original);
+    const fileDir = dirname(file);
+    const relativeToOut = normalizeRelativePath(relative(fileDir, OUT_DIR));
+    const basePrefix = withTrailingSlash(relativeToOut);
+    const rewritten = rewriteToRelative(original, basePrefix);
 
     if (original !== rewritten) {
       await writeFile(file, rewritten);
