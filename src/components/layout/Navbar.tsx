@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { withBasePath } from "../../utils/basePath";
 
 const NAV_LINKS = [
   { path: "/garage", label: "GARAGE" },
@@ -80,7 +81,12 @@ export default function MyNavbar() {
       <div className="hidden xl:flex w-[85%] h-[1vh] absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
       <ul className="hidden xl:flex px-5 w-full h-full justify-around items-center list-none">
         <li className="h-[80%]">
-          <Link href="/" aria-label="Home" className="h-[80%]" onClick={handleClick}>
+          <Link
+            href={withBasePath("/")}
+            aria-label="Home"
+            className="h-[80%]"
+            onClick={handleClick}
+          >
             <div className="aspect-[207/169] h-full">
               <Image
                 src="/images/home/home.webp"
@@ -99,7 +105,7 @@ export default function MyNavbar() {
             className={isActive(path) ? liStyleActive : liStyle}
             aria-current={isActive(path) ? "page" : undefined}
           >
-            <Link href={path}>{label}</Link>
+            <Link href={withBasePath(path)}>{label}</Link>
           </li>
         ))}
         <li className="aspect-[207/169] h-full"></li>
@@ -138,7 +144,7 @@ export default function MyNavbar() {
             </svg>
           </button>
           {/* Center logo */}
-          <Link href="/" className="h-full flex items-center" aria-label="Home">
+          <Link href={withBasePath("/")} className="h-full flex items-center" aria-label="Home">
             <Image
               src="/images/home/tlmoto_principal.webp"
               alt="Home Logo"
@@ -165,7 +171,7 @@ export default function MyNavbar() {
               className={isActive(path) ? liStyleActive : liStyle}
               onClick={() => setIsOpen(false)}
             >
-              <Link href={path}>{label}</Link>
+              <Link href={withBasePath(path)}>{label}</Link>
             </li>
           ))}
         </ul>
