@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { withBasePath } from "@/src/utils/basePath";
 
 const MotorbikeCarousel = dynamic(() => import("./MotorbikeCarousel"), {
   ssr: false,
@@ -30,6 +31,9 @@ const sectionStyle =
   "relative";
 
 export const PrototypesSection = () => {
+  const backgroundRelative = "/images/home/prototype_background.webp";
+  const backgroundSrc = withBasePath(backgroundRelative);
+
   return (
     <motion.section
       id="section4"
@@ -37,7 +41,7 @@ export const PrototypesSection = () => {
       whileInView="visible"
       viewport={{ once: false, amount: 0.25 }}
       className={`bg-no-repeat bg-cover bg-center ${sectionStyle}`}
-      style={{ backgroundImage: `url('/images/home/prototype_background.webp')` }}
+      style={{ backgroundImage: `url('${backgroundSrc}')` }}
     >
       <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
 
