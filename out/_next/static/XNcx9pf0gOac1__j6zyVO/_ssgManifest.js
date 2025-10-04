@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fgarage\u002F[id]","\u002Fhistory\u002F[year]","\u002Fteam","\u002Fteam\u002F[year]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
