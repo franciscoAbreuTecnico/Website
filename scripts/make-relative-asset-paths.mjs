@@ -4,6 +4,10 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 
 const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const normalizedBasePath = rawBasePath.replace(/^\/+|\/+$/g, '');
+const basePathPrefix = normalizedBasePath ? `/${normalizedBasePath}` : '';
+
 const OUT_DIR = resolve(process.cwd(), process.argv[2] ?? 'out');
 
 async function collectHtmlFiles(directory) {
@@ -41,6 +45,14 @@ function normalizeRelativePath(path) {
 
 function rewriteToRelative(content, basePrefix) {
   let result = content;
+  if (basePathPrefix) {
+    const baseWithSlash = `${basePathPrefix}/`;
+    const escapedBaseWithSlash = escapeRegex(baseWithSlash);
+    result = result.replace(
+      new RegExp(`(["'=,(])${escapedBaseWithSlash}`, 'g'),
+      (_, start) => `${start}/`,
+    );
+  }
   const directoryPrefixes = ['_next/', 'images/', 'local-fonts/', 'videos/', 'icons/', 'fonts/'];
   const fileTargets = ['favicon.ico', 'manifest.webmanifest'];
 
@@ -70,7 +82,47 @@ function rewriteToRelative(content, basePrefix) {
   const escapedBasePrefix = escapeRegex(basePrefix);
   result = result.replace(new RegExp(`(href=['"])${escapedBasePrefix}#`, 'g'), '$1#');
 
+  result = result.replace(/(href=(['"]))(\.{1,2}\/[^'"#?]*[^'"#]*)(['"])/g, (match, start, quote, value, end) => {
+    if (!value) {
+      return match;
+    }
+
+    const withoutLeading = value.replace(/^(\.\/|\.\.\/)+/, '');
+
+    if (!withoutLeading) {
+      return `${start}${appendIndexHtml(value)}${end}`;
+    }
+
+    const blockedPrefixes = ['_next/', 'images/', 'local-fonts/', 'videos/', 'icons/', 'fonts/'];
+    const blockedFiles = ['favicon.ico', 'manifest.webmanifest'];
+
+    if (blockedPrefixes.some(prefix => withoutLeading.startsWith(prefix))) {
+      return match;
+    }
+
+    if (blockedFiles.some(file => withoutLeading.startsWith(file))) {
+      return match;
+    }
+
+    return `${start}${appendIndexHtml(value)}${end}`;
+  });
+
   return result;
+}
+
+function appendIndexHtml(value) {
+  const [pathWithQuery, hash = ''] = value.split('#', 2);
+  const [path, query = ''] = pathWithQuery.split('?', 2);
+
+  if (!path || /\.[^/]+$/.test(path)) {
+    return `${path}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
+  }
+
+  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+  const querySuffix = query ? `?${query}` : '';
+  const hashSuffix = hash ? `#${hash}` : '';
+
+  return `${normalizedPath}index.html${querySuffix}${hashSuffix}`;
 }
 
 async function main() {
