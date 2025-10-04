@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { timelineData } from "@/src/components/textContent/TimelineSectionTexts";
+import { resolveInternalHref } from "../../utils/useInternalHref";
 
 export default function HistoryIndex() {
   const router = useRouter();
@@ -9,10 +10,21 @@ export default function HistoryIndex() {
     .sort((a, b) => Number(a) - Number(b));
 
   useEffect(() => {
-    if (years.length > 0) {
-      router.replace(`/history/${years[years.length - 1] || years[0]}`); // Redirect to the latest year
+    const latestYear = years[years.length - 1];
+
+    if (!latestYear) {
+      return;
     }
+
+    const { href, isFileProtocol } = resolveInternalHref(`/history/${latestYear}`);
+
+    if (isFileProtocol) {
+      window.location.href = href;
+      return;
+    }
+
+    router.replace(href);
   }, [years, router]);
 
-  return;
+  return null;
 }

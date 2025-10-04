@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import TiltedCard from "@/src/components/extras/TiltedCard";
 import { motion, AnimatePresence } from "framer-motion";
+import { resolveInternalHref } from "../../utils/useInternalHref";
 
 export async function getStaticProps({ params }: { params: { year: string } }) {
   const { year } = params;
@@ -46,6 +47,17 @@ export default function History({
   const years = Object.keys(timelineData).map(String);
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
+  const navigateToYear = (yearToNavigate: string) => {
+    const { href, isFileProtocol } = resolveInternalHref(`/history/${yearToNavigate}`);
+
+    if (isFileProtocol) {
+      window.location.href = href;
+      return;
+    }
+
+    router.push(href);
+  };
+
   return (
     <MyDefaultPage>
       <div className="flex flex-col mb-[5%]">
@@ -67,7 +79,11 @@ export default function History({
                 <div className="flex justify-center">
                   <motion.button
                     className="flex flex-col items-center group cursor-pointer"
-                    onClick={() => idx > 0 && router.push(`/history/${years[idx - 1]}`)}
+                    onClick={() => {
+                      if (idx > 0) {
+                        navigateToYear(years[idx - 1]);
+                      }
+                    }}
                   >
                     {idx > 0 ? (
                       <>
@@ -190,9 +206,11 @@ export default function History({
                 <div className="flex justify-center">
                   <motion.button
                     className="flex flex-col items-center group cursor-pointer"
-                    onClick={() =>
-                      idx < years.length - 1 && router.push(`/history/${years[idx + 1]}`)
-                    }
+                    onClick={() => {
+                      if (idx < years.length - 1) {
+                        navigateToYear(years[idx + 1]);
+                      }
+                    }}
                   >
                     {idx < years.length - 1 ? (
                       <>
@@ -223,7 +241,9 @@ export default function History({
           <button
             onClick={() => {
               const idx = years.indexOf(selectedYear);
-              if (idx > 0) router.push(`/history/${years[idx - 1]}`);
+              if (idx > 0) {
+                navigateToYear(years[idx - 1]);
+              }
             }}
             disabled={selectedYear === years[0]}
             className="disabled:opacity-40"
@@ -239,7 +259,9 @@ export default function History({
           <button
             onClick={() => {
               const idx = years.indexOf(selectedYear);
-              if (idx < years.length - 1) router.push(`/history/${years[idx + 1]}`);
+              if (idx < years.length - 1) {
+                navigateToYear(years[idx + 1]);
+              }
             }}
             disabled={selectedYear === years[years.length - 1]}
             className="disabled:opacity-40"
