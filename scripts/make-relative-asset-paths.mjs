@@ -4,6 +4,10 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 
 const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const normalizedBasePath = rawBasePath.replace(/^\/+|\/+$/g, '');
+const basePathPrefix = normalizedBasePath ? `/${normalizedBasePath}` : '';
+
 const OUT_DIR = resolve(process.cwd(), process.argv[2] ?? 'out');
 
 async function collectHtmlFiles(directory) {
@@ -41,6 +45,14 @@ function normalizeRelativePath(path) {
 
 function rewriteToRelative(content, basePrefix) {
   let result = content;
+  if (basePathPrefix) {
+    const baseWithSlash = `${basePathPrefix}/`;
+    const escapedBaseWithSlash = escapeRegex(baseWithSlash);
+    result = result.replace(
+      new RegExp(`(["'=,(])${escapedBaseWithSlash}`, 'g'),
+      (_, start) => `${start}/`,
+    );
+  }
   const directoryPrefixes = ['_next/', 'images/', 'local-fonts/', 'videos/', 'icons/', 'fonts/'];
   const fileTargets = ['favicon.ico', 'manifest.webmanifest'];
 

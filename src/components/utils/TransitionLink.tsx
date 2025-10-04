@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { ComponentProps, ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { withBasePath } from "../../utils/basePath";
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -14,6 +15,7 @@ interface TransitionLinkProps extends ComponentProps<typeof Link> {
 
 export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps) => {
   const router = useRouter();
+  const targetHref = withBasePath(href);
 
   const handleTransition = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps
 
     await sleep(450);
 
-    router.push(href);
+    router.push(targetHref);
 
     await sleep(450);
 
@@ -32,7 +34,7 @@ export const TransitionLink = ({ children, href, ...props }: TransitionLinkProps
   };
 
   return (
-    <Link onClick={handleTransition} href={href} {...props}>
+    <Link onClick={handleTransition} href={targetHref} {...props}>
       {children}
     </Link>
   );
