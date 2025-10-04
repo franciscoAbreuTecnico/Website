@@ -80,5 +80,6 @@ export function getImages(folderPath: string): string[] {
   return fs
     .readdirSync(absPath, { encoding: "utf8" })
     .filter(file => /\.webp$/i.test(file))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" }))
     .map(file => path.posix.join("/", folderPath, file)); // URL-friendly path
 }
