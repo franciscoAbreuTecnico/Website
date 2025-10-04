@@ -6,19 +6,17 @@ import { useRouter } from "next/router";
 import TiltedCard from "@/src/components/extras/TiltedCard";
 import { motion, AnimatePresence } from "framer-motion";
 
+type TimelineEventWithImages = TimelineDataItem & { images: string[] };
+
 export async function getStaticProps({ params }: { params: { year: string } }) {
   const { year } = params;
 
-  const events = timelineData[year] || [];
-  const yearData = events.reduce(
-    (acc, event) => {
-      acc[event.imageFolder] = getImages(event.imageFolder);
-      return acc;
-    },
-    {} as Record<string, string[]>
-  );
+  const events: TimelineEventWithImages[] = (timelineData[year] || []).map(event => ({
+    ...event,
+    images: getImages(event.imageFolder),
+  }));
 
-  return { props: { yearData, selectedYear: year } };
+  return { props: { events, selectedYear: year } };
 }
 
 export async function getStaticPaths() {
@@ -34,10 +32,10 @@ export async function getStaticPaths() {
 }
 
 export default function History({
-  yearData,
+  events,
   selectedYear,
 }: {
-  yearData: { [key: string]: string[] };
+  events: TimelineEventWithImages[];
   selectedYear: string;
 }) {
   // inside History component
@@ -255,12 +253,12 @@ export default function History({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {timelineData[selectedYear].map((item: TimelineDataItem) => (
+          {events.map(item => (
             <div key={item.title} className="mt-[2.5vh] mb-[2.5vh] lg:mb-[0vh] xl:mb-[10vh]">
               <h3 className="text-4xl font-bold mb-[0.125vh]">{item.title}</h3>
               <p className="text-xl mb-[2vh]">{item.description}</p>
               <div className="grid grid-cols-2 gap-y-[1.5vh] justify-items-center md:grid-cols-3 lg:gap-x-[1.5vw] lg:gap-y-[1.5vh] lg:grid-cols-4 xl:gap-x-[2vw] xl:gap-y-[2vh]">
-                {yearData[item.imageFolder].map((element: string) => (
+                {item.images.map((element: string) => (
                   <div key={element} onClick={() => setFullscreenImage(element)}>
                     <TiltedCard
                       imageSrc={element}
