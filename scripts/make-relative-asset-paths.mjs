@@ -27,6 +27,32 @@ async function collectHtmlFiles(directory) {
   return files;
 }
 
+async function ensureNoJekyll(directory) {
+  const target = join(directory, '.nojekyll');
+
+  try {
+    const existing = await stat(target);
+
+    if (!existing.isFile()) {
+      throw new Error(`Expected ${target} to be a file.`);
+    }
+
+    return false;
+  } catch (error) {
+    if (error && typeof error === 'object' && 'code' in error) {
+      if (error.code !== 'ENOENT') {
+        throw error;
+      }
+    } else {
+      throw error;
+    }
+  }
+
+  await writeFile(target, '');
+  console.log(`Created ${relative(process.cwd(), target)} to disable GitHub Pages Jekyll processing.`);
+  return true;
+}
+
 function withTrailingSlash(path) {
   if (path === '.') {
     return './';
@@ -169,6 +195,12 @@ async function main() {
     console.log('No changes were required — asset URLs already looked relative.');
   } else {
     console.log(`Updated ${changed} HTML file${changed === 1 ? '' : 's'} with relative asset URLs.`);
+  }
+
+  try {
+    await ensureNoJekyll(OUT_DIR);
+  } catch (error) {
+    console.warn(`Unable to ensure .nojekyll file: ${error instanceof Error ? error.message : error}`);
   }
 }
 
