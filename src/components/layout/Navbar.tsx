@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { withBasePath } from "../../utils/basePath";
+import type { AriaAttributes, MouseEventHandler, ReactNode } from "react";
+import { useInternalHref } from "../../utils/useInternalHref";
 
 const NAV_LINKS = [
   { path: "/garage", label: "GARAGE" },
@@ -36,6 +37,10 @@ export default function MyNavbar() {
 
   const handleClick = (e: React.MouseEvent) => {
     if (router.pathname === "/") {
+      if (typeof window !== "undefined" && window.location.protocol === "file:") {
+        return;
+      }
+
       e.preventDefault();
       router.reload();
     }
@@ -81,9 +86,9 @@ export default function MyNavbar() {
       <div className="hidden xl:flex w-[85%] h-[1vh] absolute bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[linear-gradient(to_right,transparent,_#97bddc,_#3293e0,_#97bddc,_transparent)]"></div>
       <ul className="hidden xl:flex px-5 w-full h-full justify-around items-center list-none">
         <li className="h-[80%]">
-          <Link
-            href={withBasePath("/")}
-            aria-label="Home"
+          <InternalNavigationLink
+            path="/"
+            ariaLabel="Home"
             className="h-[80%]"
             onClick={handleClick}
           >
@@ -97,7 +102,7 @@ export default function MyNavbar() {
                 className="h-full w-full transition-transform duration-300 ease-in-out hover:scale-[1.2]"
               />
             </div>
-          </Link>
+          </InternalNavigationLink>
         </li>
         {NAV_LINKS.map(({ path, label }) => (
           <li
@@ -105,7 +110,7 @@ export default function MyNavbar() {
             className={isActive(path) ? liStyleActive : liStyle}
             aria-current={isActive(path) ? "page" : undefined}
           >
-            <Link href={withBasePath(path)}>{label}</Link>
+            <InternalNavigationLink path={path}>{label}</InternalNavigationLink>
           </li>
         ))}
         <li className="aspect-[207/169] h-full"></li>
@@ -144,7 +149,7 @@ export default function MyNavbar() {
             </svg>
           </button>
           {/* Center logo */}
-          <Link href={withBasePath("/")} className="h-full flex items-center" aria-label="Home">
+          <InternalNavigationLink path="/" className="h-full flex items-center" ariaLabel="Home">
             <Image
               src="/images/home/tlmoto_principal.webp"
               alt="Home Logo"
@@ -153,7 +158,7 @@ export default function MyNavbar() {
               priority
               className="h-[70%] w-auto"
             />
-          </Link>
+          </InternalNavigationLink>
         </div>
         {/* Slide-down Mobile Menu */}
         <ul
@@ -171,7 +176,7 @@ export default function MyNavbar() {
               className={isActive(path) ? liStyleActive : liStyle}
               onClick={() => setIsOpen(false)}
             >
-              <Link href={withBasePath(path)}>{label}</Link>
+              <InternalNavigationLink path={path}>{label}</InternalNavigationLink>
             </li>
           ))}
         </ul>
@@ -181,4 +186,50 @@ export default function MyNavbar() {
   function toggleMenu() {
     setIsOpen(prev => !prev);
   }
+}
+
+interface InternalNavigationLinkProps {
+  path: string;
+  className?: string;
+  children: ReactNode;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  ariaLabel?: string;
+  ariaCurrent?: AriaAttributes["aria-current"];
+}
+
+function InternalNavigationLink({
+  path,
+  className,
+  children,
+  onClick,
+  ariaLabel,
+  ariaCurrent,
+}: InternalNavigationLinkProps) {
+  const { href, isFileProtocol } = useInternalHref(path);
+
+  if (isFileProtocol) {
+    return (
+      <a
+        href={href}
+        className={className}
+        aria-label={ariaLabel}
+        aria-current={ariaCurrent}
+        onClick={onClick}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={className}
+      aria-label={ariaLabel}
+      aria-current={ariaCurrent}
+      onClick={onClick}
+    >
+      {children}
+    </Link>
+  );
 }
