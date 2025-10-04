@@ -3,6 +3,7 @@ import MyDefaultPage from "../../components/DefaultPage";
 import { timelineData, TimelineDataItem } from "@/src/components/textContent/TimelineSectionTexts";
 import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
+import { resolveInternalHref } from "../../utils/useInternalHref";
 import TiltedCard from "@/src/components/extras/TiltedCard";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -61,6 +62,21 @@ export default function History({
     selectedIndex !== -1 && selectedIndex < years.length - 1 ? years[selectedIndex + 1] : undefined;
 
   const timelineRef = useRef<HTMLDivElement | null>(null);
+
+  const navigateToYear = (year?: string) => {
+    if (!year) {
+      return;
+    }
+
+    const { href, isFileProtocol } = resolveInternalHref(`/history/${year}`);
+
+    if (isFileProtocol) {
+      window.location.href = href;
+      return;
+    }
+
+    router.push(href);
+  };
   return (
     <MyDefaultPage>
       <div className="flex flex-col mb-[5%]">
@@ -78,7 +94,7 @@ export default function History({
               <div className="flex justify-center">
                 <motion.button
                   className="flex flex-col items-center group cursor-pointer"
-                  onClick={() => previousYear && router.push(`/history/${previousYear}`)}
+                  onClick={() => navigateToYear(previousYear)}
                 >
                   {previousYear ? (
                     <>
@@ -201,7 +217,7 @@ export default function History({
               <div className="flex justify-center">
                 <motion.button
                   className="flex flex-col items-center group cursor-pointer"
-                  onClick={() => nextYear && router.push(`/history/${nextYear}`)}
+                  onClick={() => navigateToYear(nextYear)}
                 >
                   {nextYear ? (
                     <>
@@ -229,7 +245,7 @@ export default function History({
         <div className="flex items-center text-white text-5xl justify-center gap-4 my-4 mt-35 md:hidden">
           {/* Previous Year */}
           <button
-            onClick={() => previousYear && router.push(`/history/${previousYear}`)}
+            onClick={() => navigateToYear(previousYear)}
             disabled={!previousYear}
             className="disabled:opacity-40"
           >
@@ -242,7 +258,7 @@ export default function History({
 
           {/* Next Year */}
           <button
-            onClick={() => nextYear && router.push(`/history/${nextYear}`)}
+            onClick={() => navigateToYear(nextYear)}
             disabled={!nextYear}
             className="disabled:opacity-40"
           >
