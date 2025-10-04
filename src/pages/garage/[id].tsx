@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { cards, backgrounds } from "src/components/textContent/GarageSectionTexts";
 import MyStatsChart from "src/components/garage/GarageStatsChart";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/src/utils/basePath";
 
 type Card = (typeof cards)[number];
 
@@ -28,7 +29,9 @@ export default function GarageDetailPage({ card }: GarageDetailPageProps) {
   const motoBackgrounds = backgrounds[card.id as keyof typeof backgrounds] ?? [card.video];
   const currentVideo = motoBackgrounds[bgIndex];
 
-  const motoImage = `/images/garage/${card.id.replace("m", "").padStart(2, "0")}.webp`;
+  const motoImage = withBasePath(
+    `/images/garage/${card.id.replace("m", "").padStart(2, "0")}.webp`
+  );
 
   const toggleBackground = () => {
     if (motoBackgrounds.length > 1) {
