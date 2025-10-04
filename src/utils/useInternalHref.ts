@@ -11,6 +11,11 @@ interface HrefState {
   isFileProtocol: boolean;
 }
 
+interface ResolveInternalHrefOptions {
+  currentPathname?: string;
+  protocol?: string;
+}
+
 function normalizePath(path: string) {
   if (!path) {
     return '/';
@@ -45,16 +50,18 @@ function splitPathQueryHash(value: string) {
   return { path, query, hash };
 }
 
-function computeFileHref(normalizedPath: string) {
-  if (typeof window === 'undefined') {
-    return normalizedPath;
-  }
-
+function computeFileHref(normalizedPath: string, currentPathname?: string) {
   if (normalizedPath.startsWith('#')) {
     return normalizedPath;
   }
 
-  const { pathname } = window.location;
+  const pathname =
+    currentPathname ?? (typeof window !== 'undefined' ? window.location.pathname : undefined);
+
+  if (!pathname) {
+    return normalizedPath;
+  }
+
   const exportIndex = pathname.indexOf(EXPORT_SEGMENT);
 
   if (exportIndex === -1) {
@@ -99,31 +106,33 @@ function computeFileHref(normalizedPath: string) {
   return `${relative}${query}${hash}`;
 }
 
-export function useInternalHref(path: string): HrefState {
+export function resolveInternalHref(
+  path: string,
+  options: ResolveInternalHrefOptions = {}
+): HrefState {
   const normalizedPath = normalizePath(path);
-  const [state, setState] = useState<HrefState>(() => ({
+  const protocol =
+    options.protocol ?? (typeof window !== 'undefined' ? window.location.protocol : undefined);
+
+  if (protocol === 'file:') {
+    return {
+      href: computeFileHref(normalizedPath, options.currentPathname),
+      isFileProtocol: true,
+    };
+  }
+
+  return {
     href: withBasePath(normalizedPath),
     isFileProtocol: false,
-  }));
+  };
+}
+
+export function useInternalHref(path: string): HrefState {
+  const [state, setState] = useState<HrefState>(() => resolveInternalHref(path));
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    if (window.location.protocol === 'file:') {
-      setState({
-        href: computeFileHref(normalizedPath),
-        isFileProtocol: true,
-      });
-      return;
-    }
-
-    setState({
-      href: withBasePath(normalizedPath),
-      isFileProtocol: false,
-    });
-  }, [normalizedPath]);
+    setState(resolveInternalHref(path));
+  }, [path]);
 
   return state;
 }
