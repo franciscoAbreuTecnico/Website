@@ -133,7 +133,7 @@ function rewriteToRelative(content, basePrefix) {
     return `${start}${appendIndexHtml(value)}${end}`;
   });
 
-  return result;
+  return injectRuntimePrefixScript(result, basePrefix);
 }
 
 function appendIndexHtml(value) {
@@ -149,6 +149,34 @@ function appendIndexHtml(value) {
   const hashSuffix = hash ? `#${hash}` : '';
 
   return `${normalizedPath}index.html${querySuffix}${hashSuffix}`;
+}
+
+const RUNTIME_PREFIX_SCRIPT_ID = '__TL_ASSET_PREFIX__';
+const RUNTIME_PREFIX_SCRIPT_PATTERN = new RegExp(
+  `<script[^>]*id=["']${RUNTIME_PREFIX_SCRIPT_ID}["'][^>]*>[\\s\\S]*?<\\/script>`,
+  'i',
+);
+
+function injectRuntimePrefixScript(content, basePrefix) {
+  const scriptTag = `<script id="${RUNTIME_PREFIX_SCRIPT_ID}">self.__TL_RUNTIME_ASSET_PREFIX__=${JSON.stringify(
+    basePrefix,
+  )};<\/script>`;
+
+  if (!content.includes('</head>')) {
+    return content;
+  }
+
+  if (RUNTIME_PREFIX_SCRIPT_PATTERN.test(content)) {
+    return content.replace(RUNTIME_PREFIX_SCRIPT_PATTERN, scriptTag);
+  }
+
+  const headCloseIndex = content.indexOf('</head>');
+
+  if (headCloseIndex === -1) {
+    return content;
+  }
+
+  return `${content.slice(0, headCloseIndex)}${scriptTag}${content.slice(headCloseIndex)}`;
 }
 
 async function main() {
