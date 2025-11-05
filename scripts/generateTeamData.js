@@ -7,20 +7,18 @@ const TEAM_DATA_DIR = path.join(process.cwd(), 'data/team');
 function normalizeImageName(imageName) {
   // Remove a extensão .webp ou .png
   const baseName = imageName.replace(/\.(webp|png)$/i, '');
-  
+
   // Remove números e hífens do início (ex: "1 - " ou "2 - ")
   const cleanName = baseName.replace(/^\d+\s*-\s*/, '');
-  
+
   // Converte underscores para espaços e capitaliza cada palavra
-  return cleanName
-    .replace(/_/g, ' ')
-    .replace(/\b\w/g, letter => letter.toUpperCase());
+  return cleanName.replace(/_/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 }
 
 function generateTeamDataForYear(year) {
   const yearPath = path.join(TEAM_DIR, year);
   const dataFilePath = path.join(TEAM_DATA_DIR, `${year}.json`);
-  
+
   if (!fs.existsSync(yearPath)) {
     console.log(`⚠️  Diretório para o ano ${year} não existe`);
     return;
@@ -36,16 +34,18 @@ function generateTeamDataForYear(year) {
     }
   }
 
-  const categories = fs.readdirSync(yearPath)
+  const categories = fs
+    .readdirSync(yearPath)
     .filter(category => fs.statSync(path.join(yearPath, category)).isDirectory());
 
   const teamData = {};
 
   categories.forEach(category => {
     const categoryPath = path.join(yearPath, category);
-    
+
     // Busca apenas imagens que não sejam cartas (aceita .webp e .png)
-    const images = fs.readdirSync(categoryPath)
+    const images = fs
+      .readdirSync(categoryPath)
       .filter(file => /\.(webp|png)$/i.test(file) && !/_carta\.(webp|png)$/i.test(file))
       .sort(); // Ordena alfabeticamente
 
@@ -54,23 +54,23 @@ function generateTeamDataForYear(year) {
       const memberName = normalizeImageName(image);
       const imageExtension = image.split('.').pop();
       const cardImage = baseName + '_carta.' + imageExtension;
-      
+
       // Procura dados existentes para preservar LinkedIn
       let existingLinkedIn = '';
       if (existingData[category]) {
-        const existingMember = existingData[category].find(member => 
-          member.image === image || member.name === memberName
+        const existingMember = existingData[category].find(
+          member => member.image === image || member.name === memberName
         );
         if (existingMember) {
           existingLinkedIn = existingMember.linkedin || '';
         }
       }
-      
+
       return {
         name: memberName,
         image: image,
         cardImage: cardImage,
-        linkedin: existingLinkedIn
+        linkedin: existingLinkedIn,
       };
     });
 
@@ -84,7 +84,7 @@ function generateTeamDataForYear(year) {
 
 function generateAllTeamData() {
   console.log('🚀 Iniciando geração de dados da equipe...\n');
-  
+
   // Certifica-se de que o diretório data/team existe
   if (!fs.existsSync(TEAM_DATA_DIR)) {
     fs.mkdirSync(TEAM_DATA_DIR, { recursive: true });
@@ -92,7 +92,8 @@ function generateAllTeamData() {
   }
 
   // Encontra todos os anos disponíveis
-  const years = fs.readdirSync(TEAM_DIR)
+  const years = fs
+    .readdirSync(TEAM_DIR)
     .filter(year => {
       const yearPath = path.join(TEAM_DIR, year);
       return fs.statSync(yearPath).isDirectory() && /^\d{4}$/.test(year);
@@ -113,18 +114,20 @@ function generateAllTeamData() {
   });
 
   console.log('✨ Todos os arquivos de dados da equipe foram gerados!');
-  console.log('📝 Lembre-se de adicionar os URLs do LinkedIn manualmente nos arquivos data/team/*.json');
+  console.log(
+    '📝 Lembre-se de adicionar os URLs do LinkedIn manualmente nos arquivos data/team/*.json'
+  );
 }
 
 // Função para processar apenas um ano específico
 function generateDataForSpecificYear(year) {
   console.log(`🚀 Gerando dados para o ano ${year}...\n`);
-  
+
   if (!fs.existsSync(TEAM_DATA_DIR)) {
     fs.mkdirSync(TEAM_DATA_DIR, { recursive: true });
     console.log('📁 Diretório data/team criado');
   }
-  
+
   generateTeamDataForYear(year);
 }
 

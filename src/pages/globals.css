@@ -1,11 +1,13 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: "EuroStyle";
-  src: url("/local-fonts/eurostile.ttf") format("truetype"), url("/local-fonts/EuroStyleNormal.ttf") format("truetype");
+  font-family: 'EuroStyle';
+  src:
+    url('/local-fonts/eurostile.ttf') format('truetype'),
+    url('/local-fonts/EuroStyleNormal.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -54,7 +56,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "EuroStyle";
+  font-family: 'EuroStyle';
   transition-property: opacity, background, transform, filter;
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
@@ -134,18 +136,17 @@ body {
 
 @layer base {
   /* Development Feature: To see every element's border and outline, comment everything else*/
-   /** {
+  /** {
    
     @apply border border-solid border-border outline-ring/50;
    } */
-   * {
-      @apply border-border outline-ring/50;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
-
 
 /* Newsletter Modal Animation */
 @keyframes modalAppear {
