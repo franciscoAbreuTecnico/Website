@@ -27,6 +27,23 @@ async function collectHtmlFiles(directory) {
   return files;
 }
 
+async function collectCssFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const fullPath = join(directory, entry.name);
+
+    if (entry.isDirectory()) {
+      files.push(...(await collectCssFiles(fullPath)));
+    } else if (entry.isFile() && entry.name.endsWith('.css')) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
 async function ensureNoJekyll(directory) {
   const target = join(directory, '.nojekyll');
 
@@ -105,6 +122,8 @@ function rewriteToRelative(content, basePrefix) {
   );
 
   result = result.replace(/url\((['"]?)\/(?!\/)/g, (_, quote) => `url(${quote}${basePrefix}`);
+  result = result.replace(/url\(&#x27;\/(?!\/)/g, () => `url(&#x27;${basePrefix}`);
+  result = result.replace(/url\(&quot;\/(?!\/)/g, () => `url(&quot;${basePrefix}`);
   const escapedBasePrefix = escapeRegex(basePrefix);
   result = result.replace(new RegExp(`(href=['"])${escapedBasePrefix}#`, 'g'), '$1#');
 
@@ -134,6 +153,116 @@ function rewriteToRelative(content, basePrefix) {
   });
 
   return injectRuntimePrefixScript(result, basePrefix);
+}
+
+function rewriteCssToRelative(content, basePrefix) {
+  if (!content) {
+    return content;
+  }
+
+  let result = content;
+
+  if (basePathPrefix) {
+    const baseWithSlash = `${basePathPrefix}/`;
+    const escapedBaseWithSlash = escapeRegex(baseWithSlash);
+    const pattern = new RegExp(`url\((['"])${escapedBaseWithSlash}`, 'g');
+    result = result.replace(pattern, (_, quote) => `url(${quote}/`);
+  }
+
+  result = result.replace(/url\((['"]?)\/(?!\/)/g, (_, quote = '') => `url(${quote}${basePrefix}`);
+
+  return result;
+}
+
+async function rewriteCssFiles(outDir) {
+  const cssDir = join(outDir, '_next');
+  let cssFiles;
+
+  try {
+    cssFiles = (await collectCssFiles(cssDir)).filter(file => file.endsWith('.css'));
+  } catch (error) {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
+      return 0;
+    }
+
+    throw error;
+  }
+
+  let changed = 0;
+
+  for (const file of cssFiles) {
+    const original = await readFile(file, 'utf8');
+    const fileDir = dirname(file);
+    const relativeToOut = normalizeRelativePath(relative(fileDir, OUT_DIR));
+    const basePrefix = withTrailingSlash(relativeToOut);
+    const rewritten = rewriteCssToRelative(original, basePrefix);
+
+    if (original !== rewritten) {
+      await writeFile(file, rewritten);
+      changed += 1;
+      console.log(`Rewrote asset URLs in ${relative(process.cwd(), file)}`);
+    }
+  }
+
+  return changed;
+}
+
+function runtimePublicPathPatch() {
+  return [
+    '(function(){',
+    'var __TL_PREFIX__=typeof self==="undefined"?undefined:self.__TL_RUNTIME_ASSET_PREFIX__;',
+    'if(typeof __TL_PREFIX__==="string"&&__TL_PREFIX__){',
+    'var __TL_NORMALIZED__=__TL_PREFIX__.endsWith("/")?__TL_PREFIX__:__TL_PREFIX__+"/";',
+    'r.p=__TL_NORMALIZED__+"_next/";',
+    'return r.p;',
+    '}',
+    'r.p="/_next/";',
+    'return r.p;',
+    '})()'
+  ].join('');
+}
+
+async function updateRuntimePublicPath(outDir) {
+  const chunksDir = join(outDir, '_next/static/chunks');
+  let entries;
+
+  try {
+    entries = await readdir(chunksDir, { withFileTypes: true });
+  } catch (error) {
+    if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
+      return false;
+    }
+
+    throw error;
+  }
+
+  const runtimePattern = /r\.p="\/_next\/"([,;])/g;
+  const replacement = runtimePublicPathPatch();
+  let updated = false;
+
+  for (const entry of entries) {
+    if (!entry.isFile() || !/^webpack-.*\.js$/.test(entry.name)) {
+      continue;
+    }
+
+    const target = join(chunksDir, entry.name);
+    const original = await readFile(target, 'utf8');
+
+    if (!runtimePattern.test(original)) {
+      continue;
+    }
+
+    runtimePattern.lastIndex = 0;
+    const rewritten = original.replace(runtimePattern, (_, suffix) => `${replacement}${suffix}`);
+
+    if (rewritten !== original) {
+      await writeFile(target, rewritten);
+      console.log(`Updated runtime public path in ${relative(process.cwd(), target)}`);
+      updated = true;
+    }
+  }
+
+  return updated;
 }
 
 function appendIndexHtml(value) {
@@ -203,7 +332,7 @@ async function main() {
     return;
   }
 
-  let changed = 0;
+  let htmlChanged = 0;
 
   for (const file of htmlFiles) {
     const original = await readFile(file, 'utf8');
@@ -214,15 +343,29 @@ async function main() {
 
     if (original !== rewritten) {
       await writeFile(file, rewritten);
-      changed += 1;
+      htmlChanged += 1;
       console.log(`Rewrote asset URLs in ${relative(process.cwd(), file)}`);
     }
   }
 
-  if (changed === 0) {
-    console.log('No changes were required — asset URLs already looked relative.');
+if (htmlChanged === 0) {
+    console.log('No HTML changes were required — asset URLs already looked relative.');
   } else {
-    console.log(`Updated ${changed} HTML file${changed === 1 ? '' : 's'} with relative asset URLs.`);
+    console.log(`Updated ${htmlChanged} HTML file${htmlChanged === 1 ? '' : 's'} with relative asset URLs.`);
+  }
+
+  const cssChanged = await rewriteCssFiles(OUT_DIR);
+
+  if (cssChanged === 0) {
+    console.log('No CSS changes were required — asset URLs already looked relative.');
+  } else {
+    console.log(`Updated ${cssChanged} CSS file${cssChanged === 1 ? '' : 's'} with relative asset URLs.`);
+  }
+
+  const runtimeUpdated = await updateRuntimePublicPath(OUT_DIR);
+
+  if (runtimeUpdated) {
+    console.log('Adjusted Next.js runtime public path for relative asset loading.');
   }
 
   try {

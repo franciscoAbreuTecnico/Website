@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import { withBasePath } from "@/src/utils/basePath";
-
-const MotorbikeCarousel = dynamic(() => import("./MotorbikeCarousel"), {
-  ssr: false,
-  loading: () => <div style={{ minHeight: 350 }}>Loading…</div>,
-});
+import MotorbikeCarousel from "./MotorbikeCarousel";
 
 const containerVariants = {
   hidden: {},
